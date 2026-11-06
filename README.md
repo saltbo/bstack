@@ -18,6 +18,14 @@ npx skills add saltbo/bstack --skill '*' --agent pi --global --yes
 
 Claude Code installs to `~/.claude/skills/`; Codex and Pi share `~/.agents/skills/`.
 
+Pi has no built-in subagents. Install the extensions the adapter maps to:
+
+```bash
+pi install npm:pi-subagents                       # required: subagent fan-out and review
+pi install npm:@juicesharp/rpiv-ask-user-question # recommended: structured questions
+pi install npm:pi-background-tasks                # recommended: background waits
+```
+
 ## Use
 
 `saltmode` is the single entry. Every skill is explicit-only, so nothing loads
@@ -54,7 +62,7 @@ revision and records every rename, removal, and adaptation.
 Workflow text keeps pstack's tool names and model slugs. The
 [host adapter](skills/saltmode/references/host-adapter.md) maps them to each
 host: subagents (`Agent` in Claude Code, the spawn tool or `codex exec` in Codex,
-`pi -p` in Pi), read-only modes, model overrides, skill and transcript paths, and
+`subagent` from pi-subagents in Pi), read-only modes, model overrides, skill and transcript paths, and
 unavailable features. Models inherit the session by default.
 `setup-pstack` writes a per-role model rule only when asked.
 

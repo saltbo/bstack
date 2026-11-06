@@ -23,7 +23,7 @@ Write the model rule, which sets pstack's model per role, at the host's path fro
 
 - Claude Code: the `model` values the `Agent` tool schema lists, each with an effort from its `effort` values. Write a real model as `<model> <effort>`, such as `opus xhigh`.
 - Codex: the models the host lists for subagents or `codex exec -m`. If none are listed, every role is `inherit-parent`.
-- Pi: `pi --list-models`. Write a real model as `<provider>/<id>:<thinking>`.
+- Pi: `subagent({ action: "models" })`. Write a real model as `<provider>/<id>`.
 
 Never write a model you have not confirmed is available. `inherit-parent` and `auto` are always valid.
 

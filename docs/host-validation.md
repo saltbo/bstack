@@ -29,6 +29,19 @@ loaded automatically.
 | Codex | Installed copy | Codex | Native spawn tool; fallback `codex exec --sandbox read-only` | `# How` | None |
 | Pi | Installed copy | Pi | `pi -p --no-session --tools read,grep,find,ls` | `# How` | None; Pi excludes `disable-model-invocation` skills from its prompt (`core/skills.js`) |
 
+## Pi Subagents · 2026-11-06
+
+Pi 1.4.0 with pi-subagents 0.84.0. A `/skill:saltmode` request to explain `calc.py`
+through the `how` skill, delegating exploration, made a real child run:
+`subagent({ agent: "reviewer", model: "magpie/claude/claude-opus-5-5:medium", async: false, ... })`
+returned ok, interactively and under `pi -p`. The parent verified the child's
+unverifiable git claims itself.
+
+`pi -p` hung with no output when every installed Pi extension was loaded, and
+finished in 90 seconds with only pi-subagents and rpiv-ask-user-question
+(`-ne -e ...`). The hang comes from another local extension, not the suite;
+interactive runs were unaffected.
+
 ## Limits
 
 No full playbook run, real deploy, or cross-model review was exercised on any

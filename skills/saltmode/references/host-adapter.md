@@ -27,22 +27,26 @@ within the active task.
 
 | Workflow text | Claude Code | Codex | Pi |
 | --- | --- | --- | --- |
-| `Task` spawn | `Agent` tool | The agent-spawn tool; else `codex exec` via shell | `pi -p --no-session "<brief>"` via bash |
-| `generalPurpose` | `subagent_type: "general-purpose"` | Default role | Default `pi -p` |
-| `poteto-agent`, `comment-sicko` | `general-purpose` given the [delegate brief](agents/poteto-agent.md) or [comment reviewer brief](agents/comment-sicko.md) | Same briefs | Same briefs, passed in the prompt |
-| `readonly: true` | `subagent_type: "Explore"` plus a no-edits brief | A no-edits brief; `codex exec --sandbox read-only` | `--tools read,grep,find,ls` plus a no-edits brief |
-| `environment: "cloud"`, `cloud_base_branch` | `isolation: "worktree"`; name the base revision | A `git worktree` at the base revision | A `git worktree` at the base revision; run `pi -p` there |
-| `run_in_background` | Omit; subagents notify on completion | The tool's async mode, or a background shell job | A background bash job writing to a named output file |
-| `resume` | Spawn fresh and paste the earlier result | Resume only if the schema supports it | `pi -p --session <id>` |
-| `AskQuestion` | `AskUserQuestion`; plain text in `-p` mode | One concise question | One concise question |
+| `Task` spawn | `Agent` tool | The agent-spawn tool; else `codex exec` via shell | `subagent({ agent, task })`; fan-out `subagent({ workflow: "parallel", args: { tasks } })` |
+| `generalPurpose` | `subagent_type: "general-purpose"` | Default role | `agent: "delegate"` |
+| `poteto-agent`, `comment-sicko` | `general-purpose` given the [delegate brief](agents/poteto-agent.md) or [comment reviewer brief](agents/comment-sicko.md) | Same briefs | `agent: "delegate"` given the same briefs |
+| `readonly: true` | `subagent_type: "Explore"` plus a no-edits brief | A no-edits brief; `codex exec --sandbox read-only` | `agent: "reviewer"` (read-only tools) plus a no-edits brief |
+| `environment: "cloud"`, `cloud_base_branch` | `isolation: "worktree"`; name the base revision | A `git worktree` at the base revision | `worktree: true` with `options.baseRef` (needs a clean checkout) |
+| `run_in_background` | Omit; subagents notify on completion | The tool's async mode, or a background shell job | Omit; `subagent` is async and wakes the session on completion. Long shell work uses `bg_run` |
+| `resume` | Spawn fresh and paste the earlier result | Resume only if the schema supports it | `subagent({ action: "resume", id, message })`; steer a live child with `action: "steer"` |
+| `AskQuestion` | `AskUserQuestion`; plain text in `-p` mode | One concise question | `ask_user_question`; plain text when it is absent |
 | Todo list | `TodoWrite` | The plan tool | A compact checklist in the reply |
 | `Grep`, `Glob`, `Read`, `Bash` | Native tools | Shell with scoped `rg` | `read`, `bash`, scoped `rg` |
 | `create-skill` | `skill-creator` if installed | `skill-creator` | `skill-creator` if installed, else the Agent Skills spec |
-| `/loop`, wake on event | Background command that notifies on exit, or `/loop` | Bounded polling loop with a completion predicate | Bounded polling loop with a completion predicate |
+| `/loop`, wake on event | Background command that notifies on exit, or `/loop` | Bounded polling loop with a completion predicate | `bg_run` with a completion predicate; it notifies on exit |
 
-A shell-spawned subagent (`codex exec`, `pi -p`) has a fresh context: give it a
-standalone brief with the mode path, goal, playbook step, scope, and output file,
-and read its result from that file. A `readonly` flag or brief is not a
+Every subagent starts cold: give it a standalone brief with the mode path, goal,
+playbook step, scope, cwd, and expected output. For a shell-spawned subagent
+(`codex exec`), name an output file and read the result from it. On Pi, invoking
+saltmode is the operator's request for the delegation its playbooks prescribe, which
+satisfies pi-subagents' authorization rule. If only `subagents_enable` is visible,
+call it first; without the pi-subagents extension, fall back to
+`pi -p --no-session` via bash. A `readonly` flag or brief is not a
 permission boundary: inspect `git status` and artifacts afterward. Follow the
 host's concurrency limit and give each writer isolated output. Independent
 review gates stay mandatory: when a gate's independent agent cannot run, report
@@ -56,8 +60,8 @@ probe guessed slugs.
 
 | Workflow text | Claude Code | Codex | Pi |
 | --- | --- | --- | --- |
-| `claude-<family>-<version>-<effort>` | `model: "<family>"`, `effort: "<effort>"` | Session model | `--model anthropic/<id>:<effort>` if `pi --list-models` shows it |
-| `inherit-parent`, `auto` | Omit `model` | Omit the override | Omit `--model` |
+| `claude-<family>-<version>-<effort>` | `model: "<family>"`, `effort: "<effort>"` | Session model | `model: "<provider>/<id>"` if `subagent({ action: "models" })` lists it |
+| `inherit-parent`, `auto` | Omit `model` | Omit the override | Omit `model` |
 | The model rule | `~/.claude/rules/pstack-models.md` | `~/.agents/pstack-models.md` | `~/.agents/pstack-models.md` |
 
 A cross-family panel needs models from different families. When the host offers
