@@ -9,7 +9,7 @@ import unittest
 
 SCRIPT = (
     Path(__file__).resolve().parents[1]
-    / "skills/bep-best-openapi-design/scripts/check_resource_paths.py"
+    / "skills/saltmode/scripts/check_resource_paths.py"
 )
 
 

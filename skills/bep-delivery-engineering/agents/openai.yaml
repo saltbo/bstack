@@ -1,4 +1,0 @@
-interface:
-  display_name: "BEP · Delivery Engineering"
-  short_description: "Deploy a known release and verify its outcome"
-  default_prompt: "Use $bep-delivery-engineering to deploy this release, complete local acceptance, and verify the deployed result."

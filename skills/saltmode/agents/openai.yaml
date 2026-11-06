@@ -1,0 +1,6 @@
+interface:
+  display_name: "Saltmode"
+  short_description: "Saltbo's explicit engineering mode, adapted from pstack"
+  default_prompt: "Use $saltmode for this task."
+policy:
+  allow_implicit_invocation: false

@@ -1,4 +1,0 @@
-interface:
-  display_name: "BEP · Best OpenAPI Design"
-  short_description: "Design resource contracts that fit the project baseline"
-  default_prompt: "Use $bep-best-openapi-design to design this resource contract using BEP preferences for new APIs and compatible conventions for existing APIs."

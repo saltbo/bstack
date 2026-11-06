@@ -1,3 +1,0 @@
-OpenAPI specification validator: PASS
-Resource paths: PASS
-Numbered pagination with exact totals, direct resource response, server-owned ID: PASS

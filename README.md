@@ -1,129 +1,94 @@
-# Agentic Engineering Skills
+# bstack
 
-Focused engineering skills for coding agents. Each skill has a narrow trigger
-boundary so a small task does not load an entire engineering handbook.
-
-All skills in this engineering suite use the `bep-` namespace so their source
-is recognizable in catalogs, prompts, and cross-skill references.
+Saltbo's engineering skill suite with one entry, `saltmode`. An adaptation of [pstack](https://github.com/cursor/plugins/tree/fd268b808c786469e6dd8c8d9db864d0de4d669e/pstack)
+for Claude Code, Codex, and Pi, merged with this repository's BEP engineering
+preferences. The coordinating entry `poteto-mode` becomes `saltmode`; the other
+skills keep their upstream names.
 
 ## Install
 
-Inspect the skills available in the repository:
+The suite is plain [Agent Skills](https://agentskills.io). Install every skill
+together so the entry can read its dependencies:
 
 ```bash
-npx skills add saltbo/agentic-engineering-skills --list
+npx skills add saltbo/bstack --skill '*' --agent claude-code --global --yes
+npx skills add saltbo/bstack --skill '*' --agent codex --global --yes
+npx skills add saltbo/bstack --skill '*' --agent pi --global --yes
 ```
 
-Select skills and target agents interactively:
+Claude Code installs to `~/.claude/skills/`; Codex and Pi share `~/.agents/skills/`.
 
-```bash
-npx skills add saltbo/agentic-engineering-skills
-```
+## Use
 
-Install every skill globally for Codex without prompts:
+`saltmode` is the single entry. Every skill is explicit-only, so nothing loads
+from prompt matching; the entry picks a playbook and reads the other skills it needs.
 
-```bash
-npx skills add saltbo/agentic-engineering-skills \
-  --skill '*' \
-  --agent codex \
-  --global \
-  --yes
-```
-
-Install only one skill globally:
-
-```bash
-npx skills add saltbo/agentic-engineering-skills \
-  --skill bep-software-testing \
-  --agent codex \
-  --global \
-  --yes
-```
-
-If the `skills` CLI is installed globally, use `skills` in place of
-`npx skills` in the commands above.
-
-## Skills
-
-| Skill | Use it for |
+| Host | Invoke |
 | --- | --- |
-| `bep-backend-engineering` | Backend ownership, dependency direction, persistence, messaging, and service lifecycle |
-| `bep-frontend-engineering` | Feature boundaries, browser state, rendering, accessibility, security, and performance |
-| `bep-http-engineering` | End-to-end HTTP lifecycle and protocol semantics |
-| `bep-software-debugging` | Reproducible defect, regression, and performance diagnosis |
-| `bep-software-testing` | Test-layer selection and automated test design |
-| `bep-verification-gates` | Proof inventories, coverage governance, and blocking CI policy |
-| `bep-production-verification` | Safe verification against deployed environments |
-| `bep-delivery-engineering` | Compatibility, migrations, deployment, rollback, and release acceptance |
-| `bep-engineering-review` | Outcome, risk, contract, and implementation review |
-| `bep-best-openapi-design` | Resource-oriented REST and OpenAPI contract design |
-| `bep-best-engineering-practice` | Explicit comprehensive audit across applicable disciplines |
+| Claude Code | `/saltmode Fix this regression and verify it.` |
+| Codex | `$saltmode Fix this regression and verify it.` |
+| Pi | `/skill:saltmode Fix this regression and verify it.` |
 
-## Invocation Model
+## Responsibilities
 
-Specialist skills may be selected automatically when their narrow description
-matches the task. Their supporting references are loaded only for the affected
-boundary.
+| Skill | Responsibility |
+| --- | --- |
+| `saltmode` | Task routing, playbooks, coordination, completion, BEP engineering references |
+| `how` / `why` | Current behavior and architecture / historical rationale |
+| `architect` | Caller usage, types, interfaces, module shape, design alternatives |
+| `arena` | Competing candidates, comparison, selection, synthesis |
+| `swarm` | Partitioned parallel work and consolidated coverage |
+| `interrogate` | Independent adversarial review and verified findings |
+| `tdd` | Failing regression first, then causal implementation |
+| `benchmark-checklist` | Validate performance measurements before using them |
+| `show-me-your-work` | Reviewable decision and evidence trail |
+| `create-verification-skill` / `maintain-verification-skill` | Generate and maintain project-specific app-driving proof |
+| `figure-it-out` | Construct a rigorous workflow when no narrow playbook fits |
 
-`bep-best-engineering-practice` is intentionally explicit-only. It is an umbrella
-audit for requests that genuinely need multiple disciplines, not a router for
-ordinary coding work.
+The [catalog](skills/saltmode/references/skills.md) lists all 56 skills,
+including the principle skills. [upstream.json](upstream.json) pins the source
+revision and records every rename, removal, and adaptation.
 
-## Project Baseline
+## Host Adaptation
 
-These skills encode BEP engineering preferences. For a new project, apply the
-preferences directly. For an existing project, preserve its working architecture,
-supported contracts, API version placement, and test tooling. Improve the affected
-boundary without turning a local change into an unrelated migration. A preference
-difference is not automatically a correctness or security defect.
+Workflow text keeps pstack's tool names and model slugs. The
+[host adapter](skills/saltmode/references/host-adapter.md) maps them to each
+host: subagents (`Agent` in Claude Code, the spawn tool or `codex exec` in Codex,
+`pi -p` in Pi), read-only modes, model overrides, skill and transcript paths, and
+unavailable features. Models inherit the session by default.
+`setup-pstack` writes a per-role model rule only when asked.
 
-Descriptions identify actual tasks, not broad technology keywords. Running an
-existing test does not need the testing skill; editing an HTTP header does not
-need resource modeling; a local implementation does not trigger deployment.
-Optional specialist skills are not prerequisites to independent work.
+Explicit-only invocation is set by `disable-model-invocation: true` in each
+`SKILL.md` (Claude Code, Pi) and `allow_implicit_invocation: false` in each
+`agents/openai.yaml` (Codex).
 
-## Testing And Acceptance
+## BEP Engineering References
 
-Use a test pyramid: many fast Unit tests for rules, focused Integration tests for
-real boundaries, and a small set of critical E2E journeys. Prove a behavior's full
-matrix once at its cheapest sufficient layer; higher layers prove distinct wiring
-or runtime risks. The pyramid is not a fixed ratio. Formal coverage thresholds,
-proof inventories, and CI adapters belong to governance work, not every test edit.
+BEP preferences live in `skills/saltmode/references/engineering/`, indexed from
+[saltmode](skills/saltmode/SKILL.md):
+backend, frontend/UI, HTTP, OpenAPI, testing, review and audit, debugging,
+delivery, production verification, and verification gates. The skills that use
+them link there. Where BEP and pstack said the same thing, the pstack skill is
+canonical and BEP keeps only its additional detail. Where they disagreed, the
+chosen side is recorded in the text.
 
-Implementation requires local acceptance with the smallest meaningful checks and
-an exercise of the changed behavior. Fix failures caused by the change and rerun
-affected checks. A missing environment is an acceptance limitation, never a pass.
-
-An authorized deployment uses `bep-delivery-engineering` and continues through
-`bep-production-verification` for post-deployment regression. Prefer an explicitly
-selected production-safe E2E subset sharing assertions with local E2E. When a
-small fixture or runner change enables that subset, implement and validate it
-locally. Otherwise complete bounded manual regression of affected flows and
-relevant critical journeys, and report the concrete automation gap. Deployment
-success and regression success are separate results.
-
-No additional release skill is required: delivery owns the release lifecycle,
-production verification owns the live checks, and testing owns reusable E2E design.
-
-## Repository Checks
-
-Run the path checker's behavioral regression tests:
+## Checks
 
 ```bash
 python3 -B -m unittest discover -s tests -v
+python3 skills/saltmode/scripts/check_resource_paths.py --profile bep '/orders/{orderId}'
 ```
 
-For a new API, the path helper defaults to the BEP profile. Use `--profile existing`
-when preserving an existing contract; this mode checks path structure and does not
-prove resource semantics or conformance to that project's conventions:
+Checks enforce the skill inventory, explicit-only metadata on every host, the
+host adapter link, portable cross-skill links, the absence of Cursor- and
+Grok-specific dependencies, and path-helper behavior. They do not prove workflow
+behavior. [Host validation](docs/host-validation.md) records the per-host load
+and routing check; [behavior evaluation](docs/skill-behavior-evaluation.md) lists
+the playbook cases.
 
-```bash
-python3 skills/bep-best-openapi-design/scripts/check_resource_paths.py \
-  --profile bep '/orders/{orderId}'
-python3 skills/bep-best-openapi-design/scripts/check_resource_paths.py \
-  --profile existing '/v1/orders/{orderId}'
-```
+## Attribution
 
-Both profiles support `--file` with one path per line. See
-[behavioral evaluation cases](docs/skill-behavior-evaluation.md) for reviewing skill
-selection and scope on realistic tasks.
+The pstack code and skill content are MIT licensed, copyright 2026 Lauren Tan.
+See [its retained license](licenses/pstack-MIT.txt). Source is pinned to
+`fd268b808c786469e6dd8c8d9db864d0de4d669e`. This repository retains its own
+[license](LICENSE) and the existing attribution in adapted BEP references.
