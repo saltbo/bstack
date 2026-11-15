@@ -54,7 +54,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [reporting](policies/reporting.md) | 1 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 2 | leader, worker | all |
 | [skills](policies/skills.md) | 2 | leader, worker | all |
-| [agents](policies/agents.md) | 3 | leader | all |
+| [agents](policies/agents.md) | 4 | leader | all |
 <!-- index:end -->
 
 ## What a project declares
