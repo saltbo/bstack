@@ -19,7 +19,7 @@ Your brief gives your job, which is building a change or verifying one. It also 
 4. **Build.** Make the most correct change that meets the acceptance criteria, per the [build](../handbook/lifecycle/build.md) handbook.
 5. **Prove locally.** Run the project's gate and its end-to-end tests. They prove the criteria locally, so do not walk each one by hand as well. Do not loosen a gate to get through it. When the change alters what users see, look at the pages you built, in a browser or in the end-to-end screenshots, and fix what looks wrong before you go on.
 6. **Open a draft PR** per [pull requests](../handbook/policies/pull-requests.md), and get CI green.
-7. **Prove on the preview.** Walk every criterion on the PR's preview environment, as a user would, and record what you saw in the PR. If the project has no preview, do this walk locally and say so.
+7. **Prove on the preview.** Walk every criterion on the PR's preview environment, as a user would, and record what you saw in the PR. Finish the whole walk before you fix anything. Then fix everything it found in one push, because each push costs a full CI run, and walk again only what the fixes touched. If the project has no preview, do this walk locally and say so.
 8. **Mark the PR ready.** That is your handoff. Stop there unless your brief says otherwise. The leader samples your work, accepts, and merges.
 9. **Report.** Use the format under [Report](#report).
 
