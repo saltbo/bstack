@@ -92,11 +92,12 @@ class BundleTests(unittest.TestCase):
             changed = subprocess.run(tool + ["check"], capture_output=True, text=True)
             self.assertEqual(1, changed.returncode)
             self.assertIn("run handbook.py bump build", changed.stderr)
+            before = int(re.search(r"(?m)^version: (\d+)$", (HANDBOOK / "lifecycle/build.md").read_text()).group(1))
             bumped = subprocess.run(tool + ["bump", "build", "--source", "t", "--saw", "x", "--expect", "y"],
                                     capture_output=True, text=True)
-            self.assertIn("build@1 -> build@2", bumped.stdout)
+            self.assertIn(f"build@{before} -> build@{before + 1}", bumped.stdout)
             self.assertEqual(0, subprocess.run(tool + ["check"], capture_output=True).returncode)
-            self.assertIn("## build@2", (copy / "CHANGELOG.md").read_text())
+            self.assertIn(f"## build@{before + 1}", (copy / "CHANGELOG.md").read_text())
             owner = copy / "policies/authority.md"
             owner.write_text(owner.read_text() + "\n- Loosened.\n")
             refused = subprocess.run(tool + ["bump", "authority", "--source", "t", "--saw", "x", "--expect", "y"],
