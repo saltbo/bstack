@@ -20,7 +20,7 @@ LINK = re.compile(r"\[[^\]\n]+\]\(([^\s)]+)\)")
 LINE_BUDGETS = {
     "saltmode/SKILL.md": 80,
     "saltmode/references/program.md": 60,
-    "saltmode/references/hosts.md": 35,
+    "saltmode/references/hosts.md": 45,
     "worker/SKILL.md": 70,
     "keeper/SKILL.md": 50,
     "handbook/SKILL.md": 90,
@@ -70,6 +70,8 @@ class BundleTests(unittest.TestCase):
             self.assertIn(phrase, leader)
         hosts = (SUITE / "saltmode/references/hosts.md").read_text()
         self.assertEqual(3, hosts.count("skills/worker/SKILL.md"))
+        for tool in ("delegate_task", "t3_thread_launch", "hc run"):
+            self.assertIn(tool, hosts)
         self.assertEqual(3, hosts.count("skills/handbook/"))
 
     def test_worker_report_format_is_fixed(self):

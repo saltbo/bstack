@@ -1,21 +1,30 @@
 # Hosts
 
-The skill runs on Claude Code, Codex, and Pi. Identify the host from the tools you actually have. Do not pass a field the tool schema rejects, and do not claim a capability the host does not expose.
+Identify where you are running from the tools you actually have. Do not pass a field a tool's schema rejects, and do not claim a capability you do not have.
+
+## Dispatch
+
+Use the dispatch tool of the environment you are in, per the agents handbook. Check in this order.
+
+1. **T3 Code**, when you have its `delegate_task` tool. Dispatch a worker or a verifier with `delegate_task`, using `isolation: "worktree"` so it has its own checkout and branch, and the `role` that fits. It appears as a child thread Saltbo can watch. Use `mode: "wait"` when your next step needs the result, and otherwise let its completion wake you. Pass a model in `target` only when he named one. `delegate_task` stays inside this thread's project, so for work in another repository start a thread in that repository's project with `t3_thread_launch`, opening its message with `/saltmode`, and follow it with `t3_thread_wait`.
+2. **Herdr**, when `$HC_TERMINAL_ID` is set. Read `hc --skill` first. Work in another repository is an agent started there with `hc run --bg --name <name>`. A worker in this repository whose result comes back to you uses the harness's own subagents, as Herdr's manual says.
+3. **Anywhere else**, the harness's own subagents, from the table below.
+
+A worker starts with no context and does not load the worker skill by itself, whichever tool starts it. Give it a brief that stands alone and opens with the worker skill's path. If that path does not exist, look for `worker/SKILL.md` next to this skill's own directory. For a shell-spawned worker, name an output file and read the result from it.
+
+## Harness tools
 
 | Need | Claude Code | Codex | Pi |
 | --- | --- | --- | --- |
-| Dispatch a worker | `Agent` with `subagent_type: "general-purpose"` and `run_in_background: false` when you need its result to continue | The spawn tool, else `codex exec` through the shell | `subagent({ agent: "delegate", task })` from pi-subagents |
+| Subagent | `Agent` with `subagent_type: "general-purpose"` and `run_in_background: false` when you need its result to continue | The spawn tool, else `codex exec` through the shell | `subagent({ agent: "delegate", task })` from pi-subagents |
 | Read-only explorer | `Agent` with `subagent_type: "Explore"` | `codex exec --sandbox read-only` | `subagent({ agent: "reviewer", task })` |
 | Isolated checkout | `isolation: "worktree"` on the `Agent` call | `git worktree add` at the base revision | `worktree: true` |
 | Cheaper worker | The `model` and `effort` fields of `Agent` | Not available; use the session model | `model`, when `subagent({ action: "models" })` lists it |
 | Ask him a question | `AskUserQuestion` | One concise question in the reply | `ask_user_question`, else plain text |
 | Recurring check | `/loop` or the scheduling tool | A bounded polling loop | `bg_run` with a completion predicate |
 | Worker skill to name in every brief | `~/.claude/skills/worker/SKILL.md` | `~/.agents/skills/worker/SKILL.md` | `~/.agents/skills/worker/SKILL.md` |
-| Independent session for another repository | A T3 Code thread when running in T3 Code, `hc` when running in Herdr | The same | The same |
 | Handbook, for the paths you give a worker | `~/.claude/skills/handbook/` | `~/.agents/skills/handbook/` | `~/.agents/skills/handbook/` |
 | Project instructions | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md` |
-
-A worker starts with no context and does not load the worker skill by itself. Give it a brief that stands alone and opens with that path. If the path does not exist, look for `worker/SKILL.md` next to this skill's own directory. For a shell-spawned worker, name an output file and read the result from it.
 
 ## Limits
 

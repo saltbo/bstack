@@ -113,3 +113,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The error rule was one sentence. It did not say what a type URI looks like, whether status is included, or how a validation pointer is formed, and a project file that asked for error codes was followed in its place.
 - Expect: An API returns problem+json exactly as the example shows, with a type URI and no code field.
 - Outcome: pending
+
+## agents@4 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed as a standing decision
+- Saw: Leaders running in T3 Code dispatched workers with the harness's native subagents. Saltbo could not watch a worker, a worker always ran on the leader's model, and one leader ended its turn while a verifier was still running.
+- Expect: In T3 Code a leader dispatches with delegate_task and the worker is a visible child thread. In Herdr it uses hc.
+- Outcome: pending
