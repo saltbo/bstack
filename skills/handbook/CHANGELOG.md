@@ -84,7 +84,7 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Source: bstack-playground PR 11, session of 2026-11-15; confirmed by Saltbo
 - Saw: The leader added a one-line project fact to a PR that was ready, and the PR waited 2 min 12 s for a second CI run before it could merge.
 - Expect: An ADR or a project fact is committed on trunk after the merge, and a ready PR gets no new commits.
-- Outcome: pending
+- Outcome: held on bstack-playground PR 21: the ADR was committed on trunk after the merge.
 
 ## verification@3 (2026-11-15)
 
@@ -105,18 +105,32 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Source: bstack-playground PR 15, session of 2026-11-15; confirmed by Saltbo
 - Saw: The leader read the project as development-stage and took that as a reason to do less. It kept the old error format for the new endpoints to stay consistent with existing code that disagrees with the api handbook, and skipped the second check on a change to authorization and stored data.
 - Expect: In a development project the code a task touches is brought into line with the handbook, and no decision is skipped.
-- Outcome: pending
+- Outcome: held on bstack-playground PR 21: the API was moved to the handbook format and the second check ran.
 
 ## api@2 (2026-11-15)
 
 - Source: Saltbo, session of 2026-11-15, after bstack-playground PRs 11 and 15 kept the old error format
 - Saw: The error rule was one sentence. It did not say what a type URI looks like, whether status is included, or how a validation pointer is formed, and a project file that asked for error codes was followed in its place.
 - Expect: An API returns problem+json exactly as the example shows, with a type URI and no code field.
-- Outcome: pending
+- Outcome: held on bstack-playground PR 21: every error is problem+json with a type URI and no code field.
 
 ## agents@4 (2026-11-15)
 
 - Source: Saltbo, session of 2026-11-15; confirmed as a standing decision
 - Saw: Leaders running in T3 Code dispatched workers with the harness's native subagents. Saltbo could not watch a worker, a worker always ran on the leader's model, and one leader ended its turn while a verifier was still running.
 - Expect: In T3 Code a leader dispatches with delegate_task and the worker is a visible child thread. In Herdr it uses hc.
+- Outcome: pending
+
+## project@3 (2026-11-15)
+
+- Source: bstack-playground issue 20, session of 2026-11-15; confirmed by Saltbo
+- Saw: A leader wrote into the project's Handbook block that Workers Builds does not apply migrations. It was a guess and it was false.
+- Expect: A fact is checked before it is written into the block, and an inferred one is labelled as inferred.
+- Outcome: pending
+
+## cf-workers@3 (2026-11-15)
+
+- Source: bstack-playground PR 15 and saltbo/bstack issue 15; confirmed by Saltbo
+- Saw: Cloudflare's compression weakened the ETag on the preview, so an edit sent with If-Match was rejected. Local tests did not show it.
+- Expect: Responses with an ETag send Cache-Control: no-transform and If-Match works behind Cloudflare.
 - Outcome: pending

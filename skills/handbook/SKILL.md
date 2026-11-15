@@ -30,7 +30,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 <!-- index:start -->
 | Handbook | Version | For | Applies to |
 | --- | --- | --- | --- |
-| [project](lifecycle/project.md) | 2 | leader | all |
+| [project](lifecycle/project.md) | 3 | leader | all |
 | [planning](lifecycle/planning.md) | 1 | leader | all |
 | [design](lifecycle/design.md) | 1 | worker | all |
 | [api](lifecycle/api.md) | 2 | worker | projects with an HTTP API |
@@ -45,7 +45,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [operate](lifecycle/operate.md) | 1 | leader | all |
 | [docker-service](types/docker-service.md) | 1 | leader, worker | projects that declare this type |
 | [client-app](types/client-app.md) | 1 | leader, worker | projects that declare this type |
-| [cf-workers](types/cf-workers.md) | 2 | leader, worker | projects that declare this type |
+| [cf-workers](types/cf-workers.md) | 3 | leader, worker | projects that declare this type |
 | [go-cli](types/go-cli.md) | 1 | leader, worker | projects that declare this type |
 | [authority](policies/authority.md) | 1 | leader | all |
 | [resources](policies/resources.md) | 1 | leader | all |

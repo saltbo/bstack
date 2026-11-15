@@ -20,8 +20,8 @@
     "hash": "0fab2db15e7ea5e6"
   },
   "cf-workers": {
-    "version": 2,
-    "hash": "ca50f5f610712e4d"
+    "version": 3,
+    "hash": "907faf34160f14e0"
   },
   "client-app": {
     "version": 1,
@@ -64,8 +64,8 @@
     "hash": "c5722076656c7d6b"
   },
   "project": {
-    "version": 2,
-    "hash": "6cd26a2d638eb6dc"
+    "version": 3,
+    "hash": "55b02a9f5127e800"
   },
   "pull-requests": {
     "version": 2,
