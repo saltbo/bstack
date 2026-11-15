@@ -78,4 +78,4 @@ A **Decisions** entry is a bold one-line rule, its reason where it needs one, an
 
 ## Changing a handbook
 
-Only the keeper changes handbooks, per the keeper skill, and only Saltbo changes one marked `owner-only`. Every change goes through `scripts/handbook.py bump`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.
+Only the keeper changes handbooks, per the keeper skill, and only Saltbo changes one marked `owner-only`. An entry becomes a Decision only after he has confirmed it as one. Every change goes through `scripts/handbook.py bump`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.
