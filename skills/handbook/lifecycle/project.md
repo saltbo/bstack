@@ -1,6 +1,6 @@
 ---
 id: project
-version: 2
+version: 3
 audience: leader
 applies: all
 ---
@@ -10,6 +10,7 @@ applies: all
 ## Decisions
 
 - **A project declares its type and its facts, not its rules.** Its `AGENTS.md` carries the block described in the [index](../SKILL.md). Rules live in this handbook.
+- **A fact in the block is verified before it is written.** Whoever records it has checked it against the running system or the configuration that controls it. A fact that was inferred and could not be checked is labelled as inferred, with what it was inferred from. (2026-11-15)
 - **A new product gets its own repository.** A separate client app gets its own repository too. (2026-10-02, 2026-07-09)
 - **A full-stack web project starts from `saas-web-starter`**, with frontend and backend in one repository, on the Workers runtime, with pnpm and the latest toolchain. (2026-10-15)
 - **Sign-in is Realmroot over OIDC.** The app checks tokens and permissions in API middleware and builds no login or session layer of its own. (2026-05-26, 2026-11-15)

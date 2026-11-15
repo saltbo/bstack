@@ -1,6 +1,6 @@
 ---
 id: cf-workers
-version: 2
+version: 3
 audience: leader, worker
 applies: projects that declare this type
 ---
@@ -22,6 +22,7 @@ Typical stack: Hono on Workers, D1, a React SPA. A project of this type follows 
 - **Use the platform's own observability and rate limiting.** (2026-08-14)
 - **Config.** Non-sensitive values live in the wrangler config and only real secrets are secrets. The frontend gets its config from one backend endpoint, not from build-time variables. (2026-06-28, 2026-07-31)
 - **Large uploads and downloads are streamed**, never buffered in Worker memory. (2026-05-13)
+- **A response that carries an ETag sends `Cache-Control: no-transform`.** Cloudflare's compression otherwise turns a strong ETag into a weak one, and the `If-Match` a client sends back no longer matches. (2026-11-15)
 
 ## Open
 
