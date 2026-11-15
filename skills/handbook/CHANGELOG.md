@@ -106,3 +106,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The leader read the project as development-stage and took that as a reason to do less. It kept the old error format for the new endpoints to stay consistent with existing code that disagrees with the api handbook, and skipped the second check on a change to authorization and stored data.
 - Expect: In a development project the code a task touches is brought into line with the handbook, and no decision is skipped.
 - Outcome: pending
+
+## api@2 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15, after bstack-playground PRs 11 and 15 kept the old error format
+- Saw: The error rule was one sentence. It did not say what a type URI looks like, whether status is included, or how a validation pointer is formed, and a project file that asked for error codes was followed in its place.
+- Expect: An API returns problem+json exactly as the example shows, with a type URI and no code field.
+- Outcome: pending
