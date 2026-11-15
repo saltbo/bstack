@@ -1,6 +1,6 @@
 ---
 id: identity
-version: 1
+version: 2
 audience: leader, worker
 applies: all
 ---
@@ -16,3 +16,7 @@ applies: all
 - **Use the CLI access that exists**, such as `wrangler` and `gh`, instead of asking him for a token or a login. (2026-05-05)
 - **One dedicated test account per app**, created by the agent. Its password is in the local env file and noted in the project's instructions, never in source code. (2026-09-24, 2026-06-04)
 - **An agent may complete a sign-in or approve its own access request in his logged-in browser** when the task needs it, unless he is testing that approval flow himself. (2026-09-05, 2026-11-15)
+
+## Open
+
+- How far may an agent widen its own access, or a test account's, to get a task done? Until decided, it requests only the scopes the task needs, for the shortest lifetime offered, and lists every grant in its report. It does not add a test account to an organization that owns other private applications, and it does not change who can reach anything other than the project it is working on. When the task cannot be done inside those limits, it reports that instead. (Seen on bstack-playground PR 6.)

@@ -4,7 +4,7 @@ The skill runs on Claude Code, Codex, and Pi. Identify the host from the tools y
 
 | Need | Claude Code | Codex | Pi |
 | --- | --- | --- | --- |
-| Dispatch a worker | `Agent` with `subagent_type: "general-purpose"` | The spawn tool, else `codex exec` through the shell | `subagent({ agent: "delegate", task })` from pi-subagents |
+| Dispatch a worker | `Agent` with `subagent_type: "general-purpose"` and `run_in_background: false` when you need its result to continue | The spawn tool, else `codex exec` through the shell | `subagent({ agent: "delegate", task })` from pi-subagents |
 | Read-only explorer | `Agent` with `subagent_type: "Explore"` | `codex exec --sandbox read-only` | `subagent({ agent: "reviewer", task })` |
 | Isolated checkout | `isolation: "worktree"` on the `Agent` call | `git worktree add` at the base revision | `worktree: true` |
 | Cheaper worker | The `model` and `effort` fields of `Agent` | Not available; use the session model | `model`, when `subagent({ action: "models" })` lists it |
