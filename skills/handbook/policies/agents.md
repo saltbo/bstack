@@ -1,6 +1,6 @@
 ---
 id: agents
-version: 2
+version: 3
 audience: leader
 applies: all
 ---
@@ -14,8 +14,6 @@ applies: all
 - **Guidance for agents lives in skills and this handbook**, written as rules that trust the model, not as step-by-step procedure, and without project implementation detail. (2026-06-27, 2026-09-13)
 - **An independent session uses the mechanism of the place the leader runs in**, a T3 Code thread inside T3 Code and `hc` inside Herdr. (2026-11-15)
 - **A worker has no helper subagents.** It writes its own tests, and the leader is the second reader. (2026-11-15)
-- **Dispatched work runs on Opus.** A worker, a verifier, and an independent session are started on Opus, not on the leader's own model when that is a higher tier. Opus is enough for the work, and the higher tier costs several times as much. (2026-11-15)
-
 ## Open
 
 - A scheduled maintainer for each repository, which would cut releases and do upkeep, is planned and not designed.

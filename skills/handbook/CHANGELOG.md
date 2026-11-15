@@ -45,4 +45,11 @@ on that version.
 - Source: Saltbo, session of 2026-11-15, after the second playground task cost 14 dollars
 - Saw: Every worker and verifier ran on the leader's top-tier model.
 - Expect: Workers, verifiers, and independent sessions start on Opus.
+- Outcome: withdrawn in agents@3. It was not a decision of his.
+
+## agents@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15
+- Saw: agents@2 turned an instruction about one set of test runs into a standing decision and named a model in the handbook.
+- Expect: The handbook names no model. agents@3 is agents@1 again.
 - Outcome: pending
