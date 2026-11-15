@@ -1,0 +1,14 @@
+# Run with: pre-commit install
+repos:
+  - repo: local
+    hooks:
+      - id: handbook-check
+        name: handbook versions, lock, and index
+        entry: python3 skills/handbook/scripts/handbook.py check
+        language: system
+        pass_filenames: false
+      - id: unit-tests
+        name: repository tests
+        entry: python3 -B -m unittest discover -s tests
+        language: system
+        pass_filenames: false
