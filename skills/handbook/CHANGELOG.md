@@ -71,3 +71,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: A test account could sign in to a private application only by joining its organization, which opened the organization's other applications to it.
 - Expect: In a development project the application is made public and the account stays outside. In a live project the agent reports it.
 - Outcome: pending
+
+## identity@4 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15, confirmed as a standing decision
+- Saw: Each project created its own test account. On bstack-playground that took a worker more than ten minutes and led it to grant itself user and organization write access.
+- Expect: An agent signs in with the shared account and creates none.
+- Outcome: pending
