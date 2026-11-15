@@ -78,3 +78,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: Each project created its own test account. On bstack-playground that took a worker more than ten minutes and led it to grant itself user and organization write access.
 - Expect: An agent signs in with the shared account and creates none.
 - Outcome: pending
+
+## project@2 (2026-11-15)
+
+- Source: bstack-playground PR 11, session of 2026-11-15; confirmed by Saltbo
+- Saw: The leader added a one-line project fact to a PR that was ready, and the PR waited 2 min 12 s for a second CI run before it could merge.
+- Expect: An ADR or a project fact is committed on trunk after the merge, and a ready PR gets no new commits.
+- Outcome: pending

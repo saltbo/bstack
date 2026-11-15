@@ -30,7 +30,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 <!-- index:start -->
 | Handbook | Version | For | Applies to |
 | --- | --- | --- | --- |
-| [project](lifecycle/project.md) | 1 | leader | all |
+| [project](lifecycle/project.md) | 2 | leader | all |
 | [planning](lifecycle/planning.md) | 1 | leader | all |
 | [design](lifecycle/design.md) | 1 | worker | all |
 | [api](lifecycle/api.md) | 1 | worker | projects with an HTTP API |
