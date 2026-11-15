@@ -1,6 +1,6 @@
 ---
 id: build
-version: 1
+version: 2
 audience: worker
 applies: all
 ---
@@ -15,6 +15,7 @@ applies: all
 - **Smallest change that meets the criteria.** Anything else noticed on the way is a follow-up.
 - **The most correct change, not the smallest.** When the existing design is wrong for the task, refactor it instead of stacking on top. A mechanical move is not a refactor. (repeated, 2026-06 to 2026-09)
 - **No fallbacks.** One stable path, and a loud error when it fails. Do not hide a gap behind a default or a second attempt. (repeated, 2026-01 to 2026-08)
+- **When code the task touches disagrees with the handbook, the stage decides.** In a development project, bring that code into line as part of the task and keep nothing of the old shape. In a live project, keep the existing shape for this task and file an issue so the migration is planned. A new piece is never written to match an old piece the handbook says is wrong. (2026-11-15)
 - **Compatibility follows the project's stage.** In a development project, write none and delete the old path. In a live project, it is owed only to a released version that real users depend on, and it lives in one place that is easy to delete. (repeated, 2026-07-30, 2026-08-02)
 - **Use mature libraries and the platform's own features** for standard protocols and common needs. Do not hand-roll them, and do not work around an outdated dependency when it can be upgraded. (repeated)
 - **Stay inside what was asked.** Do not take on old unrelated problems or invent extra questions. (2026-09-04)

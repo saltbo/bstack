@@ -99,3 +99,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The index sent browser work to playwright-cli.
 - Expect: Browser work uses ego-browser.
 - Outcome: pending
+
+## build@2 (2026-11-15)
+
+- Source: bstack-playground PR 15, session of 2026-11-15; confirmed by Saltbo
+- Saw: The leader read the project as development-stage and took that as a reason to do less. It kept the old error format for the new endpoints to stay consistent with existing code that disagrees with the api handbook, and skipped the second check on a change to authorization and stored data.
+- Expect: In a development project the code a task touches is brought into line with the handbook, and no decision is skipped.
+- Outcome: pending
