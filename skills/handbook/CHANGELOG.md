@@ -39,3 +39,10 @@ on that version.
 - Saw: To sign in on a preview, the worker granted itself user, organization, and role-assignment scopes on the platform and made the test account a member of an organization that owns other private applications.
 - Expect: A worker asks for the narrowest scopes, does not widen a test account's reach beyond the project, and reports when the task cannot be done inside that.
 - Outcome: pending
+
+## agents@2 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15, after the second playground task cost 14 dollars
+- Saw: Every worker and verifier ran on the leader's top-tier model.
+- Expect: Workers, verifiers, and independent sessions start on Opus.
+- Outcome: pending
