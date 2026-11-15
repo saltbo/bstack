@@ -1,0 +1,6 @@
+interface:
+  display_name: "Keeper"
+  short_description: "Revises Saltbo's handbook and the saltmode and worker skills from finished work"
+  default_prompt: "Use $keeper for this task."
+policy:
+  allow_implicit_invocation: false

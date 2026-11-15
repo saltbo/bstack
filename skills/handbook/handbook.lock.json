@@ -1,0 +1,102 @@
+{
+  "agents": {
+    "version": 1,
+    "hash": "140a76e2597c59d7"
+  },
+  "api": {
+    "version": 1,
+    "hash": "b837204f0f2cd8b7"
+  },
+  "authority": {
+    "version": 1,
+    "hash": "e6a09316ffc2b02d"
+  },
+  "backend": {
+    "version": 1,
+    "hash": "93b3231c6a530a03"
+  },
+  "build": {
+    "version": 1,
+    "hash": "cecd72aa3f81f35b"
+  },
+  "cf-workers": {
+    "version": 2,
+    "hash": "ca50f5f610712e4d"
+  },
+  "client-app": {
+    "version": 1,
+    "hash": "18b27d7d03778e4f"
+  },
+  "deploy": {
+    "version": 1,
+    "hash": "4214cec8153c3db5"
+  },
+  "design": {
+    "version": 1,
+    "hash": "e36b061dbcf3e911"
+  },
+  "docker-service": {
+    "version": 1,
+    "hash": "49b23d6612780012"
+  },
+  "follow-ups": {
+    "version": 1,
+    "hash": "c61e6cb679dfdbb0"
+  },
+  "frontend": {
+    "version": 1,
+    "hash": "85dd2d45d8b268ac"
+  },
+  "go-cli": {
+    "version": 1,
+    "hash": "bd17312cf5c538d4"
+  },
+  "identity": {
+    "version": 1,
+    "hash": "3ee4ca0faebed656"
+  },
+  "operate": {
+    "version": 1,
+    "hash": "c2476205a64046eb"
+  },
+  "planning": {
+    "version": 1,
+    "hash": "c5722076656c7d6b"
+  },
+  "project": {
+    "version": 1,
+    "hash": "ed92e4dc82bc067f"
+  },
+  "pull-requests": {
+    "version": 2,
+    "hash": "7791f57c40f88f7e"
+  },
+  "release": {
+    "version": 1,
+    "hash": "e8a6f24a35b32847"
+  },
+  "reporting": {
+    "version": 1,
+    "hash": "1a9b514a531bd36e"
+  },
+  "resources": {
+    "version": 1,
+    "hash": "555dee1eb54f1667"
+  },
+  "skills": {
+    "version": 1,
+    "hash": "9075020e54f49dbe"
+  },
+  "testing": {
+    "version": 1,
+    "hash": "5774a16a305900c9"
+  },
+  "verification": {
+    "version": 2,
+    "hash": "bef4812276afcb88"
+  },
+  "versioning": {
+    "version": 1,
+    "hash": "a551ac7d87a6c1df"
+  }
+}

@@ -1,6 +1,0 @@
-interface:
-  display_name: "correct"
-  short_description: "Find the mistakes agents keep repeating in this repo and make…"
-  default_prompt: "Use $correct for this task."
-policy:
-  allow_implicit_invocation: false
