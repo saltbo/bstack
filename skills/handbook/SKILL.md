@@ -49,8 +49,8 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [go-cli](types/go-cli.md) | 1 | leader, worker | projects that declare this type |
 | [authority](policies/authority.md) | 1 | leader | all |
 | [resources](policies/resources.md) | 1 | leader | all |
-| [follow-ups](policies/follow-ups.md) | 1 | leader, worker | all |
-| [identity](policies/identity.md) | 2 | leader, worker | all |
+| [follow-ups](policies/follow-ups.md) | 2 | leader, worker | all |
+| [identity](policies/identity.md) | 3 | leader, worker | all |
 | [reporting](policies/reporting.md) | 1 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 2 | leader, worker | all |
 | [skills](policies/skills.md) | 1 | leader, worker | all |

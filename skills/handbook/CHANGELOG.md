@@ -38,7 +38,7 @@ on that version.
 - Source: bstack-playground PR 6, session of 2026-11-15
 - Saw: To sign in on a preview, the worker granted itself user, organization, and role-assignment scopes on the platform and made the test account a member of an organization that owns other private applications.
 - Expect: A worker asks for the narrowest scopes, does not widen a test account's reach beyond the project, and reports when the task cannot be done inside that.
-- Outcome: pending
+- Outcome: held. On 2026-11-15 the next leader on bstack-playground cited identity@2, removed the test account from the organization, and reported the grants that remained.
 
 ## agents@2 (2026-11-15)
 
@@ -52,4 +52,22 @@ on that version.
 - Source: Saltbo, session of 2026-11-15
 - Saw: agents@2 turned an instruction about one set of test runs into a standing decision and named a model in the handbook.
 - Expect: The handbook names no model. agents@3 is agents@1 again.
+- Outcome: pending
+
+## Confirmation (2026-11-15)
+
+Saltbo confirmed every entry under Decisions as it stood at this date, including those taken from his earlier sessions and from his older engineering references.
+
+## follow-ups@2 (2026-11-15)
+
+- Source: saltbo/bstack issue 7, from the bstack-playground PR 6 sessions
+- Saw: The leader's session ended after the merge and nine follow-ups in the worker's report had not been filed.
+- Expect: Follow-ups are filed before the merge.
+- Outcome: pending
+
+## identity@3 (2026-11-15)
+
+- Source: saltbo/bstack issue 8, from the bstack-playground PR 6 sessions
+- Saw: A test account could sign in to a private application only by joining its organization, which opened the organization's other applications to it.
+- Expect: In a development project the application is made public and the account stays outside. In a live project the agent reports it.
 - Outcome: pending

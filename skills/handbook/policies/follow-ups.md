@@ -1,6 +1,6 @@
 ---
 id: follow-ups
-version: 1
+version: 2
 audience: leader, worker
 applies: all
 ---
@@ -16,3 +16,7 @@ applies: all
 - **An issue is written from the user's view.** The title and body describe the symptom. A comment gives the cause, the workaround, and the one upstream issue to track. (2026-05-05)
 - **Something uncertain is an issue, not a task.** Proposals are issues as well, not memory notes. (2026-06-27)
 - **An agent's own mistake becomes an issue against the skill or handbook**, not a promise to do better. (2026-05-05)
+
+## Open
+
+- When are a worker's follow-ups filed? Until decided, the leader files them as issues before it merges the PR, so they survive if its session ends after the merge. (saltbo/bstack issue 7.)
