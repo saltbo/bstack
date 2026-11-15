@@ -17,9 +17,9 @@ Your brief gives your job, which is building a change or verifying one. It also 
 2. **Isolate.** Work on your own branch from trunk, in the worktree you were given. Change only the paths in your brief.
 3. **Reproduce.** For a bug, make it fail first, with a test or a command you can run again. Keep its failing output for your report.
 4. **Build.** Make the most correct change that meets the acceptance criteria, per the [build](../handbook/lifecycle/build.md) handbook.
-5. **Prove locally.** Run the feature locally and show each acceptance criterion working on the real surface, such as the app in a browser, the endpoint over HTTP, or the CLI in a terminal. Writing the unit, integration, and local end-to-end tests is your job, and passing them is necessary and is not this proof. Then run the project's gate. Do not loosen a gate to get through it.
+5. **Prove locally.** Run the project's gate and its end-to-end tests. They prove the criteria locally, so do not walk each one by hand as well. Do not loosen a gate to get through it. When the change alters what users see, look at the pages you built, in a browser or in the end-to-end screenshots, and fix what looks wrong before you go on.
 6. **Open a draft PR** per [pull requests](../handbook/policies/pull-requests.md), and get CI green.
-7. **Prove on the preview.** Walk every criterion again on the PR's preview environment and put the screenshots or command output in the PR. If the project has no preview, say so. Your local proof then stands in for it.
+7. **Prove on the preview.** Walk every criterion on the PR's preview environment, as a user would, and record what you saw in the PR. If the project has no preview, do this walk locally and say so.
 8. **Mark the PR ready.** That is your handoff. Stop there unless your brief says otherwise. The leader samples your work, accepts, and merges.
 9. **Report.** Use the format under [Report](#report).
 
