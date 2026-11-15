@@ -1,6 +1,0 @@
-interface:
-  display_name: "swarm"
-  short_description: "Fan out N parallel workers, drain them, and return one report"
-  default_prompt: "Use $swarm for this task."
-policy:
-  allow_implicit_invocation: false

@@ -1,6 +1,0 @@
-interface:
-  display_name: "technical-writing"
-  short_description: "'Layered technical-writing standard: Diátaxis structure…"
-  default_prompt: "Use $technical-writing for this task."
-policy:
-  allow_implicit_invocation: false
