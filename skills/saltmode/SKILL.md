@@ -49,11 +49,11 @@ Every brief opens with the absolute path of the worker skill's `SKILL.md` and te
 - Where its job ends. By default that is a PR marked ready, meaning CI is green and every criterion is shown on the preview, and you merge.
 - For a verifier, the exact commit and the blocking rule.
 
-Workers share your usage quota and start with no context, so do not split work finer than one worker per PR, and stay inside the limits in [hosts](references/hosts.md).
+Wait for a worker you depend on. Do not end your turn while its result is still owed, because on a host that cannot wake you the session ends there and the work is left unmerged. Workers share your usage quota and start with no context, so do not split work finer than one worker per PR, and stay inside the limits in [hosts](references/hosts.md).
 
 ## Accept and merge
 
-Apply [verification](../handbook/lifecycle/verification.md) when the worker marks its PR ready. If the work settled an architecture decision, record it as an ADR in the same PR, per the [project](../handbook/lifecycle/project.md) handbook. The worker has checked every criterion. You do not review the code line by line. You make the handbook's four checks and walk the main path on the preview yourself. It is one decision, against the criteria you wrote in the brief, with at most one fix round. When the PR passes, merge it, per [authority](../handbook/policies/authority.md). File what did not block per [follow-ups](../handbook/policies/follow-ups.md).
+Apply [verification](../handbook/lifecycle/verification.md) when the worker marks its PR ready. If the work settled an architecture decision, record it as an ADR in the same PR, per the [project](../handbook/lifecycle/project.md) handbook. If it established a project fact that later work needs, such as a test account or how to sign in on a preview, add it to the project's `Handbook` block in the same PR. The worker has checked every criterion. You do not review the code line by line. You make the handbook's four checks and walk the main path on the preview yourself. It is one decision, against the criteria you wrote in the brief, with at most one fix round. When the PR passes, merge it, per [authority](../handbook/policies/authority.md). File what did not block per [follow-ups](../handbook/policies/follow-ups.md).
 
 ## Report
 

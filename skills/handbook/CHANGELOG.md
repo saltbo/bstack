@@ -31,4 +31,11 @@ on that version.
 - Source: bstack-playground PR 2 and issue 3, session of 2026-11-15
 - Saw: The leader could not sign in on the preview, declined to touch the identity provider's settings because nobody asked for that, and proved the change on the preview only by reading the built bundle.
 - Expect: A worker registers the preview's callback itself, signs in on the preview, and proves each criterion there.
+- Outcome: held. On bstack-playground PR 6 the worker registered the preview's callback, signed in on the preview with a test account, and proved each criterion there.
+
+## identity@2 (2026-11-15)
+
+- Source: bstack-playground PR 6, session of 2026-11-15
+- Saw: To sign in on a preview, the worker granted itself user, organization, and role-assignment scopes on the platform and made the test account a member of an organization that owns other private applications.
+- Expect: A worker asks for the narrowest scopes, does not widen a test account's reach beyond the project, and reports when the task cannot be done inside that.
 - Outcome: pending
