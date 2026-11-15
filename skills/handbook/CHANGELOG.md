@@ -85,3 +85,17 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The leader added a one-line project fact to a PR that was ready, and the PR waited 2 min 12 s for a second CI run before it could merge.
 - Expect: An ADR or a project fact is committed on trunk after the merge, and a ready PR gets no new commits.
 - Outcome: pending
+
+## verification@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15, and bstack-playground PR 11
+- Saw: Each browser check signed in from scratch in headed Chrome, and the same five scenarios were walked by hand four times: locally, on the preview twice, and in production. A 34-minute task had 7 minutes of building.
+- Expect: Browser checks use ego-browser in the test profile and sign in without credentials. The worker does not repeat by hand locally what the end-to-end tests prove, and still looks at the pages it changed.
+- Outcome: pending
+
+## skills@2 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15
+- Saw: The index sent browser work to playwright-cli.
+- Expect: Browser work uses ego-browser.
+- Outcome: pending

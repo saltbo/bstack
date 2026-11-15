@@ -1,6 +1,6 @@
 ---
 id: skills
-version: 1
+version: 2
 audience: leader, worker
 applies: all
 ---
@@ -24,7 +24,7 @@ Specialist skills are not loaded into the session. When a task needs one, find i
 | shadcn/ui components | `shadcn` | still installed globally |
 | App Store Connect: builds, TestFlight, submission, metadata | the `asc-*` family | still installed globally |
 | Flutter: layout, routing, tests, localization | the `flutter-*` family | still installed globally |
-| Browser automation and UI checks | `playwright-cli` | still installed globally |
+| Driving a browser, per [verification](../lifecycle/verification.md) | `ego-browser` | the user's skill library |
 
 ## Open
 

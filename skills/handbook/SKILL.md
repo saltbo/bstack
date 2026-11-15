@@ -38,7 +38,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
 | [build](lifecycle/build.md) | 1 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
-| [verification](lifecycle/verification.md) | 2 | leader, worker | all |
+| [verification](lifecycle/verification.md) | 3 | leader, worker | all |
 | [versioning](lifecycle/versioning.md) | 1 | leader, worker | all |
 | [deploy](lifecycle/deploy.md) | 1 | leader | services we run |
 | [release](lifecycle/release.md) | 1 | leader | artifacts others install |
@@ -53,7 +53,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [identity](policies/identity.md) | 4 | leader, worker | all |
 | [reporting](policies/reporting.md) | 1 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 2 | leader, worker | all |
-| [skills](policies/skills.md) | 1 | leader, worker | all |
+| [skills](policies/skills.md) | 2 | leader, worker | all |
 | [agents](policies/agents.md) | 3 | leader | all |
 <!-- index:end -->
 

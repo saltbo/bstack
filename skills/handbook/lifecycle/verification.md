@@ -1,6 +1,6 @@
 ---
 id: verification
-version: 2
+version: 3
 audience: leader, worker
 applies: all
 ---
@@ -40,6 +40,7 @@ How a change is verified on its way from "built" to "merged", without the two si
 - **Second check.** Use one verifier when the change touches authentication or authorization, money, persisted data or a migration, a public contract, or concurrency, or when Saltbo asks. It walks every criterion on the preview in place of the leader's sample and is asked which criteria do not hold, not to find problems. The leader still makes its four checks and decides. (2026-11-15)
 - **One fix round.** It contains only the blocking findings, and the leader rechecks those once. If something still blocks, there is no third round. The leader cuts that part out, or merges with a follow-up when the finding does not meet the rule, or sets the PR aside, and says which. (2026-11-15)
 - **Checking costs less than building.** When checking a PR has taken longer than building it, stop and rethink its size or its criteria. (2026-11-15)
+- **A browser is driven with ego-browser**, in the test profile that the user-level agent instructions name. The shared test account is already signed in there, so a sign-in needs no credentials and no human check. (2026-11-15)
 - **Proof is from a user's point of view**, through the real UI, CLI, or API with real data. It does not depend on reading the database or the source, and a timeout is never a pass. (2026-07-30)
 - **Verification is not skipped.** A blocker met while proving is investigated and fixed. A skip is allowed only after several different attempts, and the report names what was skipped, why, and the evidence. (2026-05-05)
 - **Normal flows.** Extreme edge cases are not part of acceptance unless the criteria name them. (2026-09-05)
@@ -49,3 +50,8 @@ How a change is verified on its way from "built" to "merged", without the two si
 - **Saltbo is not the tester.** Work is not handed back for him to try. (repeated since 2026-05)
 - **Live check.** After a deploy, exercise the changed behavior on the live system once, per [deploy](deploy.md). A failure is handled per [operate](operate.md) and never reopens the PR. (2026-11-15)
 - **A change to what users see does not wait for him.** Day-to-day UI and UX work follows the product's standard and style, and the PR carries screenshots. (2026-11-15)
+
+## Open
+
+- When the project's end-to-end tests cover the scenarios, does the worker still walk every criterion by hand locally? Until decided, no. Locally the gate and the end-to-end tests prove the criteria. When the change alters what users see, the worker also looks at the pages it built and fixes what looks wrong, which stays required. The full walk under real sign-in happens once, on the preview. (Seen on bstack-playground PR 11, where the same five scenarios were walked four times.)
+- Where do a PR's screenshots go? Until decided, they stay local, the worker's report lists their paths, and the PR says in words what was seen. No image host is set up for them.

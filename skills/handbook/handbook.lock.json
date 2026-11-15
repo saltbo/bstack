@@ -84,16 +84,16 @@
     "hash": "555dee1eb54f1667"
   },
   "skills": {
-    "version": 1,
-    "hash": "9075020e54f49dbe"
+    "version": 2,
+    "hash": "3ddad3c2f474700a"
   },
   "testing": {
     "version": 1,
     "hash": "5774a16a305900c9"
   },
   "verification": {
-    "version": 2,
-    "hash": "bef4812276afcb88"
+    "version": 3,
+    "hash": "a6650cbbcb13cfb2"
   },
   "versioning": {
     "version": 1,
