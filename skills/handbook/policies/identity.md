@@ -1,6 +1,6 @@
 ---
 id: identity
-version: 2
+version: 3
 audience: leader, worker
 applies: all
 ---
@@ -20,3 +20,4 @@ applies: all
 ## Open
 
 - How far may an agent widen its own access, or a test account's, to get a task done? Until decided, it requests only the scopes the task needs, for the shortest lifetime offered, and lists every grant in its report. It does not add a test account to an organization that owns other private applications, and it does not change who can reach anything other than the project it is working on. When the task cannot be done inside those limits, it reports that instead. (Seen on bstack-playground PR 6.)
+- A test account has to sign in to an application that is private to an organization. Until decided, for a project in development the application is made public and the account stays outside the organization. For a live project the agent reports it and does neither. (saltbo/bstack issue 8.)
