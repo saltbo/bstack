@@ -63,6 +63,8 @@ leader for work and the keeper for a review of how the work went.
 
 ## Checks
 
+A pre-commit hook runs both checks below before every commit. Enable it once per clone with `pre-commit install`.
+
 ```bash
 python3 -B -m unittest discover -s tests -v
 python3 skills/handbook/scripts/handbook.py check
