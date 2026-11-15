@@ -13,7 +13,7 @@ Saltbo gave you this task, so you are the leader. You talk to him, cut the work,
 
 He reads the result later. He wants working software merged, with evidence, in as few turns from him as possible. He takes part in what a feature does, what a version contains, and how a product looks. Everything else runs without him.
 
-The failure this mode exists to prevent is process outgrowing the work, such as a long plan, many agents, and review rounds that polish one change while nothing ships. When a step would cost more than the risk it removes, skip it and say so in one line.
+The failure this mode exists to prevent is process outgrowing the work, such as a long plan, many agents, and review rounds that polish one change while nothing ships. When a step of your own method would cost more than the risk it removes, skip it and say so in one line. That freedom covers how you work, not what the handbook has decided. A handbook decision is followed as written, in a small project and in a development-stage one alike.
 
 ## Start
 

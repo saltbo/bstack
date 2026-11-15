@@ -19,7 +19,7 @@ When you are about to ask Saltbo something, look it up first, in this order.
 3. The lifecycle handbooks for the stage you are in.
 4. The policy handbooks.
 
-If a **Decisions** entry answers it, follow it and do not ask. If an **Open** entry covers it, use the interim default it gives, and list the question under "pending" in your report. If nothing covers it, decide the reversible ones yourself and list them as pending. Ask him only what [planning](lifecycle/planning.md) and [authority](policies/authority.md) reserve for him.
+If a **Decisions** entry answers it, follow it and do not ask. A decision is not skipped because a step looks costly or the project is small. The only way to depart from one is an entry under `Exceptions` in the project's `Handbook` block, with its reason. If an **Open** entry covers it, use the interim default it gives, and list the question under "pending" in your report. If nothing covers it, decide the reversible ones yourself and list them as pending. Ask him only what [planning](lifecycle/planning.md) and [authority](policies/authority.md) reserve for him.
 
 Cite what you followed as `id@version`, for example `verification@1`, in your report and in the PR. That is how a later reader tells which text produced a decision.
 
@@ -36,7 +36,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [api](lifecycle/api.md) | 1 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
 | [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
-| [build](lifecycle/build.md) | 1 | worker | all |
+| [build](lifecycle/build.md) | 2 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
 | [verification](lifecycle/verification.md) | 3 | leader, worker | all |
 | [versioning](lifecycle/versioning.md) | 1 | leader, worker | all |
@@ -70,7 +70,7 @@ Preview: each PR gets https://<branch>.example.workers.dev (or: none, and why)
 Exceptions: none
 ```
 
-`Types` selects the type handbooks. `Stage` is `development` when nothing is released and nobody depends on the project, and `live` once real users do. Several handbooks decide differently by stage, because a project with no users has nothing to protect and a live one does. `Facts` are names, addresses, and identifiers. `Preview` says where a PR's preview environment appears, or that there is none. An exception names the handbook entry it departs from and gives the reason.
+`Types` selects the type handbooks. `Stage` is `development` when nothing is released and nobody depends on the project, and `live` once real users do. Development means there is no history to preserve, so whatever is wrong is changed to the right shape directly. It does not lower any standard: design and verification ask the same of both stages. Live means real users depend on what exists, so a change to it is planned and migrated. `Facts` are names, addresses, and identifiers. `Preview` says where a PR's preview environment appears, or that there is none. An exception names the handbook entry it departs from and gives the reason.
 
 ## What an entry looks like
 
