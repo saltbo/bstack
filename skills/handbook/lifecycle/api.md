@@ -1,6 +1,6 @@
 ---
 id: api
-version: 1
+version: 2
 audience: worker
 applies: projects with an HTTP API
 ---
@@ -17,8 +17,20 @@ Saltbo's conventions for an HTTP API. They choose between legitimate alternative
 - **Nest only what cannot exist outside its parent.** Anything with its own lifecycle gets a top-level URI. Grouping is shown by one OpenAPI tag per operation, not by a URI prefix. (2026-09)
 - **Create with `PUT` when the client controls the identifier, with `POST` on the collection when the server assigns it.** A create returns `201` with `Location`. A delete returns `204` and is a soft delete by default. (2026-09, 2026-09-03)
 - **`PATCH` is `application/merge-patch+json`.** Create, replace, and update return the full resource, and honor `Prefer: return=minimal`. (2026-09)
-- **Status codes.** `400` for malformed syntax, `422` for valid syntax that breaks a domain rule, `428` when a required `If-Match` is missing, `412` when it is stale, `401` with `WWW-Authenticate` for missing credentials, `403` for missing authority. (2026-09)
-- **Every error is RFC 9457 `application/problem+json`** with a stable `type` URI. Validation problems carry an `errors` array of `{pointer, detail}`. There is no `code` field. `instance` is `urn:request:{requestId}`. All problems are reported in one response, not one at a time. (2026-08-08, 2026-09)
+- **Status codes.** `400` for malformed syntax, `422` for valid syntax that breaks a domain rule, `404` for a resource that is absent or deliberately hidden, `409` for a conflict with current state, `428` when a required `If-Match` is missing, `412` when it is stale, `401` with `WWW-Authenticate` for missing credentials, `403` for missing authority, `415` for an unsupported content type. (2026-09)
+- **Every error is RFC 9457 `application/problem+json`.** Its `type` is a stable URI of the form `https://<api host>/problems/<kebab-case-name>` and is the only machine identity. There is no `code` field, at the top level or per field. `title` is the same for every occurrence of a type. `detail` describes this occurrence for a person. `status` repeats the HTTP status. `instance` is `urn:request:{requestId}`. A value a client must act on is a typed extension field, never something to parse out of prose. Nothing internal is exposed, such as a stack trace or an internal identifier. (2026-08-08, 2026-09, 2026-11-15)
+- **A validation problem lists every failure at once** in an `errors` array of `{pointer, detail}`. `pointer` is a JSON Pointer into the logical request, whose top level is `body`, `query`, `path`, and `headers`, such as `#/body/tags/3` or `#/headers/If-Match`. (2026-08-08, 2026-09)
+
+  ```json
+  {
+    "type": "https://api.example.com/problems/validation-error",
+    "title": "Request validation failed",
+    "status": 422,
+    "detail": "One or more request values are invalid.",
+    "instance": "urn:request:01JZ8Y6M8W7Q",
+    "errors": [{ "pointer": "#/body/displayName", "detail": "must not be empty" }]
+  }
+  ```
 - **One pagination profile per project**, page or cursor, on every collection that can grow. A collection returns `{ "items": [...], "pagination": {...} }` and a single resource is returned bare. Navigation links go in the `Link` header. (2026-09)
 - **Sorting is `orderBy=createdAt desc,id asc`** with a unique tie-breaker. Filters are separately declared typed parameters. Related resources are embedded only through listed `include` values. (2026-09)
 - **A missing property is omitted.** `null` is used only when null means something in the domain. (2026-09)
