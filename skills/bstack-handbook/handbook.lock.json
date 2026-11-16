@@ -40,8 +40,8 @@
     "hash": "49b23d6612780012"
   },
   "follow-ups": {
-    "version": 2,
-    "hash": "7550826756440344"
+    "version": 3,
+    "hash": "689d4d7217f5490b"
   },
   "frontend": {
     "version": 1,
@@ -68,8 +68,8 @@
     "hash": "55b02a9f5127e800"
   },
   "pull-requests": {
-    "version": 2,
-    "hash": "7791f57c40f88f7e"
+    "version": 3,
+    "hash": "7e782970ae26bfa2"
   },
   "release": {
     "version": 1,

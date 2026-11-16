@@ -49,10 +49,10 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [go-cli](types/go-cli.md) | 1 | leader, worker | projects that declare this type |
 | [authority](policies/authority.md) | 1 | leader | all |
 | [resources](policies/resources.md) | 1 | leader | all |
-| [follow-ups](policies/follow-ups.md) | 2 | leader, worker | all |
+| [follow-ups](policies/follow-ups.md) | 3 | leader, worker | all |
 | [identity](policies/identity.md) | 4 | leader, worker | all |
 | [reporting](policies/reporting.md) | 1 | leader | all |
-| [pull-requests](policies/pull-requests.md) | 2 | leader, worker | all |
+| [pull-requests](policies/pull-requests.md) | 3 | leader, worker | all |
 | [skills](policies/skills.md) | 4 | leader, worker | all |
 | [agents](policies/agents.md) | 5 | leader | all |
 <!-- index:end -->
@@ -74,7 +74,7 @@ Exceptions: none
 
 ## What an entry looks like
 
-A **Decisions** entry is a bold one-line rule, its reason where it needs one, and the date Saltbo said it. A **Defaults** entry has the same form and records his usual way of working, which an agent may depart from with a stated reason. Standards, authority, and anything that guards against an irreversible mistake are Decisions, not Defaults. An **Open** entry is a question Saltbo has not answered, followed by the default to use until he does.
+An entry says what has to be true or what to do, never how to do it. It names the outcome and leaves the commands and steps to the agent. A **Decisions** entry is a bold one-line rule, its reason where it needs one, and the date Saltbo said it. A **Defaults** entry has the same form and records his usual way of working, which an agent may depart from with a stated reason. Standards, authority, and anything that guards against an irreversible mistake are Decisions, not Defaults. An **Open** entry is a question Saltbo has not answered, followed by the default to use until he does.
 
 ## Changing a handbook
 

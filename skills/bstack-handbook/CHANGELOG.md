@@ -162,3 +162,17 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: skills@3 dropped the App Store Connect row because the asc skills were missing from the store.
 - Expect: With the asc skills reinstalled, an agent doing App Store Connect work finds them through the index.
 - Outcome: pending
+
+## follow-ups@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him; saltbo/bstack issue 14
+- Saw: A missing Realmroot feature was filed in saltbo/bstack because a handbook entry mentioned the subject, although realmroot/realmroot issue 264 already tracked it.
+- Expect: A product or tool problem is filed with that product, and saltbo/bstack receives only problems with handbook or skill text.
+- Outcome: pending
+
+## pull-requests@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him; saltbo/bstack issue 9
+- Saw: A merged PR's remote branch survived, and the entries around it named commands where they should name the outcome.
+- Expect: After a merge the agent leaves no branch or worktree behind, by whatever means, and the entries state outcomes only.
+- Outcome: pending
