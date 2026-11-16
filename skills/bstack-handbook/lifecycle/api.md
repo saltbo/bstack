@@ -1,13 +1,13 @@
 ---
 id: api
-version: 2
+version: 3
 audience: worker
 applies: projects with an HTTP API
 ---
 
 # API design
 
-Saltbo's conventions for an HTTP API. They choose between legitimate alternatives, so follow them even where another style would also be sound. `scripts/check_resource_paths.py --profile bep '<path>'` checks path names.
+Saltbo's conventions for an HTTP API. They choose between legitimate alternatives, so follow them even where another style would also be sound. `scripts/check_resource_paths.py` checks path names against them, with its `bep` profile.
 
 ## Decisions
 

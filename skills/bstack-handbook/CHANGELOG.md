@@ -176,3 +176,17 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: A merged PR's remote branch survived, and the entries around it named commands where they should name the outcome.
 - Expect: After a merge the agent leaves no branch or worktree behind, by whatever means, and the entries state outcomes only.
 - Outcome: pending
+
+## api@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him as the writing principle of the repository
+- Saw: The entry gave the path checker's full invocation.
+- Expect: The handbook names the checker and its profile and leaves the call to the agent.
+- Outcome: pending
+
+## skills@5 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him as the writing principle of the repository
+- Saw: The index spelled out the store's commands for each row.
+- Expect: The index names what to load, and the agent loads it from the store.
+- Outcome: pending

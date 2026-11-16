@@ -13,7 +13,10 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SUITE = ROOT / "skills"
-SKILLS = ["saltmode", "bstack-worker", "bstack-keeper", "bstack-handbook"]
+SKILLS = ["saltmode", "bstack-worker", "bstack-handbook"]
+# The keeper serves this repository only, so it lives outside the installed suite.
+KEEPER = ROOT / ".agents/skills/keeper"
+KEEPER_LINE_BUDGET = 50
 HANDBOOK = SUITE / "bstack-handbook"
 LINK = re.compile(r"\[[^\]\n]+\]\(([^\s)]+)\)")
 # Budgets keep the role skills and each handbook small. Raise one only with a reason.
@@ -22,7 +25,6 @@ LINE_BUDGETS = {
     "saltmode/references/program.md": 60,
     "saltmode/references/hosts.md": 45,
     "bstack-worker/SKILL.md": 70,
-    "bstack-keeper/SKILL.md": 50,
     "bstack-handbook/SKILL.md": 90,
 }
 HANDBOOK_LINE_BUDGET = 65
@@ -48,7 +50,7 @@ def handbook_files():
 
 
 class BundleTests(unittest.TestCase):
-    def test_suite_is_three_role_skills_and_the_handbook(self):
+    def test_suite_is_two_role_skills_and_the_handbook(self):
         self.assertEqual({SUITE / n / "SKILL.md" for n in SKILLS}, set(SUITE.rglob("SKILL.md")))
         for name in SKILLS:
             metadata = (SUITE / name / "SKILL.md").read_text().split("---", 2)[1]
@@ -168,8 +170,18 @@ class BundleTests(unittest.TestCase):
             )
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
+    def test_keeper_is_local_explicit_only_and_lean(self):
+        text = (KEEPER / "SKILL.md").read_text()
+        metadata = text.split("---", 2)[1]
+        self.assertRegex(metadata, r"(?m)^name: keeper$")
+        self.assertRegex(metadata, r"(?m)^disable-model-invocation: true$")
+        self.assertRegex((KEEPER / "agents/openai.yaml").read_text(), r"(?m)^policy:\n  allow_implicit_invocation: false$")
+        self.assertLessEqual(text.count("\n"), KEEPER_LINE_BUDGET)
+        self.assertIsNone(SHOUTING.search(text))
+        self.assertFalse((SUITE / "bstack-keeper").exists())
+
     def test_repository_docs_have_resolvable_local_links(self):
-        for source in [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]:
+        for source in [ROOT / "README.md", ROOT / "AGENTS.md", KEEPER / "SKILL.md", *sorted((ROOT / "docs").glob("*.md"))]:
             for target in local_targets(source):
                 self.assertTrue(target.exists(), f"missing documentation target: {source}: {target}")
 

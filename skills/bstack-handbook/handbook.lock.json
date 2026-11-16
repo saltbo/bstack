@@ -4,8 +4,8 @@
     "hash": "5090f2c902141a1e"
   },
   "api": {
-    "version": 2,
-    "hash": "db0fce07c05d78fb"
+    "version": 3,
+    "hash": "b679f498b2c2275c"
   },
   "authority": {
     "version": 1,
@@ -84,8 +84,8 @@
     "hash": "555dee1eb54f1667"
   },
   "skills": {
-    "version": 4,
-    "hash": "4678a9c5ee37da18"
+    "version": 5,
+    "hash": "844ebc306949d95b"
   },
   "testing": {
     "version": 1,

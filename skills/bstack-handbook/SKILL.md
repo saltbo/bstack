@@ -33,7 +33,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [project](lifecycle/project.md) | 3 | leader | all |
 | [planning](lifecycle/planning.md) | 1 | leader | all |
 | [design](lifecycle/design.md) | 1 | worker | all |
-| [api](lifecycle/api.md) | 2 | worker | projects with an HTTP API |
+| [api](lifecycle/api.md) | 3 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
 | [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
 | [build](lifecycle/build.md) | 2 | worker | all |
@@ -53,7 +53,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [identity](policies/identity.md) | 4 | leader, worker | all |
 | [reporting](policies/reporting.md) | 1 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 3 | leader, worker | all |
-| [skills](policies/skills.md) | 4 | leader, worker | all |
+| [skills](policies/skills.md) | 5 | leader, worker | all |
 | [agents](policies/agents.md) | 5 | leader | all |
 <!-- index:end -->
 
@@ -78,4 +78,4 @@ An entry says what has to be true or what to do, never how to do it. It names th
 
 ## Changing a handbook
 
-Only the keeper changes handbooks, per the keeper skill, and only Saltbo changes one marked `owner-only`. An entry becomes a Decision only after he has confirmed it as one. Every change goes through `scripts/handbook.py bump`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.
+Only the keeper changes handbooks, in the `saltbo/bstack` repository where the keeper skill lives, and only Saltbo changes one marked `owner-only`. An entry becomes a Decision only after he has confirmed it as one. Every change goes through `scripts/handbook.py`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.
