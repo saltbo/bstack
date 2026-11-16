@@ -66,10 +66,10 @@ class BundleTests(unittest.TestCase):
 
     def test_leader_brief_names_the_worker_skill_criteria_and_handbooks(self):
         leader = (SUITE / "saltmode/SKILL.md").read_text()
-        for phrase in ("Every brief opens with the absolute path of the worker skill", "acceptance criteria, as a closed list", "The handbooks that apply"):
+        for phrase in ("Every brief opens by telling the worker to run `skills show bstack-worker`", "acceptance criteria, as a closed list", "The handbooks that apply"):
             self.assertIn(phrase, leader)
         hosts = (SUITE / "saltmode/references/hosts.md").read_text()
-        self.assertIn("bstack-worker/SKILL.md", hosts)
+        self.assertIn("skills show bstack-worker", hosts)
         for tool in ("delegate_task", "t3_thread_launch", "hc run"):
             self.assertIn(tool, hosts)
         self.assertIn("bstack-handbook/", hosts)

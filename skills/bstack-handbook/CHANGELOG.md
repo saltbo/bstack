@@ -148,3 +148,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: Every change in behavior was dispatched to a worker, also a small one the leader already held the context for.
 - Expect: The leader builds a small change itself and dispatches when the work is large, parallel, or deserves a second reader.
 - Outcome: pending
+
+## skills@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; he moved his skills into the skills store and ego-browser dropped its skill
+- Saw: The index sent agents to SKILL.md files in globally installed directories that no longer hold them, and to an ego-browser skill that no longer exists.
+- Expect: An agent finds a skill with skills list, loads it with skills show, and reads the ego-browser and Herdr guides from the tools.
+- Outcome: pending

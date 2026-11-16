@@ -30,24 +30,23 @@ file of dated decisions.
 ## Install
 
 ```bash
-npx skills add saltbo/bstack --skill '*' --agent claude-code --global --yes
-npx skills add saltbo/bstack --skill '*' --agent codex --global --yes
-npx skills add saltbo/bstack --skill '*' --agent pi --global --yes
+skills install saltbo/bstack
 ```
 
-Claude Code installs to `~/.claude/skills/`. Codex and Pi share `~/.agents/skills/`.
-Pi needs `pi install npm:pi-subagents` for subagents.
+`skills` is the store command from [bbox](https://github.com/saltbo/bbox). It keeps
+the four skills under `~/.local/share/bbox/skills/` and out of the directories an
+agent scans, so nothing is loaded until it is asked for. Pi needs
+`pi install npm:pi-subagents` for subagents.
 
 ## Use
 
-All four are explicit-only, so nothing loads from prompt matching. Invoke the
-leader for work and the keeper for a review of how the work went.
+All four are explicit-only. Tell the agent to load the leader for work and the
+keeper for a review of how the work went.
 
-| Host | Work | Review |
-| --- | --- | --- |
-| Claude Code | `/saltmode Fix this regression.` | `/bstack-keeper Review yesterday's session.` |
-| Codex | `$saltmode Fix this regression.` | `$bstack-keeper Review yesterday's session.` |
-| Pi | `/skill:saltmode Fix this regression.` | `/skill:bstack-keeper Review yesterday's session.` |
+```
+Run `skills show saltmode` and work under it. Fix this regression.
+Run `skills show bstack-keeper` and work under it. Review yesterday's session.
+```
 
 ## Layout
 

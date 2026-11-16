@@ -39,9 +39,9 @@ Keep a list of the questions you answered yourself. They go in your report as pe
 
 Building is the workers' job and judging is yours. Keeping the two apart leaves your context free for the conversation with him and gives every change a second reader.
 
-Before your first dispatch, read [hosts](references/hosts.md), for how this environment dispatches, the skill paths, and the limits on workers.
+Before your first dispatch, read [hosts](references/hosts.md), for how this environment dispatches and the limits on workers.
 
-Every brief opens with the absolute path of the worker skill's `SKILL.md` and tells the worker to read it first, because a worker does not load it by itself. Then it gives these.
+Every brief opens by telling the worker to run `skills show bstack-worker` and read what it prints first, because a worker does not load it by itself. Then it gives these.
 
 - The job, which is building or verifying.
 - The goal and why it matters, in your own words.

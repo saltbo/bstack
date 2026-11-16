@@ -1,31 +1,30 @@
 ---
 id: skills
-version: 2
+version: 3
 audience: leader, worker
 applies: all
 ---
 
 # Skill index
 
-Specialist skills are not loaded into the session. When a task needs one, find it here and read its `SKILL.md` from the path given.
+Specialist skills are not loaded into the session. They live in a store that the `skills` command reads. When a task needs one, find it with `skills list --search <keywords>` and load it with `skills show <name>`, which prints its instructions and its base directory.
 
 ## Decisions
 
-- **Only saltmode and the three skills it uses load by default.** Everything else is found through this index.
+- **Skills are stored by source and loaded on demand.** The agent's own skill directories hold only the `skill-finder` router and the few pinned skills. Everything else, saltmode and the three skills it uses included, is read with `skills show`. (2026-11-15)
+- **A tool that prints its own guide is read from the tool**, not from a skill. `ego-browser skill` and `hc --skill` are the two so far. Read the guide before the first use in a session. (2026-11-15)
 
 ## Index
 
-| When the task involves | Skill | Where |
-| --- | --- | --- |
-| Agent identity, authenticated `git`, `gh`, `wrangler` | `realmroot` | still installed globally |
-| Dotfiles and global agent instructions | `manage-dotfiles` | still installed globally |
-| Creating a git worktree by hand | `manage-worktrees` | still installed globally |
-| Cloudflare Workers, D1, deploy commands | `cloudflare`, `wrangler`, `workers-best-practices` | still installed globally |
-| shadcn/ui components | `shadcn` | still installed globally |
-| App Store Connect: builds, TestFlight, submission, metadata | the `asc-*` family | still installed globally |
-| Flutter: layout, routing, tests, localization | the `flutter-*` family | still installed globally |
-| Driving a browser, per [verification](../lifecycle/verification.md) | `ego-browser` | the user's skill library |
+The store is searchable, so this table lists only what a search by topic might miss.
 
-## Open
-
-- Where does the library of unloaded skills live, and how is it updated? Until decided, the skills stay installed globally and this index is advisory.
+| When the task involves | Read |
+| --- | --- |
+| Agent identity, authenticated `git`, `gh`, `wrangler` | `realmroot`, pinned |
+| Dotfiles and global agent instructions | `manage-dotfiles`, native |
+| Creating a git worktree by hand | `manage-worktrees`, native |
+| Cloudflare Workers, D1, deploy commands | `skills show` on `cloudflare`, `wrangler`, `workers-best-practices` |
+| shadcn/ui components | `skills show shadcn` |
+| Flutter and Dart: layout, routing, tests, localization | `skills list --search flutter` |
+| Driving a browser, per [verification](../lifecycle/verification.md) | `ego-browser skill` |
+| Running agents under Herdr | `hc --skill` |
