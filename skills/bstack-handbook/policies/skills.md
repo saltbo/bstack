@@ -1,6 +1,6 @@
 ---
 id: skills
-version: 3
+version: 4
 audience: leader, worker
 applies: all
 ---
@@ -25,6 +25,7 @@ The store is searchable, so this table lists only what a search by topic might m
 | Creating a git worktree by hand | `manage-worktrees`, native |
 | Cloudflare Workers, D1, deploy commands | `skills show` on `cloudflare`, `wrangler`, `workers-best-practices` |
 | shadcn/ui components | `skills show shadcn` |
+| App Store Connect: builds, TestFlight, submission, metadata | `skills list --search asc` |
 | Flutter and Dart: layout, routing, tests, localization | `skills list --search flutter` |
 | Driving a browser, per [verification](../lifecycle/verification.md) | `ego-browser skill` |
 | Running agents under Herdr | `hc --skill` |

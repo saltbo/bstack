@@ -155,3 +155,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The index sent agents to SKILL.md files in globally installed directories that no longer hold them, and to an ego-browser skill that no longer exists.
 - Expect: An agent finds a skill with skills list, loads it with skills show, and reads the ego-browser and Herdr guides from the tools.
 - Outcome: pending
+
+## skills@4 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15
+- Saw: skills@3 dropped the App Store Connect row because the asc skills were missing from the store.
+- Expect: With the asc skills reinstalled, an agent doing App Store Connect work finds them through the index.
+- Outcome: pending
