@@ -1,5 +1,5 @@
 ---
-id: api
+id: openapi
 version: 3
 audience: worker
 applies: projects with an HTTP API

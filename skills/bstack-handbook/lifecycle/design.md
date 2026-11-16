@@ -1,13 +1,13 @@
 ---
 id: design
-version: 1
+version: 2
 audience: worker
 applies: all
 ---
 
 # Design
 
-Principles that hold for any design. The conventions for each area are in [api](api.md), [backend](backend.md), and [frontend](frontend.md).
+Principles that hold for any design. The conventions for each area are in [openapi](openapi.md), [backend](backend.md), and [frontend](frontend.md).
 
 ## Decisions
 

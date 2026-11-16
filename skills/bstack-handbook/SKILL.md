@@ -32,13 +32,13 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | --- | --- | --- | --- |
 | [project](lifecycle/project.md) | 3 | leader | all |
 | [planning](lifecycle/planning.md) | 1 | leader | all |
-| [design](lifecycle/design.md) | 1 | worker | all |
-| [api](lifecycle/api.md) | 3 | worker | projects with an HTTP API |
+| [design](lifecycle/design.md) | 2 | worker | all |
+| [openapi](lifecycle/openapi.md) | 3 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
 | [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
 | [build](lifecycle/build.md) | 2 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
-| [verification](lifecycle/verification.md) | 4 | leader, worker | all |
+| [verification](lifecycle/verification.md) | 5 | leader, worker | all |
 | [versioning](lifecycle/versioning.md) | 1 | leader, worker | all |
 | [deploy](lifecycle/deploy.md) | 1 | leader | services we run |
 | [release](lifecycle/release.md) | 1 | leader | artifacts others install |

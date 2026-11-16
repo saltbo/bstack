@@ -59,7 +59,7 @@ written.
 | Path | Holds |
 | --- | --- |
 | [bstack-handbook/SKILL.md](skills/bstack-handbook/SKILL.md) | The lookup order, the index with versions, and the project declaration format |
-| [bstack-handbook/lifecycle/](skills/bstack-handbook/lifecycle) | One file per stage: project, planning, design, api, backend, frontend, build, testing, verification, versioning, deploy, release, operate |
+| [bstack-handbook/lifecycle/](skills/bstack-handbook/lifecycle) | One file per stage: project, planning, design, openapi, backend, frontend, build, testing, verification, versioning, deploy, release, operate |
 | [bstack-handbook/types/](skills/bstack-handbook/types) | One file per kind of project: Cloudflare Workers app, client app, Go tool, self-hosted service |
 | [bstack-handbook/policies/](skills/bstack-handbook/policies) | Policies that apply to every task: authority, identity, resources, pull requests, follow-ups, reporting, agents, and the index of specialist skills |
 | [bstack-handbook/CHANGELOG.md](skills/bstack-handbook/CHANGELOG.md) | Every revision, with what was seen and what it should change |

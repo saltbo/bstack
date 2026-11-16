@@ -3,10 +3,6 @@
     "version": 5,
     "hash": "5090f2c902141a1e"
   },
-  "api": {
-    "version": 3,
-    "hash": "b679f498b2c2275c"
-  },
   "authority": {
     "version": 1,
     "hash": "e6a09316ffc2b02d"
@@ -32,8 +28,8 @@
     "hash": "4214cec8153c3db5"
   },
   "design": {
-    "version": 1,
-    "hash": "e36b061dbcf3e911"
+    "version": 2,
+    "hash": "787507905e65cd8f"
   },
   "docker-service": {
     "version": 1,
@@ -54,6 +50,10 @@
   "identity": {
     "version": 4,
     "hash": "a064e3b3f08a3f95"
+  },
+  "openapi": {
+    "version": 3,
+    "hash": "b679f498b2c2275c"
   },
   "operate": {
     "version": 1,
@@ -92,8 +92,8 @@
     "hash": "5774a16a305900c9"
   },
   "verification": {
-    "version": 4,
-    "hash": "bb77c5a42235c409"
+    "version": 5,
+    "hash": "c65dee46dd750dd6"
   },
   "versioning": {
     "version": 1,

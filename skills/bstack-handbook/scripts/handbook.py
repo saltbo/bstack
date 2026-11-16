@@ -20,7 +20,7 @@ LOCK = ROOT / "handbook.lock.json"
 INDEX = ROOT / "SKILL.md"
 CHANGELOG = ROOT / "CHANGELOG.md"
 KEYS = ["id", "version", "audience", "applies"]
-ORDER = ["project", "planning", "design", "api", "backend", "frontend", "build", "testing", "verification",
+ORDER = ["project", "planning", "design", "openapi", "backend", "frontend", "build", "testing", "verification",
          "versioning", "deploy", "release", "operate"]
 START, END = "<!-- index:start -->", "<!-- index:end -->"
 

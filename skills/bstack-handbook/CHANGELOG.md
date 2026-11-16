@@ -190,3 +190,17 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The index spelled out the store's commands for each row.
 - Expect: The index names what to load, and the agent loads it from the store.
 - Outcome: pending
+
+## design@2 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; asked for by him
+- Saw: The API handbook was named api.
+- Expect: It is named openapi, with its version carried over as openapi@3, and this handbook links to it under that name.
+- Outcome: pending
+
+## verification@5 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; asked for by him
+- Saw: The API handbook was named api.
+- Expect: It is named openapi, with its version carried over as openapi@3, and this handbook links to it under that name.
+- Outcome: pending
