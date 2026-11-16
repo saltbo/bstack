@@ -1,7 +1,7 @@
 # bstack
 
 Saltbo's working system for coding agents. It has a handbook of his standing
-decisions and three explicit skills, one per role. It runs on Claude Code, Codex,
+decisions and three explicit skills, one per role. Two of them are installed, and the keeper stays in this repository. It runs on Claude Code, Codex,
 and Pi.
 
 | Part | Role |
@@ -9,7 +9,7 @@ and Pi.
 | `bstack-handbook` | Versioned decisions by lifecycle stage and project type, plus an index of specialist skills. Agents look here before asking him |
 | `saltmode` | Leader. Saltbo invokes it. It talks to him, dispatches workers, accepts their work, and merges |
 | `bstack-worker` | Worker. The leader names it in every brief. It fixes how one change is built or verified and how it is reported |
-| `bstack-keeper` | Keeper. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
+| `keeper` | Keeper, for this repository only. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
 
 ## Design
 
@@ -34,19 +34,22 @@ skills install saltbo/bstack
 ```
 
 `skills` is the store command from [bbox](https://github.com/saltbo/bbox). It keeps
-the four skills under `~/.local/share/bbox/skills/` and out of the directories an
+the handbook, the leader, and the worker under `~/.local/share/bbox/skills/` and out of the directories an
 agent scans, so nothing is loaded until it is asked for. Pi needs
 `pi install npm:pi-subagents` for subagents.
 
 ## Use
 
-All four are explicit-only. Tell the agent to load the leader for work and the
-keeper for a review of how the work went.
+Every skill is explicit-only. Tell the agent to load the leader for work.
 
 ```
 Run `skills show saltmode` and work under it. Fix this regression.
-Run `skills show bstack-keeper` and work under it. Review yesterday's session.
 ```
+
+The keeper reviews how the work went and revises the text. It is a project skill
+of this repository, in `.agents/skills/keeper`, so it is entered from a session
+here. [AGENTS.md](AGENTS.md) says what the repository is for and how its text is
+written.
 
 `skills pin saltmode` exposes the leader natively, so it can also be entered as
 `/saltmode` in Claude Code and Pi, or `$saltmode` in Codex.
@@ -56,13 +59,14 @@ Run `skills show bstack-keeper` and work under it. Review yesterday's session.
 | Path | Holds |
 | --- | --- |
 | [bstack-handbook/SKILL.md](skills/bstack-handbook/SKILL.md) | The lookup order, the index with versions, and the project declaration format |
-| [bstack-handbook/lifecycle/](skills/bstack-handbook/lifecycle) | One file per stage: project, planning, design, api, backend, frontend, build, testing, verification, versioning, deploy, release, operate |
+| [bstack-handbook/lifecycle/](skills/bstack-handbook/lifecycle) | One file per stage: project, planning, design, openapi, backend, frontend, build, testing, verification, versioning, deploy, release, operate |
 | [bstack-handbook/types/](skills/bstack-handbook/types) | One file per kind of project: Cloudflare Workers app, client app, Go tool, self-hosted service |
 | [bstack-handbook/policies/](skills/bstack-handbook/policies) | Policies that apply to every task: authority, identity, resources, pull requests, follow-ups, reporting, agents, and the index of specialist skills |
 | [bstack-handbook/CHANGELOG.md](skills/bstack-handbook/CHANGELOG.md) | Every revision, with what was seen and what it should change |
 | [saltmode/](skills/saltmode/SKILL.md) | Leader skill, with [program](skills/saltmode/references/program.md) and [hosts](skills/saltmode/references/hosts.md) |
 | [bstack-worker/](skills/bstack-worker/SKILL.md) | Worker skill |
-| [bstack-keeper/](skills/bstack-keeper/SKILL.md) | Keeper skill |
+| [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | Keeper skill, for this repository only |
+| [AGENTS.md](AGENTS.md) | What the repository is for, how its text is written, and how it is maintained |
 
 ## Checks
 

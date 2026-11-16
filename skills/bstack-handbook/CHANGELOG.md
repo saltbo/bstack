@@ -162,3 +162,45 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: skills@3 dropped the App Store Connect row because the asc skills were missing from the store.
 - Expect: With the asc skills reinstalled, an agent doing App Store Connect work finds them through the index.
 - Outcome: pending
+
+## follow-ups@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him; saltbo/bstack issue 14
+- Saw: A missing Realmroot feature was filed in saltbo/bstack because a handbook entry mentioned the subject, although realmroot/realmroot issue 264 already tracked it.
+- Expect: A product or tool problem is filed with that product, and saltbo/bstack receives only problems with handbook or skill text.
+- Outcome: pending
+
+## pull-requests@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him; saltbo/bstack issue 9
+- Saw: A merged PR's remote branch survived, and the entries around it named commands where they should name the outcome.
+- Expect: After a merge the agent leaves no branch or worktree behind, by whatever means, and the entries state outcomes only.
+- Outcome: pending
+
+## api@3 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him as the writing principle of the repository
+- Saw: The entry gave the path checker's full invocation.
+- Expect: The handbook names the checker and its profile and leaves the call to the agent.
+- Outcome: pending
+
+## skills@5 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; confirmed by him as the writing principle of the repository
+- Saw: The index spelled out the store's commands for each row.
+- Expect: The index names what to load, and the agent loads it from the store.
+- Outcome: pending
+
+## design@2 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; asked for by him
+- Saw: The API handbook was named api.
+- Expect: It is named openapi, with its version carried over as openapi@3, and this handbook links to it under that name.
+- Outcome: pending
+
+## verification@5 (2026-11-15)
+
+- Source: Saltbo, session of 2026-11-15; asked for by him
+- Saw: The API handbook was named api.
+- Expect: It is named openapi, with its version carried over as openapi@3, and this handbook links to it under that name.
+- Outcome: pending

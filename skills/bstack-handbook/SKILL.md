@@ -32,13 +32,13 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | --- | --- | --- | --- |
 | [project](lifecycle/project.md) | 3 | leader | all |
 | [planning](lifecycle/planning.md) | 1 | leader | all |
-| [design](lifecycle/design.md) | 1 | worker | all |
-| [api](lifecycle/api.md) | 2 | worker | projects with an HTTP API |
+| [design](lifecycle/design.md) | 2 | worker | all |
+| [openapi](lifecycle/openapi.md) | 3 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
 | [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
 | [build](lifecycle/build.md) | 2 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
-| [verification](lifecycle/verification.md) | 4 | leader, worker | all |
+| [verification](lifecycle/verification.md) | 5 | leader, worker | all |
 | [versioning](lifecycle/versioning.md) | 1 | leader, worker | all |
 | [deploy](lifecycle/deploy.md) | 1 | leader | services we run |
 | [release](lifecycle/release.md) | 1 | leader | artifacts others install |
@@ -49,11 +49,11 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [go-cli](types/go-cli.md) | 1 | leader, worker | projects that declare this type |
 | [authority](policies/authority.md) | 1 | leader | all |
 | [resources](policies/resources.md) | 1 | leader | all |
-| [follow-ups](policies/follow-ups.md) | 2 | leader, worker | all |
+| [follow-ups](policies/follow-ups.md) | 3 | leader, worker | all |
 | [identity](policies/identity.md) | 4 | leader, worker | all |
 | [reporting](policies/reporting.md) | 1 | leader | all |
-| [pull-requests](policies/pull-requests.md) | 2 | leader, worker | all |
-| [skills](policies/skills.md) | 4 | leader, worker | all |
+| [pull-requests](policies/pull-requests.md) | 3 | leader, worker | all |
+| [skills](policies/skills.md) | 5 | leader, worker | all |
 | [agents](policies/agents.md) | 5 | leader | all |
 <!-- index:end -->
 
@@ -74,8 +74,8 @@ Exceptions: none
 
 ## What an entry looks like
 
-A **Decisions** entry is a bold one-line rule, its reason where it needs one, and the date Saltbo said it. A **Defaults** entry has the same form and records his usual way of working, which an agent may depart from with a stated reason. Standards, authority, and anything that guards against an irreversible mistake are Decisions, not Defaults. An **Open** entry is a question Saltbo has not answered, followed by the default to use until he does.
+An entry says what has to be true or what to do, never how to do it. It names the outcome and leaves the commands and steps to the agent. A **Decisions** entry is a bold one-line rule, its reason where it needs one, and the date Saltbo said it. A **Defaults** entry has the same form and records his usual way of working, which an agent may depart from with a stated reason. Standards, authority, and anything that guards against an irreversible mistake are Decisions, not Defaults. An **Open** entry is a question Saltbo has not answered, followed by the default to use until he does.
 
 ## Changing a handbook
 
-Only the keeper changes handbooks, per the keeper skill, and only Saltbo changes one marked `owner-only`. An entry becomes a Decision only after he has confirmed it as one. Every change goes through `scripts/handbook.py bump`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.
+Only the keeper changes handbooks, in the `saltbo/bstack` repository where the keeper skill lives, and only Saltbo changes one marked `owner-only`. An entry becomes a Decision only after he has confirmed it as one. Every change goes through `scripts/handbook.py`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.

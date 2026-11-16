@@ -1,6 +1,6 @@
 ---
 id: pull-requests
-version: 2
+version: 3
 audience: leader, worker
 applies: all
 ---
@@ -13,8 +13,8 @@ applies: all
 
 - A direct change, as [verification](../lifecycle/verification.md) defines it, is committed on trunk with no PR.
 - Each PR has its own branch from trunk, which is `main`. Do not add unrelated changes to an existing PR. Use Conventional Commits, `type(scope): subject`, with no trailing period.
-- Before you commit, read your own diff once and remove what a careful engineer would not have written, such as dead code, guards for states that cannot occur, and comments that restate the code. Keep a comment only for a reason the code cannot show.
-- Use `git push --force-with-lease` on your own branch. Do not force-push a branch someone else pushes to.
+- A commit holds nothing a careful engineer would not have written, such as dead code, guards for states that cannot occur, and comments that restate the code. A comment stays only for a reason the code cannot show.
+- A force-push is for your own branch only, and never overwrites someone else's commits.
 
 ### The PR
 
@@ -32,9 +32,9 @@ applies: all
 The leader merges, or a worker whose brief says to.
 
 - Merge when the PR passes [verification](../lifecycle/verification.md).
-- After a merge, delete the branch and its worktree, locally and on the remote, and put any follow-up on a new branch.
-- Squash-merge. Then read the PR back with `gh pr view <n> --json state,mergedAt`, because a merge queue can accept the command without merging.
-- After a rebase, earlier proof still stands when `git patch-id` of the change is unchanged.
+- Squash-merge. The PR counts as merged when the forge says it is, because a merge queue can accept the command without merging.
+- After a merge, nothing of the PR is left behind. Its branch and its worktree are gone, locally and on the remote. A follow-up goes on a new branch.
+- After a rebase, earlier proof still stands when the change itself is unchanged.
 
 ### CI and review bots
 
