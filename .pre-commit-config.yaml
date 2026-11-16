@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: handbook-check
         name: handbook versions, lock, and index
-        entry: python3 skills/handbook/scripts/handbook.py check
+        entry: python3 skills/bstack-handbook/scripts/handbook.py check
         language: system
         pass_filenames: false
       - id: unit-tests

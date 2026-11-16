@@ -9,7 +9,7 @@ import unittest
 
 SCRIPT = (
     Path(__file__).resolve().parents[1]
-    / "skills/handbook/scripts/check_resource_paths.py"
+    / "skills/bstack-handbook/scripts/check_resource_paths.py"
 )
 
 

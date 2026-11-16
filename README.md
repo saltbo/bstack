@@ -6,10 +6,10 @@ and Pi.
 
 | Part | Role |
 | --- | --- |
-| `handbook` | Versioned decisions by lifecycle stage and project type, plus an index of specialist skills. Agents look here before asking him |
+| `bstack-handbook` | Versioned decisions by lifecycle stage and project type, plus an index of specialist skills. Agents look here before asking him |
 | `saltmode` | Leader. Saltbo invokes it. It talks to him, dispatches workers, accepts their work, and merges |
-| `worker` | Worker. The leader names it in every brief. It fixes how one change is built or verified and how it is reported |
-| `keeper` | Keeper. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
+| `bstack-worker` | Worker. The leader names it in every brief. It fixes how one change is built or verified and how it is reported |
+| `bstack-keeper` | Keeper. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
 
 ## Design
 
@@ -44,22 +44,22 @@ leader for work and the keeper for a review of how the work went.
 
 | Host | Work | Review |
 | --- | --- | --- |
-| Claude Code | `/saltmode Fix this regression.` | `/keeper Review yesterday's session.` |
-| Codex | `$saltmode Fix this regression.` | `$keeper Review yesterday's session.` |
-| Pi | `/skill:saltmode Fix this regression.` | `/skill:keeper Review yesterday's session.` |
+| Claude Code | `/saltmode Fix this regression.` | `/bstack-keeper Review yesterday's session.` |
+| Codex | `$saltmode Fix this regression.` | `$bstack-keeper Review yesterday's session.` |
+| Pi | `/skill:saltmode Fix this regression.` | `/skill:bstack-keeper Review yesterday's session.` |
 
 ## Layout
 
 | Path | Holds |
 | --- | --- |
-| [handbook/SKILL.md](skills/handbook/SKILL.md) | The lookup order, the index with versions, and the project declaration format |
-| [handbook/lifecycle/](skills/handbook/lifecycle) | One file per stage: project, planning, design, api, backend, frontend, build, testing, verification, versioning, deploy, release, operate |
-| [handbook/types/](skills/handbook/types) | One file per kind of project: Cloudflare Workers app, client app, Go tool, self-hosted service |
-| [handbook/policies/](skills/handbook/policies) | Policies that apply to every task: authority, identity, resources, pull requests, follow-ups, reporting, agents, and the index of specialist skills |
-| [handbook/CHANGELOG.md](skills/handbook/CHANGELOG.md) | Every revision, with what was seen and what it should change |
+| [bstack-handbook/SKILL.md](skills/bstack-handbook/SKILL.md) | The lookup order, the index with versions, and the project declaration format |
+| [bstack-handbook/lifecycle/](skills/bstack-handbook/lifecycle) | One file per stage: project, planning, design, api, backend, frontend, build, testing, verification, versioning, deploy, release, operate |
+| [bstack-handbook/types/](skills/bstack-handbook/types) | One file per kind of project: Cloudflare Workers app, client app, Go tool, self-hosted service |
+| [bstack-handbook/policies/](skills/bstack-handbook/policies) | Policies that apply to every task: authority, identity, resources, pull requests, follow-ups, reporting, agents, and the index of specialist skills |
+| [bstack-handbook/CHANGELOG.md](skills/bstack-handbook/CHANGELOG.md) | Every revision, with what was seen and what it should change |
 | [saltmode/](skills/saltmode/SKILL.md) | Leader skill, with [program](skills/saltmode/references/program.md) and [hosts](skills/saltmode/references/hosts.md) |
-| [worker/](skills/worker/SKILL.md) | Worker skill |
-| [keeper/](skills/keeper/SKILL.md) | Keeper skill |
+| [bstack-worker/](skills/bstack-worker/SKILL.md) | Worker skill |
+| [bstack-keeper/](skills/bstack-keeper/SKILL.md) | Keeper skill |
 
 ## Checks
 
@@ -67,8 +67,8 @@ A pre-commit hook runs both checks below before every commit. Enable it once per
 
 ```bash
 python3 -B -m unittest discover -s tests -v
-python3 skills/handbook/scripts/handbook.py check
-python3 skills/handbook/scripts/check_resource_paths.py --profile bep '/orders/{orderId}'
+python3 skills/bstack-handbook/scripts/handbook.py check
+python3 skills/bstack-handbook/scripts/check_resource_paths.py --profile bep '/orders/{orderId}'
 ```
 
 The tests cover structure, links, explicit-only metadata, line budgets, and the
@@ -84,4 +84,4 @@ Its first real program spent five hours on four review rounds for one PR and
 merged nothing. The port was then replaced by this system. [upstream.json](upstream.json)
 records what was removed. The performance checklist in the handbook's `lifecycle/build.md` and parts of the
 engineering references derive from MIT-licensed work, credited in
-[the skill license](skills/handbook/LICENSE.txt) and [licenses](licenses/pstack-MIT.txt).
+[the skill license](skills/bstack-handbook/LICENSE.txt) and [licenses](licenses/pstack-MIT.txt).

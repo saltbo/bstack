@@ -10,7 +10,7 @@ Use the dispatch tool of the environment you are in, per the agents handbook. Ch
 2. **Herdr**, when `$HC_TERMINAL_ID` is set. Read `hc --skill` first. Work in another repository is an agent started there with `hc run --bg --name <name>`. A worker in this repository whose result comes back to you uses the harness's own subagents, as Herdr's manual says.
 3. **Anywhere else**, the harness's own subagents, from the table below.
 
-A worker starts with no context and does not load the worker skill by itself, whichever tool starts it. Give it a brief that stands alone and opens with the worker skill's path. If that path does not exist, look for `worker/SKILL.md` next to this skill's own directory. For a shell-spawned worker, name an output file and read the result from it.
+A worker starts with no context and does not load the worker skill by itself, whichever tool starts it. Give it a brief that stands alone and opens with the worker skill's path. If that path does not exist, look for `bstack-worker/SKILL.md` next to this skill's own directory. For a shell-spawned worker, name an output file and read the result from it.
 
 ## Harness tools
 
@@ -22,8 +22,8 @@ A worker starts with no context and does not load the worker skill by itself, wh
 | Cheaper worker | The `model` and `effort` fields of `Agent` | Not available; use the session model | `model`, when `subagent({ action: "models" })` lists it |
 | Ask him a question | `AskUserQuestion` | One concise question in the reply | `ask_user_question`, else plain text |
 | Recurring check | `/loop` or the scheduling tool | A bounded polling loop | `bg_run` with a completion predicate |
-| Worker skill to name in every brief | `~/.claude/skills/worker/SKILL.md` | `~/.agents/skills/worker/SKILL.md` | `~/.agents/skills/worker/SKILL.md` |
-| Handbook, for the paths you give a worker | `~/.claude/skills/handbook/` | `~/.agents/skills/handbook/` | `~/.agents/skills/handbook/` |
+| Worker skill to name in every brief | `~/.claude/skills/bstack-worker/SKILL.md` | `~/.agents/skills/bstack-worker/SKILL.md` | `~/.agents/skills/bstack-worker/SKILL.md` |
+| Handbook, for the paths you give a worker | `~/.claude/skills/bstack-handbook/` | `~/.agents/skills/bstack-handbook/` | `~/.agents/skills/bstack-handbook/` |
 | Project instructions | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md` |
 
 ## Limits

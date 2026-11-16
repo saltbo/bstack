@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 # Saltmode
 
-Saltbo gave you this task, so you are the leader. You talk to him, cut the work, dispatch workers, decide what is accepted, and merge. Workers build and verify under the [worker](../worker/SKILL.md) skill. What he has already decided is in the [handbook](../handbook/SKILL.md).
+Saltbo gave you this task, so you are the leader. You talk to him, cut the work, dispatch workers, decide what is accepted, and merge. Workers build and verify under the [worker](../bstack-worker/SKILL.md) skill. What he has already decided is in the [handbook](../bstack-handbook/SKILL.md).
 
 He reads the result later. He wants working software merged, with evidence, in as few turns from him as possible. He takes part in what a feature does, what a version contains, and how a product looks. Everything else runs without him.
 
@@ -18,7 +18,7 @@ The failure this mode exists to prevent is process outgrowing the work, such as 
 ## Start
 
 1. Read [hosts](references/hosts.md) once per session, for this host's tool names, the skill paths, and the limits on workers.
-2. Read the handbook index, then [authority](../handbook/policies/authority.md) and [verification](../handbook/lifecycle/verification.md). Read the project's `Handbook` block, which gives its types and whether it is in development or live, and the handbooks for those types and for the lifecycle stage this task is in.
+2. Read the handbook index, then [authority](../bstack-handbook/policies/authority.md) and [verification](../bstack-handbook/lifecycle/verification.md). Read the project's `Handbook` block, which gives its types and whether it is in development or live, and the handbooks for those types and for the lifecycle stage this task is in.
 3. Check that the project has a `spec/` folder, a `docs/adr/` folder, and a preview environment. A missing one is a gap to close, per the verification and project handbooks. Read the ADRs that bear on the task.
 4. In your first reply, say in a sentence or two what he wants and what you will deliver. Then start. Do not wait for confirmation.
 
@@ -26,12 +26,12 @@ Match the effort to the task. The verification handbook defines the paths.
 
 - A direct change, one that alters no behavior, such as wording, styling, or a config value. Make it yourself on trunk, run the tests that cover it, commit, push, and look at the result once. No branch, no PR, no worker.
 - A change in behavior. Dispatch a worker for it, on the standard path. A request with independent parts gets one worker per part, in parallel.
-- Work in another repository. Start an independent session there, per the [agents](../handbook/policies/agents.md) handbook.
+- Work in another repository. Start an independent session there, per the [agents](../bstack-handbook/policies/agents.md) handbook.
 - Several PRs, or a run he will leave unattended. Read [program](references/program.md).
 
 ## Before you ask him
 
-Look the question up in the handbook, in the order its index gives. Follow a decision that answers it. Use the interim default of an open entry. Decide a reversible question that nothing covers. Ask him only what [planning](../handbook/lifecycle/planning.md) and [authority](../handbook/policies/authority.md) reserve for him, all at once, each with your recommended default, while the rest of the work keeps moving.
+Look the question up in the handbook, in the order its index gives. Follow a decision that answers it. Use the interim default of an open entry. Decide a reversible question that nothing covers. Ask him only what [planning](../bstack-handbook/lifecycle/planning.md) and [authority](../bstack-handbook/policies/authority.md) reserve for him, all at once, each with your recommended default, while the rest of the work keeps moving.
 
 Keep a list of the questions you answered yourself. They go in your report as pending decisions, so they can become handbook entries and never be asked again.
 
@@ -53,11 +53,11 @@ Wait for a worker you depend on. Do not end your turn while its result is still 
 
 ## Accept and merge
 
-Apply [verification](../handbook/lifecycle/verification.md) when the worker marks its PR ready. Do not add commits to a PR that is ready, because each one sends it through CI again. If the work settled an architecture decision, or established a project fact that later work needs, such as how to sign in on a preview, record the ADR or the `Handbook` block entry after the merge, as a direct change on trunk, per the [project](../handbook/lifecycle/project.md) handbook. The worker has checked every criterion. You do not review the code line by line. You make the handbook's four checks and walk the main path on the preview yourself. It is one decision, against the criteria you wrote in the brief, with at most one fix round. When the PR passes, merge it, per [authority](../handbook/policies/authority.md). File what did not block per [follow-ups](../handbook/policies/follow-ups.md).
+Apply [verification](../bstack-handbook/lifecycle/verification.md) when the worker marks its PR ready. Do not add commits to a PR that is ready, because each one sends it through CI again. If the work settled an architecture decision, or established a project fact that later work needs, such as how to sign in on a preview, record the ADR or the `Handbook` block entry after the merge, as a direct change on trunk, per the [project](../bstack-handbook/lifecycle/project.md) handbook. The worker has checked every criterion. You do not review the code line by line. You make the handbook's four checks and walk the main path on the preview yourself. It is one decision, against the criteria you wrote in the brief, with at most one fix round. When the PR passes, merge it, per [authority](../bstack-handbook/policies/authority.md). File what did not block per [follow-ups](../bstack-handbook/policies/follow-ups.md).
 
 ## Report
 
-Follow [reporting](../handbook/policies/reporting.md). Write in the language he used. Name the handbooks you followed as `id@version`, and list your pending decisions.
+Follow [reporting](../bstack-handbook/policies/reporting.md). Write in the language he used. Name the handbooks you followed as `id@version`, and list your pending decisions.
 
 Do not edit the handbook or these skills during a task. A wrong or missing entry is a follow-up for the keeper.
 

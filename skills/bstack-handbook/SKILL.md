@@ -1,5 +1,5 @@
 ---
-name: handbook
+name: bstack-handbook
 description: Saltbo's handbook. Versioned decisions that agents follow instead of
   asking him, by lifecycle stage and project type, with an index of specialist
   skills. Read by saltmode, worker, and keeper. Explicit entry only.
