@@ -48,6 +48,9 @@ Run `skills show saltmode` and work under it. Fix this regression.
 Run `skills show bstack-keeper` and work under it. Review yesterday's session.
 ```
 
+`skills pin saltmode` exposes the leader natively, so it can also be entered as
+`/saltmode` in Claude Code and Pi, or `$saltmode` in Codex.
+
 ## Layout
 
 | Path | Holds |
