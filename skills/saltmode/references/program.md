@@ -12,7 +12,7 @@ Write a short plan, one screen if you can, in the project's `docs/plans/`. It ho
 
 Shape the plan as follows. Each point is here because the opposite has stalled a real program.
 
-- The first PR is a slice that works end to end on the real surface. It is not the platform or the foundation. A foundation built before anything uses it grows without limit, and everything else queues behind it. The design every PR builds toward is the full end state, not a cut-down first version.
+- The first PR is the end-to-end slice that [planning](../../bstack-handbook/lifecycle/planning.md) asks for, on the real surface. It is not the platform or the foundation. A foundation built before anything uses it grows without limit, and everything else queues behind it.
 - A requirement that cuts across the product, such as an auth model or a compliance checklist, enters each PR as that PR first needs it. Decide the target design up front and build it incrementally.
 - After the first PR merges, at least two PRs can proceed independently. If the graph is a single chain, look for a cut.
 - Work that only he can do, such as approving a registration in his own account, sits at the end and off the path of everything else.

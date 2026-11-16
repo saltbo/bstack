@@ -14,12 +14,12 @@ Each handbook records what Saltbo has already decided for one kind of situation,
 
 When you are about to ask Saltbo something, look it up first, in this order.
 
-1. The project's exceptions, in its `AGENTS.md` or `CLAUDE.md`.
+1. The project's exceptions, in its `AGENTS.md`.
 2. The handbook for the project's type.
 3. The lifecycle handbooks for the stage you are in.
 4. The policy handbooks.
 
-If a **Decisions** entry answers it, follow it and do not ask. A decision is not skipped because a step looks costly or the project is small. The only way to depart from one is an entry under `Exceptions` in the project's `Handbook` block, with its reason. If an **Open** entry covers it, use the interim default it gives, and list the question under "pending" in your report. If nothing covers it, decide the reversible ones yourself and list them as pending. Ask him only what [planning](lifecycle/planning.md) and [authority](policies/authority.md) reserve for him.
+If a **Decisions** entry answers it, follow it and do not ask. A decision is not skipped because a step looks costly or the project is small. The only way to depart from one is an entry under `Exceptions` in the project's `Handbook` block, with its reason. If a **Defaults** entry covers it, do that, unless in this case it would cost more than the risk it removes. Then do what fits and say so in one line of your report, naming the entry. If an **Open** entry covers it, use the interim default it gives, and list the question under "pending" in your report. If nothing covers it, decide the reversible ones yourself and list them as pending. Ask him only what [planning](lifecycle/planning.md) and [authority](policies/authority.md) reserve for him.
 
 Cite what you followed as `id@version`, for example `verification@1`, in your report and in the PR. That is how a later reader tells which text produced a decision.
 
@@ -38,7 +38,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
 | [build](lifecycle/build.md) | 2 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
-| [verification](lifecycle/verification.md) | 3 | leader, worker | all |
+| [verification](lifecycle/verification.md) | 4 | leader, worker | all |
 | [versioning](lifecycle/versioning.md) | 1 | leader, worker | all |
 | [deploy](lifecycle/deploy.md) | 1 | leader | services we run |
 | [release](lifecycle/release.md) | 1 | leader | artifacts others install |
@@ -54,7 +54,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [reporting](policies/reporting.md) | 1 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 2 | leader, worker | all |
 | [skills](policies/skills.md) | 2 | leader, worker | all |
-| [agents](policies/agents.md) | 4 | leader | all |
+| [agents](policies/agents.md) | 5 | leader | all |
 <!-- index:end -->
 
 ## What a project declares
@@ -74,7 +74,7 @@ Exceptions: none
 
 ## What an entry looks like
 
-A **Decisions** entry is a bold one-line rule, its reason where it needs one, and the date Saltbo said it. An **Open** entry is a question Saltbo has not answered, followed by the default to use until he does.
+A **Decisions** entry is a bold one-line rule, its reason where it needs one, and the date Saltbo said it. A **Defaults** entry has the same form and records his usual way of working, which an agent may depart from with a stated reason. Standards, authority, and anything that guards against an irreversible mistake are Decisions, not Defaults. An **Open** entry is a question Saltbo has not answered, followed by the default to use until he does.
 
 ## Changing a handbook
 

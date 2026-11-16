@@ -134,3 +134,17 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: Cloudflare's compression weakened the ETag on the preview, so an edit sent with If-Match was rejected. Local tests did not show it.
 - Expect: Responses with an ETag send Cache-Control: no-transform and If-Match works behind Cloudflare.
 - Outcome: pending
+
+## verification@4 (2026-11-15)
+
+- Source: Saltbo, review session of 2026-11-15; asked for by him
+- Saw: Every method entry was a Decision that could not be skipped, so the freedom saltmode gives was empty. A large change that alters no behavior had no path, and a two-line fix after the fix round had to be cut or set aside.
+- Expect: The leader picks among four paths by risk, builds a small change itself with the worker's checks, and departs from a Default with one stated line.
+- Outcome: pending
+
+## agents@5 (2026-11-15)
+
+- Source: Saltbo, review session of 2026-11-15; asked for by him
+- Saw: Every change in behavior was dispatched to a worker, also a small one the leader already held the context for.
+- Expect: The leader builds a small change itself and dispatches when the work is large, parallel, or deserves a second reader.
+- Outcome: pending

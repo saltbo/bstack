@@ -19,8 +19,9 @@ which is what Saltbo has already decided, and it keeps that record versioned so 
 behavior can be traced to the text that produced it. Each handbook is one flat
 file of dated decisions.
 
-- A handbook entry is a decision with its reason, or an open question with the
-  default to use until he answers.
+- A handbook entry is a decision with its reason, a default an agent may depart
+  from with a stated reason, or an open question with the default to use until
+  he answers.
 - Every PR and every worker report names the handbooks it followed as `id@version`.
 - A leader or worker never edits a handbook during a task. The keeper revises it
   afterwards, and each revision records what was seen and what should change.
