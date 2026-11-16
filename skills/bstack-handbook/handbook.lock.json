@@ -1,7 +1,7 @@
 {
   "agents": {
-    "version": 4,
-    "hash": "91ad660e0cb9d644"
+    "version": 5,
+    "hash": "5090f2c902141a1e"
   },
   "api": {
     "version": 2,
@@ -84,16 +84,16 @@
     "hash": "555dee1eb54f1667"
   },
   "skills": {
-    "version": 2,
-    "hash": "3ddad3c2f474700a"
+    "version": 4,
+    "hash": "4678a9c5ee37da18"
   },
   "testing": {
     "version": 1,
     "hash": "5774a16a305900c9"
   },
   "verification": {
-    "version": 3,
-    "hash": "a6650cbbcb13cfb2"
+    "version": 4,
+    "hash": "bb77c5a42235c409"
   },
   "versioning": {
     "version": 1,

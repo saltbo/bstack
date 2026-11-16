@@ -13,17 +13,17 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SUITE = ROOT / "skills"
-SKILLS = ["saltmode", "worker", "keeper", "handbook"]
-HANDBOOK = SUITE / "handbook"
+SKILLS = ["saltmode", "bstack-worker", "bstack-keeper", "bstack-handbook"]
+HANDBOOK = SUITE / "bstack-handbook"
 LINK = re.compile(r"\[[^\]\n]+\]\(([^\s)]+)\)")
 # Budgets keep the role skills and each handbook small. Raise one only with a reason.
 LINE_BUDGETS = {
     "saltmode/SKILL.md": 80,
     "saltmode/references/program.md": 60,
     "saltmode/references/hosts.md": 45,
-    "worker/SKILL.md": 70,
-    "keeper/SKILL.md": 50,
-    "handbook/SKILL.md": 90,
+    "bstack-worker/SKILL.md": 70,
+    "bstack-keeper/SKILL.md": 50,
+    "bstack-handbook/SKILL.md": 90,
 }
 HANDBOOK_LINE_BUDGET = 65
 SHOUTING = re.compile(r"\b(MUST|NEVER|ALWAYS|CRITICAL|IMPORTANT|MANDATORY)\b")
@@ -66,16 +66,16 @@ class BundleTests(unittest.TestCase):
 
     def test_leader_brief_names_the_worker_skill_criteria_and_handbooks(self):
         leader = (SUITE / "saltmode/SKILL.md").read_text()
-        for phrase in ("Every brief opens with the absolute path of the worker skill", "acceptance criteria, as a closed list", "The handbooks that apply"):
+        for phrase in ("Every brief opens by telling the worker to run `skills show bstack-worker`", "acceptance criteria, as a closed list", "The handbooks that apply"):
             self.assertIn(phrase, leader)
         hosts = (SUITE / "saltmode/references/hosts.md").read_text()
-        self.assertEqual(3, hosts.count("skills/worker/SKILL.md"))
+        self.assertIn("skills show bstack-worker", hosts)
         for tool in ("delegate_task", "t3_thread_launch", "hc run"):
             self.assertIn(tool, hosts)
-        self.assertEqual(3, hosts.count("skills/handbook/"))
+        self.assertIn("bstack-handbook/", hosts)
 
     def test_worker_report_format_is_fixed(self):
-        worker = (SUITE / "worker/SKILL.md").read_text()
+        worker = (SUITE / "bstack-worker/SKILL.md").read_text()
         for field in ("STATE:", "CRITERIA:", "GATE / CI:", "HANDBOOKS:", "DECISIONS:", "FINDINGS:", "FOLLOW-UPS:", "NOT DONE:"):
             self.assertIn(field, worker)
 
@@ -162,7 +162,7 @@ class BundleTests(unittest.TestCase):
             unreachable = set(installed.rglob("*.md")) - visited
             self.assertFalse(unreachable, f"markdown no link reaches: {sorted(unreachable)}")
             result = subprocess.run(
-                [sys.executable, str(installed / "handbook/scripts/check_resource_paths.py"),
+                [sys.executable, str(installed / "bstack-handbook/scripts/check_resource_paths.py"),
                  "--profile", "existing", "/v1/orders/{orderId}"],
                 cwd=directory, capture_output=True, text=True,
             )

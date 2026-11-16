@@ -4,7 +4,7 @@
   "path": "pstack",
   "status": "No longer tracked. The port was replaced by a single rewritten skill in November 2026.",
   "derived": [
-    "skills/handbook/lifecycle/build.md (Measuring performance) condenses pstack's benchmark-checklist."
+    "skills/bstack-handbook/lifecycle/build.md (Measuring performance) condenses pstack's benchmark-checklist."
   ],
   "removed": {
     "specialist skills": "architect, arena, how, why, interrogate, swarm, tdd, statechart, recall, reflect, sharpen, teach, correct, bro, blast-radius, automate-me, in-your-own-words, ketchup, ketchup-video, no-comments, unslop, technical-writing, typescript-best-practices, benchmark-checklist, show-me-your-work, figure-it-out, setup-pstack, and the four verification-skill generators. The entry no longer routes to them, and current models do this work without a prescribed procedure.",
