@@ -23,7 +23,7 @@ The work is done when all of these hold.
 
 ## On the way
 
-A question goes to the handbook first, in the order its index gives. The user is asked only what [planning](../bstack-handbook/lifecycle/planning.md) and authority reserve, once and all together, each with a recommended default, while everything that does not depend on the answer moves on. Every other question is yours to decide, and goes in the report as pending.
+Every question is yours to decide. Starting autopilot is "do not ask me" under [authority](../bstack-handbook/policies/authority.md), which covers product questions and the actions authority checks with the user by default. Answer each question from the handbook, in the order its index gives, and decide what it leaves open. Before an action that cannot be undone, make it recoverable, then act. The report lists each decision with its reason, and marks as pending the ones no handbook covered.
 
 Process stays smaller than the work. A step of your own method, or a handbook Default, that costs more than the risk it removes is skipped, with one line saying so. The handbook's Decisions are followed as written.
 
@@ -31,6 +31,6 @@ A blocker gets two real attempts at its cause. After that, the report carries it
 
 ## Report
 
-Follow [reporting](../bstack-handbook/policies/reporting.md), in the language the user used. It leads with what now works and the PR, then the handbooks followed as `id@version`, the pending decisions, and each Default departed from, with the reason.
+Follow [reporting](../bstack-handbook/policies/reporting.md), in the language the user used. It leads with what now works and the PR, then the decisions made for the user, the handbooks followed as `id@version`, and each Default departed from, with the reason.
 
 The handbook and these skills stay as they are during the work. A wrong or missing entry is a follow-up for the keeper. Project instructions in `AGENTS.md` outrank this file wherever they are more specific.
