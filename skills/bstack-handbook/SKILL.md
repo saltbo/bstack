@@ -53,7 +53,7 @@ A task runs on one version from start to finish. Report a gap or a wrong entry p
 | [identity](policies/identity.md) | 5 | leader, worker | all |
 | [reporting](policies/reporting.md) | 1 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 3 | leader, worker | all |
-| [skills](policies/skills.md) | 6 | leader, worker | all |
+| [skills](policies/skills.md) | 7 | leader, worker | all |
 | [agents](policies/agents.md) | 7 | leader | all |
 <!-- index:end -->
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bstack Writing"
+  short_description: "Write and revise Markdown by rewriting, not appending"
+  default_prompt: "Use $bstack-writing for this document."
+policy:
+  allow_implicit_invocation: true
