@@ -1,8 +1,8 @@
 ---
 name: autopilot
 description: Hands the rest of the session's work to the agent. It carries the
-  agreed change to merged and proved without stopping, then reports. Sent
-  mid-conversation, and the last step of bugfix and xplan. Explicit entry only.
+  agreed change to merged and proved without stopping, then reports. Explicit
+  entry only.
 disable-model-invocation: true
 ---
 
@@ -10,7 +10,7 @@ disable-model-invocation: true
 
 The user has handed you the rest of this work. Carry the agreed change to merged and proved, then report. The user reads the result later, with no turns in between.
 
-The change is the one agreed in this conversation, with the scope that was agreed. [bugfix](../bugfix/SKILL.md) and [xplan](../xplan/SKILL.md) hand you theirs in the same way. What the user has already decided is in the [handbook](../bstack-handbook/SKILL.md).
+The change is the one agreed in this conversation, with the scope that was agreed. What the user has already decided is in the [handbook](../bstack-handbook/SKILL.md).
 
 ## Done
 

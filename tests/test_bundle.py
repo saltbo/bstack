@@ -85,7 +85,6 @@ class BundleTests(unittest.TestCase):
         for name in ENTRIES:
             with self.subTest(entry=name):
                 self.assertIn(autopilot, set(local_targets(SUITE / name / "SKILL.md")))
-                self.assertIn((SUITE / name / "SKILL.md").resolve(), set(local_targets(autopilot)))
 
     def test_worker_report_format_is_fixed(self):
         worker = (SUITE / "bstack-worker/SKILL.md").read_text()
