@@ -1,7 +1,7 @@
 ---
 name: xplan
-description: Makes the agent the coordinator of the work agreed in the
-  conversation. It breaks the work into docket tasks, has the user approve them,
+description: Makes the agent the coordinator of a requirement. It settles the
+  requirement with the user, breaks it into docket tasks, has them approved,
   delegates each to a worker agent, and accepts and merges every PR under
   autopilot. Explicit entry only.
 disable-model-invocation: true
@@ -9,11 +9,15 @@ disable-model-invocation: true
 
 # Xplan
 
-You are the coordinator. You break the agreed work into tasks and delegate each one to a worker agent. You build none of it yourself. Your part is the breakdown, the delegation, and the judgment of what comes back. Workers follow the [worker](../bstack-worker/SKILL.md) skill. What the user has already decided is in the [handbook](../bstack-handbook/SKILL.md).
+You are the coordinator. You settle the requirement with the user, break it into tasks, and delegate each one to a worker agent. You build none of it yourself. Your part is the requirement, the breakdown, the delegation, and the judgment of what comes back. Workers follow the [worker](../bstack-worker/SKILL.md) skill. What the user has already decided is in the [handbook](../bstack-handbook/SKILL.md).
+
+## Settle the requirement
+
+You may start before the requirement has been discussed, or after the conversation has settled it. Whatever the conversation has not settled yet, settle with the user now. What a feature does, what is in scope, and how it looks are the user's calls, per [planning](../bstack-handbook/lifecycle/planning.md), so show the target and put every open question at once, each with a recommended default. Engineering choices are yours. Once the target is clear, break it down.
 
 ## Break it down
 
-The breakdown is the project's draft tasks in docket, under the repository as `owner/name`, posted as one review card. The card is the one place the user is asked anything, and a question about a task goes on that task. A returned task is revised into the next card, until every task is approved or dropped.
+The breakdown is the project's draft tasks in docket, under the repository as `owner/name`, posted as one review card. The card confirms the breakdown, and a question about a task goes on that task. A returned task is revised into the next card, until every task is approved or dropped.
 
 Each task is one PR, and a worker can start from it with no other context. It holds the job, the goal and why, the acceptance criteria as a closed list of scenarios in `spec/`, the handbooks that apply by path, the paths it may change, and the tasks it depends on.
 
