@@ -1,6 +1,6 @@
 # Skills and other agent instructions
 
-This page covers a skill's `SKILL.md` and its references, a brief handed to another agent, and a system prompt. The reader is a capable model that follows the text closely, including the parts that were written carelessly.
+This page covers a skill's `SKILL.md` and its references, and other agent instructions kept as Markdown files, such as subagent and command definitions. The reader is a capable model that follows the text closely, including the parts that were written carelessly.
 
 ## What goes in
 

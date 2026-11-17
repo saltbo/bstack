@@ -302,3 +302,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: Agents revised Markdown and skills by appending sentences that patched earlier ones, so documents grew, contradicted themselves, and buried the rules that mattered.
 - Expect: An agent writing or revising Markdown loads bstack-writing and rewrites the sentence at fault instead of adding a patch.
 - Outcome: pending
+
+## skills@8 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: The bstack-writing row named prompts, so the skill read as covering briefs and system prompts that are not Markdown files.
+- Expect: Agents load bstack-writing for Markdown files only.
+- Outcome: pending
