@@ -309,3 +309,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The bstack-writing row named prompts, so the skill read as covering briefs and system prompts that are not Markdown files.
 - Expect: Agents load bstack-writing for Markdown files only.
 - Outcome: pending
+
+## follow-ups@5 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: Issues in saltbo/bstack named a session or a PR loosely, so the keeper could not find the transcript that showed the problem.
+- Expect: Every issue in saltbo/bstack carries the host and session ID, and the keeper reads it with session.py.
+- Outcome: pending

@@ -1,0 +1,6 @@
+---
+max_turns: 15
+allowed_tools: [Read, Edit, Write, Glob, Grep, Skill]
+---
+
+In the last session you followed AGENTS.md while changing the CLI and sent the output of `orderdesk list` through logging, so it went to stderr and `| grep` saw nothing. Update AGENTS.md so this does not happen again. Change only the document, not code.

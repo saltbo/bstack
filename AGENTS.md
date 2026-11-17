@@ -21,7 +21,10 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 | `skills/bstack-worker/` | The worker skill. Installed |
 | `skills/bstack-writing/` | How Markdown is written and revised, skills included. Installed, pinned, and loaded without being asked for |
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | The keeper skill. It serves this repository only and is installed nowhere else |
-| [docs/evaluation.md](docs/evaluation.md) | How the skills behaved in real sessions |
+| [.agents/skills/keeper/scripts/session.py](.agents/skills/keeper/scripts/session.py) | Turns a Claude Code session into evidence for the keeper. It judges nothing |
+| `evals/` | Cases for one skill, run by `claude plugin eval`, which loads `skills/` through `.claude-plugin/plugin.json` |
+| `e2e/` | Cases for the whole system, each one real session, run by `e2e/run.py` |
+| [docs/evaluation.md](docs/evaluation.md) | How to run both, and how the skills behaved in recorded runs |
 | `tests/` | Checks of structure, links, budgets, and versions. They do not prove behavior |
 
 ## How it is maintained
@@ -30,7 +33,7 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 - A handbook entry is a Decision, a Default, or an Open question. Nothing becomes a Decision until Saltbo has confirmed it as a standing one. A handbook marked `owner-only` is changed only by him.
 - Every change to a handbook raises its version through `skills/bstack-handbook/scripts/handbook.py`, which also keeps the index, the lock, and the changelog. The skills carry no version, and the commit records a change to one.
 - The issue tracker takes only problems with the text of a handbook or a skill. A defect in a product or a tool is filed with that product.
-- A change is done when the repository tests and the handbook check pass, it is merged to `main`, and the installed copy on his machine matches `main`. The pre-commit hook runs both checks.
+- A change is done when the repository tests and the handbook check pass, it is merged to `main`, and the installed copy on his machine matches `main`. The pre-commit hook runs both checks. A change to how agents behave also carries the eval and end-to-end runs that exercise it.
 
 ## Handbook
 

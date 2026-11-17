@@ -16,9 +16,10 @@ Saltbo wants agents to stop asking him things he has already answered and to sto
 
 - Pending decisions and handbook follow-ups in leaders' reports, and issues in `saltbo/bstack`.
 - What Saltbo said in a session, such as an answer to a question, a correction, or a complaint about how a run went.
-- Finished sessions and merged PRs. A PR's `Handbook` section and a report's `HANDBOOKS` line say which versions the work ran on. Session transcripts are in the host's own store for the workspace.
+- Finished sessions and merged PRs. A PR's `Handbook` section and a report's `HANDBOOKS` line say which versions the work ran on. An issue in `saltbo/bstack` names the session it came from.
+- Runs of the end-to-end cases in `e2e/` and the skill evals in `evals/`, whose use [evaluation](../../../docs/evaluation.md) describes.
 
-Read transcripts for what the agent decided and which text it cited. Measure before you judge, for example how long a PR sat between "built" and "merged", how many fix rounds it took, and how many times he was asked something.
+[scripts/session.py](scripts/session.py) turns a Claude Code session into evidence. `report <session>` lists the skills it loaded, the handbooks it cited, its failed calls and the errors it hit more than once, its questions to Saltbo, its long waits, and its totals, each with the number of the event behind it. `events <session> --from N --to M` prints that stretch of the timeline in full. The script judges nothing. Read the events behind a signal to see what the agent decided and which text it followed, then decide whether the text caused it. Measure before you judge, for example how long a PR sat between "built" and "merged", how many fix rounds it took, and how many times he was asked something.
 
 ## Revising
 
@@ -26,7 +27,7 @@ Read transcripts for what the agent decided and which text it cited. Measure bef
 2. **Confirm before it becomes a decision.** Nothing enters Decisions until Saltbo has confirmed it as a standing decision. An instruction about the task at hand is not one, however firmly he says it. When something he said looks like it should hold from now on, across projects, ask him exactly that, and write it only after he says yes. Until then it goes under Open with the interim default, or nowhere. A choice an agent made goes under Open. A usual way of working that he confirmed but does not hold as fixed goes under Defaults, and a Decision that agents keep following into waste is a candidate to move there. A project fact goes in that project's `Handbook` block, not here.
 3. **Keep his authority his.** Do not change a handbook marked `owner-only`. Propose that change to him.
 4. **Raise the version.** Every changed handbook gets a new version through the handbook's `scripts/handbook.py`, which also keeps the index and the lock and writes the changelog entry. The entry records where the problem showed, what was seen, and what the change should produce.
-5. **Deliver it like any change.** It goes through a PR in `saltbo/bstack` and is merged per the authority handbook. It is delivered when the installed skills match `main`, so the next session runs on the new version.
+5. **Prove it before delivering it.** Rerun the end-to-end cases and evals that exercise the changed text, and the case that failed when there is one, and compare them with the last recorded run. The change goes through a PR in `saltbo/bstack` that carries those results, and is merged per the authority handbook. It is delivered when the installed skills match `main`, so the next session runs on the new version.
 
 The autopilot, bugfix, xplan, worker, and keeper skills carry no version of their own. A change to one of them is recorded by the commit, and described in the PR the same way, with what was seen and what should happen instead.
 

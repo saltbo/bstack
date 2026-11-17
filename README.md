@@ -82,6 +82,7 @@ written.
 | [bstack-writing/](skills/bstack-writing/SKILL.md) | Writing skill, with a page each for AGENTS.md, README.md, and skills |
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | Keeper skill, for this repository only |
 | [AGENTS.md](AGENTS.md) | What the repository is for, how its text is written, and how it is maintained |
+| `evals/`, `e2e/` | Behavior cases for one skill and for the whole system |
 
 ## Checks
 
@@ -95,8 +96,16 @@ python3 skills/bstack-handbook/scripts/check_resource_paths.py --profile bep '/o
 
 The tests cover structure, links, invocation metadata, line budgets, and the
 rule that a changed handbook must have its version raised. They
-do not prove agent behavior. [Evaluation](docs/evaluation.md) records the
-behavior cases and the last run.
+do not prove agent behavior. Two kinds of run do, and they cost real sessions.
+
+```bash
+claude plugin eval . --scaffold --trust-plugin --allow-tools Edit Write
+python3 e2e/run.py
+```
+
+The first scores each skill with and without bstack. The second runs whole
+sessions on fixture repositories and reports on their transcripts.
+[Evaluation](docs/evaluation.md) describes both and records the last runs.
 
 ## History
 
