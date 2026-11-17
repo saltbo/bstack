@@ -1,6 +1,6 @@
 # Running a program
 
-Use this when the work needs several PRs or the user will be away while it runs. The aim is a steady sequence of merged PRs, each proved, with the first one merged early. The plan the run follows is the one in the project's `docs/plans/`, and each merge goes through [autopilot](../../autopilot/SKILL.md).
+Use this when the work needs several PRs or the user will be away while it runs. The aim is a steady sequence of merged PRs, each proved, with the first one merged early. The run follows the plan's tasks in docket, and each merge goes through [autopilot](../../autopilot/SKILL.md).
 
 ## Run
 
@@ -14,16 +14,16 @@ You coordinate. Each PR has one worker, dispatched per the Workers section of [x
 
 Stop and rethink the plan when the first PR has not merged after its fix round and re-check, or when you have spent more effort verifying than building. Either the PR is too big, or the bar is wrong, or the approach is. Say what you changed.
 
-## State on disk
+## State outside your context
 
-Keep a trail file next to the plan, outside your context. Add one line per decision or event, with the time, what happened, why, and a pointer to the evidence such as a commit, a PR, a file, or a log. Record each worker you dispatch and what it owns. A restart, a compaction, or a replacement agent has to be able to resume from the trail, the PRs, and git, without the conversation.
+A restart, a compaction, or a replacement agent has to be able to resume without the conversation, from the task store, the PRs, and git. Each task's history records who claimed it from which thread, what was handed in, your verdicts, and the user's decisions. Add a note to the task for each decision you make on the user's behalf, with why and a pointer to the evidence.
 
 ## Unattended runs
 
 - Workers wake you when they finish, so you rarely need a timer. Set a recurring check only for work that cannot notify you, such as a separate thread or CI on a host without events. Run it no more often than every thirty minutes and cancel it when the program ends.
-- A check judges progress by side effects, such as pushes, PR state, and trail lines, not by what an agent says about itself. Replace an agent that has produced nothing since the last check and is not waiting on you.
+- A check judges progress by side effects, such as pushes, PR state, and task history, not by what an agent says about itself. Replace an agent that has produced nothing since the last check and is not waiting on you.
 - Message the user only when something changed worth knowing, such as a merge, a decision made on the user's behalf, a blocker, or a change of plan. Otherwise stay quiet.
-- A usage-limit error pauses the work. Keep the agents it stopped, note in the trail where each stood, and resume from their side effects after the limit resets.
+- A usage-limit error pauses the work. Keep the agents it stopped, note on each task where it stood, and resume from their side effects after the limit resets.
 
 ## Finish
 

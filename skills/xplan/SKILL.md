@@ -15,11 +15,11 @@ The goal is working software merged, with evidence, in as few turns from the use
 
 ## The target
 
-What a feature does, what a version contains, and how a product looks are the user's calls, per [planning](../bstack-handbook/lifecycle/planning.md). Show only the target, such as the menu, the API list, or the command set, with every open question at once and a recommended default for each. A new feature waits for confirmation, and once the target is approved it is built exactly. Engineering choices are yours. A target the user already gave or approved in the issue is settled.
+What a feature does, what a version contains, and how a product looks are the user's calls, per [planning](../bstack-handbook/lifecycle/planning.md). Show only the target, such as the menu, the API list, or the command set, with every open question at once and a recommended default for each. With docket, questions go to the user as its cards, as [hosts](references/hosts.md) describes, and a question that belongs to one task goes on that task in the plan's review card. A new feature waits for confirmation, and once the target is approved it is built exactly. Engineering choices are yours. A target the user already gave or approved in the issue is settled.
 
 ## The plan
 
-Read the handbooks autopilot's Start names. Then write a short plan, one screen if you can, in the project's `docs/plans/`. It holds the goal and what the user will be able to do at the end, the PRs in order, each with its acceptance criteria as scenarios in `spec/`, and which PRs depend on which.
+Read the handbooks autopilot's Start names. The plan is the project's tasks in docket, per [planning](../bstack-handbook/lifecycle/planning.md), posted to the user as one review card. The card states the goal and what the user will be able to do at the end. Each task is one PR, with its acceptance criteria as scenarios in `spec/`, a description a worker can start from with no other context, and the tasks it depends on.
 
 Each point below is here because the opposite has stalled a real program.
 
@@ -29,13 +29,13 @@ Each point below is here because the opposite has stalled a real program.
 - After the first PR merges, at least two PRs can proceed independently. If the graph is a single chain, look for a cut.
 - Work that only the user can do sits at the end and off the path of everything else.
 
-The plan is the whole end state, delivered in one run. Post it with any question only the user can answer, then begin. Wait for a go only when the ask was for a plan and nothing else. Running the PRs, the trail on disk, and unattended runs are in [run](references/run.md).
+The plan is the whole end state, delivered in one run. The user's approval is the go for each task approved, and a task sent back is revised and goes into the next card. Wait for a go only when the ask was for a plan and nothing else. Running the PRs, the state that outlives your context, and unattended runs are in [run](references/run.md).
 
 ## Workers
 
 Building is the workers' job and judging is yours, which keeps your context free and gives every change a second reader. Who carries what follows from the [agents](../bstack-handbook/policies/agents.md) handbook. A PR small enough that briefing a worker would cost more is yours, and you finish it under autopilot. Work in another repository goes to an independent session there. Before your first dispatch, read [hosts](references/hosts.md).
 
-Every brief opens by telling the worker to run `skills show bstack-worker` and read what it prints first, because a worker does not load it by itself. Then it gives these.
+Every brief opens by telling the worker to run `skills show bstack-worker` and read what it prints first, because a worker does not load it by itself. Every task carries these, written into the docket task when the host has docket and into the brief when it lacks one. With docket the rest of the brief is `docket task <project> <id>`, so the task is the single record of the job, as the user reviewed it in the plan.
 
 - The job, which is building or verifying.
 - The goal and why it matters, in your own words.
@@ -45,10 +45,10 @@ Every brief opens by telling the worker to run `skills show bstack-worker` and r
 - Where its job ends. By default that is a PR marked ready, meaning CI is green and every criterion is shown on the preview.
 - For a verifier, the exact commit and the blocking rule.
 
-Wait for a worker you depend on. Do not end your turn while its result is still owed, because on a host that cannot wake you the session ends there and the work is left unmerged.
+Dispatch a task once it has entered the task store and the tasks it depends on are done. Wait for a worker you depend on. Do not end your turn while its result is still owed, because on a host that cannot wake you the session ends there and the work is left unmerged.
 
 ## Accept and merge under autopilot
 
-When a worker marks its PR ready, apply [verification](../bstack-handbook/lifecycle/verification.md). You make the leader's acceptance checks and its sample against the criteria in your brief. A PR that passes is merged and closed out as [autopilot](../autopilot/SKILL.md) requires, and the program ends with autopilot's report, against the plan's goal. Do not add commits to a ready PR, because each one sends it through CI again.
+When a worker marks its PR ready and hands the task in, apply [verification](../bstack-handbook/lifecycle/verification.md). You make the leader's acceptance checks and its sample against the criteria in the task. A PR that passes is merged and closed out as [autopilot](../autopilot/SKILL.md) requires, and its task accepted. A PR that fails has its task rejected with what must change, and the fix round is the same brief again, because the worker finds the reason in the task. The program ends with autopilot's report, against the plan's goal. Do not add commits to a ready PR, because each one sends it through CI again.
 
 Do not edit the handbook or these skills during a task. Project instructions in `AGENTS.md` outrank this file wherever they are more specific.

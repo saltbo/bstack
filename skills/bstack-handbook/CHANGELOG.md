@@ -205,6 +205,13 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Expect: It is named openapi, with its version carried over as openapi@3, and this handbook links to it under that name.
 - Outcome: pending
 
+## planning@2 (2026-11-16)
+
+- Source: session 2026-11-16, PR #28
+- Saw: Large plans were written into docs/plans in each repository and repeated in worker briefs and a trail file, while the tasks themselves already lived in docket
+- Expect: A leader plans a large change as docket tasks under the project, posts them to Saltbo as one review card, and keeps their state in the task history
+- Outcome: pending
+
 ## agents@6 (2026-11-17)
 
 - Source: Saltbo, 2026-11-17: saltmode split into autopilot, bugfix, and xplan
@@ -226,7 +233,7 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Expect: Each entry states what holds, once and positively, with its meaning unchanged
 - Outcome: pending
 
-## planning@2 (2026-11-17)
+## planning@3 (2026-11-17)
 
 - Source: Saltbo, 2026-11-17: asked that every description be stated positively
 - Saw: Entries stated a rule, then corrected or restated it with a negative sentence

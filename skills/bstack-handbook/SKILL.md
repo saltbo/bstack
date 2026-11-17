@@ -31,7 +31,7 @@ A task runs on one version from start to finish. Report a gap or a wrong entry p
 | Handbook | Version | For | Applies to |
 | --- | --- | --- | --- |
 | [project](lifecycle/project.md) | 4 | leader | all |
-| [planning](lifecycle/planning.md) | 2 | leader | all |
+| [planning](lifecycle/planning.md) | 3 | leader | all |
 | [design](lifecycle/design.md) | 2 | worker | all |
 | [openapi](lifecycle/openapi.md) | 3 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |

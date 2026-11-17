@@ -1,6 +1,6 @@
 ---
 id: planning
-version: 2
+version: 3
 audience: leader
 applies: all
 ---
@@ -20,4 +20,4 @@ This is the stage Saltbo takes part in. A new feature, the scope of a version, a
 - **A plan is the whole end state, delivered in one run.** PRs are an order of delivery, and the run continues through all of them. (2026-08-11, 2026-11-12)
 - **Tasks are cut by feature or module**, each one something a single agent can build and verify with full context, never by job role and never as a step list. (2026-05-04, 2026-06-01)
 - **A confirmed bug goes straight to work. A new feature or requirement waits for his confirmation in the issue.** (2026-09-13)
-- **Large changes are planned in a document in the repository**, not only in chat. (2026-08-29)
+- **Large changes are planned as tasks in docket**, where he reviews them on a card and each task keeps its own history. (2026-08-29, 2026-11-16)
