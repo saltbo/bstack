@@ -9,7 +9,7 @@ and Pi.
 | `bstack-handbook` | Versioned decisions by lifecycle stage and project type, plus an index of specialist skills. Agents look here before asking him |
 | `autopilot` | Hand-over. Sent in the middle of a session, it carries the agreed change to merged and proved, then reports |
 | `bugfix` | One bug. The agent reproduces it, fixes its cause, then finishes under autopilot |
-| `xplan` | Leader for work that needs several PRs. It settles the target, plans it as tasks, dispatches workers, and merges each PR under autopilot |
+| `xplan` | Leader for work that needs several PRs. It plans the agreed work as docket tasks, has them approved on a review card, dispatches workers, then accepts and merges each PR under autopilot |
 | `bstack-worker` | Worker. The xplan leader names it in every brief. It fixes how one change is built or verified and how it is reported |
 | `keeper` | Keeper, for this repository only. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
 

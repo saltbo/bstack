@@ -1,6 +1,6 @@
 interface:
   display_name: "Xplan"
-  short_description: "Plan work of several PRs, dispatch workers, merge"
+  short_description: "Plan in docket, dispatch workers, accept and merge"
   default_prompt: "Use $xplan for this task."
 policy:
   allow_implicit_invocation: false

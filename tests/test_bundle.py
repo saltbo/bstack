@@ -25,7 +25,7 @@ LINK = re.compile(r"\[[^\]\n]+\]\(([^\s)]+)\)")
 LINE_BUDGETS = {
     "autopilot/SKILL.md": 45,
     "bugfix/SKILL.md": 35,
-    "xplan/SKILL.md": 50,
+    "xplan/SKILL.md": 40,
     "xplan/references/run.md": 45,
     "xplan/references/hosts.md": 45,
     "bstack-worker/SKILL.md": 70,
