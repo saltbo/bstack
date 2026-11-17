@@ -204,3 +204,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The API handbook was named api.
 - Expect: It is named openapi, with its version carried over as openapi@3, and this handbook links to it under that name.
 - Outcome: pending
+
+## planning@2 (2026-11-16)
+
+- Source: session 2026-11-16, PR #28
+- Saw: Large plans were written into docs/plans in each repository and repeated in worker briefs and a trail file, while the tasks themselves already lived in docket
+- Expect: A leader plans a large change as docket tasks under the project, posts them to Saltbo as one review card, and keeps their state in the task history
+- Outcome: pending

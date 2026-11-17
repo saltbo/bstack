@@ -10,7 +10,16 @@ Use the dispatch tool of the environment you are in, per the agents handbook. Ch
 2. **Herdr**, when `$HC_TERMINAL_ID` is set. Its guide is `hc --skill`. Work in another repository is an agent started there with `hc run`. A worker in this repository whose result comes back to you uses the harness's own subagents, as Herdr's guide says.
 3. **Anywhere else**, the harness's own subagent tool, with an isolated checkout for each worker. On Pi that tool comes from pi-subagents. On Codex without a spawn tool it is `codex exec`.
 
-A worker starts with no context and does not load the worker skill by itself, whichever tool starts it. Its brief stands alone and opens with `skills show bstack-worker`. That prints the skill and its base directory, and the handbook is `bstack-handbook/` beside it, which is where the handbook paths in your brief point.
+A worker starts with no context and does not load the worker skill by itself, whichever tool starts it. Its brief opens with `skills show bstack-worker`. That prints the skill and its base directory, and the handbook is `bstack-handbook/` beside it, which is where the handbook paths in a task point. With docket, the rest of the brief is only `docket task <project> <id>`, because the task carries everything else. Without it, the brief stands alone and carries the task itself.
+
+## Task store
+
+When you have the docket tools, docket holds the plan's tasks and their history, and it is how you ask Saltbo things. He answers its cards on any device, his phone included, and a card spares him reading a wall of text. Without docket, ask in text, and each brief carries its task.
+
+- A choice between options is a choice card, with your recommended option marked.
+- A plan is a review card with the project as its commit target. What he approves enters the task store and can be claimed, what he marks to change stays in planning with his reason, and what he drops is cancelled. His answer to a question on a task stays on that task, where its worker reads it.
+- Planning is outside the dependency graph. A task enters only after the tasks it depends on have entered, and one he approved while a dependency is still being changed enters by itself when that dependency does.
+- The project key is the repository as `owner/name`, the same for you and every worker.
 
 ## Limits
 
