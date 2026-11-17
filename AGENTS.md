@@ -24,7 +24,7 @@ Everything under `skills/` and `.agents/skills/` gives information and goals.
 | `skills/bstack-handbook/` | The handbook. Installed on his machines |
 | `skills/autopilot/` | Takes work already under way in a session to merged and proved. Installed |
 | `skills/bugfix/` | Fixes one bug, then finishes under autopilot. Installed |
-| `skills/xplan/` | The leader skill for a feature or a program. It plans and dispatches workers, and merges under autopilot. Installed |
+| `skills/xplan/` | The coordinator skill. It breaks work into tasks, delegates them to workers, and merges under autopilot. Installed |
 | `skills/bstack-worker/` | The worker skill. Installed |
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | The keeper skill. It serves this repository only and is installed nowhere else |
 | [docs/evaluation.md](docs/evaluation.md) | How the skills behaved in real sessions |

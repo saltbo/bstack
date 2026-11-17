@@ -1,32 +1,35 @@
 ---
 name: xplan
-description: Plans the work agreed in the conversation as docket tasks, has the
-  user approve them on a review card, dispatches each to a worker, then runs the
-  rest under autopilot, accepting and merging every PR. Explicit entry only.
+description: Makes the agent the coordinator of the work agreed in the
+  conversation. It breaks the work into docket tasks, has the user approve them,
+  delegates each to a worker agent, and accepts and merges every PR under
+  autopilot. Explicit entry only.
 disable-model-invocation: true
 ---
 
 # Xplan
 
-The user has talked the work through with you and wants it planned and built. You plan it in docket, the user approves the plan on a review card, workers build the tasks, and you accept and merge each PR. Workers follow the [worker](../bstack-worker/SKILL.md) skill. What the user has already decided is in the [handbook](../bstack-handbook/SKILL.md).
+You are the coordinator. You break the agreed work into tasks and delegate each one to a worker agent. You build none of it yourself. Your part is the breakdown, the delegation, and the judgment of what comes back. Workers follow the [worker](../bstack-worker/SKILL.md) skill. What the user has already decided is in the [handbook](../bstack-handbook/SKILL.md).
 
-## Plan
+## Break it down
 
-The plan is the project's draft tasks in docket, under the repository as `owner/name`, posted as one review card. The card is the one place the user is asked anything, and a question that belongs to a task goes on that task. A returned task is revised into the next card, until every task is approved or dropped.
+The breakdown is the project's draft tasks in docket, under the repository as `owner/name`, posted as one review card. The card is the one place the user is asked anything, and a question about a task goes on that task. A returned task is revised into the next card, until every task is approved or dropped.
 
-Each task is one PR and holds everything its worker needs. That is the job, the goal and why, the acceptance criteria as a closed list of scenarios in `spec/`, the handbooks that apply by path, the paths it may change, and the tasks it depends on. A worker's job ends at its PR passing, with every criterion proved, per the worker skill.
+Each task is one PR, and a worker can start from it with no other context. It holds the job, the goal and why, the acceptance criteria as a closed list of scenarios in `spec/`, the handbooks that apply by path, the paths it may change, and the tasks it depends on.
 
 - The first task is an end-to-end slice on the real surface. A foundation grows inside the slices that use it.
 - Tasks are cut by feature or module.
 - After the first task, at least two can proceed in parallel.
 
-## Run under autopilot
+## Delegate
 
 From the approval on, the work runs under [autopilot](../autopilot/SKILL.md), and nothing more is asked.
 
-- Each approved task goes to a worker once the tasks it depends on are done, with the environment's own tool per the [agents](../bstack-handbook/policies/agents.md) handbook. The brief opens with `skills show bstack-worker`, then `docket task <project> <id>`.
-- The first task is merged before the others start, because it proves the plan and the project's gates. After that, about three workers run at a time, since every agent shares one machine and one usage quota.
+- An approved task goes to a worker once the tasks it depends on are done, with the environment's own tool per the [agents](../bstack-handbook/policies/agents.md) handbook. The brief opens with `skills show bstack-worker`, then `docket task <project> <id>`.
+- The first task is merged before the others start, because it proves the breakdown and the project's gates. After that, about three workers run at a time, since every agent shares one machine and one usage quota.
+- A worker's job ends at its PR passing, with every criterion proved. Stay in the session while its result is owed, because a host that cannot wake you ends the session there.
 - A stuck task is set aside, with the reason on it, and the next one that does not depend on it is taken. A usage limit pauses the work, which resumes from the task history once it resets.
-- Stay in the session while a worker's result is owed, because a host that cannot wake you ends the session there.
-- When a worker hands in its PR, make the leader's acceptance from [verification](../bstack-handbook/lifecycle/verification.md) against the task's criteria. A PR that passes is merged under autopilot, and its task accepted. One that fails has its task rejected with what must change, and the same brief runs the fix round.
-- Each decision made for the user is noted on its task. The work is done, and reported, as autopilot says, against the plan's goal.
+
+## Accept and merge
+
+When a worker hands in its PR, make the leader's acceptance from [verification](../bstack-handbook/lifecycle/verification.md) against the task's criteria. A PR that passes is merged under autopilot, and its task accepted. One that fails has its task rejected with what must change, and the same brief runs the fix round. Each decision made for the user is noted on its task. The work is done, and reported, as autopilot says, against the goal of the breakdown.
