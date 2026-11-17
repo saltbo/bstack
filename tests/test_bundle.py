@@ -26,8 +26,6 @@ LINE_BUDGETS = {
     "autopilot/SKILL.md": 45,
     "bugfix/SKILL.md": 35,
     "xplan/SKILL.md": 40,
-    "xplan/references/run.md": 45,
-    "xplan/references/hosts.md": 45,
     "bstack-worker/SKILL.md": 70,
     "bstack-handbook/SKILL.md": 90,
 }
@@ -74,11 +72,6 @@ class BundleTests(unittest.TestCase):
         leader = (SUITE / "xplan/SKILL.md").read_text()
         for phrase in ("The brief opens with `skills show bstack-worker`", "acceptance criteria as a closed list", "the handbooks that apply"):
             self.assertIn(phrase, leader)
-        hosts = (SUITE / "xplan/references/hosts.md").read_text()
-        self.assertIn("skills show bstack-worker", hosts)
-        for tool in ("delegate_task", "t3_thread_launch", "hc run"):
-            self.assertIn(tool, hosts)
-        self.assertIn("bstack-handbook/", hosts)
 
     def test_bugfix_and_xplan_finish_under_autopilot(self):
         autopilot = (SUITE / "autopilot/SKILL.md").resolve()

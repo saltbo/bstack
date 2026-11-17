@@ -69,7 +69,7 @@ written.
 | [bstack-handbook/CHANGELOG.md](skills/bstack-handbook/CHANGELOG.md) | Every revision, with what was seen and what it should change |
 | [autopilot/](skills/autopilot/SKILL.md) | Hand-over skill, from built to merged |
 | [bugfix/](skills/bugfix/SKILL.md) | Bug skill |
-| [xplan/](skills/xplan/SKILL.md) | Leader skill, with [run](skills/xplan/references/run.md) and [hosts](skills/xplan/references/hosts.md) |
+| [xplan/](skills/xplan/SKILL.md) | Leader skill |
 | [bstack-worker/](skills/bstack-worker/SKILL.md) | Worker skill |
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | Keeper skill, for this repository only |
 | [AGENTS.md](AGENTS.md) | What the repository is for, how its text is written, and how it is maintained |

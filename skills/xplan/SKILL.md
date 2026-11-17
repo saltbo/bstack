@@ -12,7 +12,7 @@ The user has talked the work through with you and wants it planned and built. Yo
 
 ## Plan
 
-The plan is the project's draft tasks in docket, posted as one review card, per [hosts](references/hosts.md). The card is the one place the user is asked anything, and a question that belongs to a task goes on that task. A returned task is revised into the next card, until every task is approved or dropped.
+The plan is the project's draft tasks in docket, under the repository as `owner/name`, posted as one review card. The card is the one place the user is asked anything, and a question that belongs to a task goes on that task. A returned task is revised into the next card, until every task is approved or dropped.
 
 Each task is one PR and holds everything its worker needs. That is the job, the goal and why, the acceptance criteria as a closed list of scenarios in `spec/`, the handbooks that apply by path, the paths it may change, and the tasks it depends on. A worker's job ends at its PR passing, with every criterion proved, per the worker skill.
 
@@ -24,7 +24,9 @@ Each task is one PR and holds everything its worker needs. That is the job, the 
 
 From the approval on, the work runs under [autopilot](../autopilot/SKILL.md), and nothing more is asked.
 
-- Each approved task goes to a worker once the tasks it depends on are done, per hosts. The brief opens with `skills show bstack-worker`, then `docket task <project> <id>`.
+- Each approved task goes to a worker once the tasks it depends on are done, with the environment's own tool per the [agents](../bstack-handbook/policies/agents.md) handbook. The brief opens with `skills show bstack-worker`, then `docket task <project> <id>`.
+- The first task is merged before the others start, because it proves the plan and the project's gates. After that, about three workers run at a time, since every agent shares one machine and one usage quota.
+- A stuck task is set aside, with the reason on it, and the next one that does not depend on it is taken. A usage limit pauses the work, which resumes from the task history once it resets.
 - Stay in the session while a worker's result is owed, because a host that cannot wake you ends the session there.
 - When a worker hands in its PR, make the leader's acceptance from [verification](../bstack-handbook/lifecycle/verification.md) against the task's criteria. A PR that passes is merged under autopilot, and its task accepted. One that fails has its task rejected with what must change, and the same brief runs the fix round.
-- The work is done, and reported, as autopilot says, against the plan's goal. The order of the run and its state are in [run](references/run.md).
+- Each decision made for the user is noted on its task. The work is done, and reported, as autopilot says, against the plan's goal.
