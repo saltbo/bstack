@@ -17,8 +17,6 @@ The user handed you a bug. Fix it yourself, starting at once, because a confirme
 - The report carries the test's failing output before the fix and its passing output after.
 - The change holds this one bug. Other bugs found on the way are follow-ups.
 
-A request for behavior nothing promised is a feature, and goes to [xplan](../xplan/SKILL.md).
-
 ## Then
 
 Once the fix runs locally, load [autopilot](../autopilot/SKILL.md) and carry the fix through it.
