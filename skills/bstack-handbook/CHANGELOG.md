@@ -288,3 +288,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: Two entries contradicted each other: 'Smallest change that meets the criteria' and 'The most correct change, not the smallest'
 - Expect: One entry: the most correct change within the criteria, with anything else as a follow-up and a refactor when the design is wrong for the task
 - Outcome: pending
+
+## agents@7 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: the three leader skills start only by hand, except autopilot for a session in another repository
+- Saw: A session in another repository was told to run xplan, so an agent started a skill the user starts by hand
+- Expect: A session in another repository is started with autopilot, carrying the goal and acceptance criteria the first leader gives it
+- Outcome: pending
