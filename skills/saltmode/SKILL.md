@@ -31,7 +31,7 @@ Who carries the work follows from the path and from the [agents](../bstack-handb
 
 ## Before you ask him
 
-Look the question up in the handbook, in the order its index gives. Follow a decision that answers it. Use the interim default of an open entry. Decide a reversible question that nothing covers. Ask him only what [planning](../bstack-handbook/lifecycle/planning.md) and [authority](../bstack-handbook/policies/authority.md) reserve for him, all at once, each with your recommended default, while the rest of the work keeps moving.
+Look the question up in the handbook, in the order its index gives. Follow a decision that answers it. Use the interim default of an open entry. Decide a reversible question that nothing covers. Ask him only what [planning](../bstack-handbook/lifecycle/planning.md) and [authority](../bstack-handbook/policies/authority.md) reserve for him, all at once, each with your recommended default, while the rest of the work keeps moving. With docket, ask through its cards, as [hosts](references/hosts.md) describes. A question that belongs to one task goes on that task in the plan's review card.
 
 Keep a list of the questions you answered yourself. They go in your report as pending decisions, so they can become handbook entries and never be asked again.
 
@@ -41,7 +41,7 @@ Building is the workers' job and judging is yours. Keeping the two apart leaves 
 
 Before your first dispatch, read [hosts](references/hosts.md), for how this environment dispatches and the limits on workers.
 
-Every brief opens by telling the worker to run `skills show bstack-worker` and read what it prints first, because a worker does not load it by itself. Then it gives these.
+Every brief opens by telling the worker to run `skills show bstack-worker` and read what it prints first, because a worker does not load it by itself. Every task carries these, written into the docket task when the host has docket and into the brief when it does not. With docket the brief says nothing else but `docket task <project> <id>`, so the task is the single record of the job, and Saltbo reviewed it in the plan.
 
 - The job, which is building or verifying.
 - The goal and why it matters, in your own words.
@@ -51,11 +51,11 @@ Every brief opens by telling the worker to run `skills show bstack-worker` and r
 - Where its job ends. By default that is a PR marked ready, meaning CI is green and every criterion is shown on the preview, and you merge.
 - For a verifier, the exact commit and the blocking rule.
 
-Wait for a worker you depend on. Do not end your turn while its result is still owed, because on a host that cannot wake you the session ends there and the work is left unmerged. Workers share your usage quota and start with no context, so do not split work finer than one worker per PR.
+Dispatch only a task that has entered the task store, and only once the tasks it depends on are done. Wait for a worker you depend on. Do not end your turn while its result is still owed, because on a host that cannot wake you the session ends there and the work is left unmerged. Workers share your usage quota and start with no context, so do not split work finer than one worker per PR.
 
 ## Accept and merge
 
-Apply [verification](../bstack-handbook/lifecycle/verification.md) when the worker marks its PR ready. The worker has checked every criterion, so you do not review the code line by line. You make the handbook's acceptance checks and its sample, as one decision against the criteria you wrote in the brief. When the PR passes, merge it, per [authority](../bstack-handbook/policies/authority.md). File what did not block per [follow-ups](../bstack-handbook/policies/follow-ups.md).
+Apply [verification](../bstack-handbook/lifecycle/verification.md) when the worker marks its PR ready and hands the task in. The worker has checked every criterion, so you do not review the code line by line. You make the handbook's acceptance checks and its sample, as one decision against the criteria in the task. When the PR passes, merge it, per [authority](../bstack-handbook/policies/authority.md), and accept the task. When it does not, reject the task with what must change, and the fix round is the same brief again, because the worker finds your reason in the task. File what did not block per [follow-ups](../bstack-handbook/policies/follow-ups.md).
 
 Do not add commits to a PR that is ready, because each one sends it through CI again. If the work settled an architecture decision, or established a project fact that later work needs, such as how to sign in on a preview, record the ADR or the `Handbook` block entry after the merge, as a direct change on trunk, per the [project](../bstack-handbook/lifecycle/project.md) handbook.
 

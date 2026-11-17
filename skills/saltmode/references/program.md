@@ -4,11 +4,10 @@ Use this when the work needs several PRs or he will be away while it runs. The a
 
 ## Plan
 
-Write a short plan, one screen if you can, in the project's `docs/plans/`. It holds three things.
+Write a short plan, one screen if you can, in the project's `docs/plans/`. It holds the goal and what he will be able to do at the end, and the shape described below. The PRs are its tasks. With docket they are docket tasks under the project, and the plan names the project key instead of listing them. Without it, the plan lists them.
 
-- The goal, and what he will be able to do at the end.
-- The PRs in order. Each gets its acceptance criteria, as scenarios in `spec/`, meaning what a user can see or do after it merges and how that will be shown.
-- Which PRs depend on which.
+- Each task is one PR. It gets its acceptance criteria, as scenarios in `spec/`, meaning what a user can see or do after it merges and how that will be shown, and a description a worker can start from with no other context.
+- Each task names the tasks it depends on.
 
 Shape the plan as follows. Each point is here because the opposite has stalled a real program.
 
@@ -17,7 +16,7 @@ Shape the plan as follows. Each point is here because the opposite has stalled a
 - After the first PR merges, at least two PRs can proceed independently. If the graph is a single chain, look for a cut.
 - Work that only he can do, such as approving a registration in his own account, sits at the end and off the path of everything else.
 
-Post the plan together with any question only he can answer, then begin. He can redirect while you work. Wait for a go only when he asked for a plan and nothing else.
+Post the plan together with any question only he can answer, then begin. With docket that is one review card of the tasks, and his approval is the go for what he approved, while a task he sent back is revised and goes into the next card. He can redirect while you work. Wait for a go only when he asked for a plan and nothing else.
 
 ## Run
 
@@ -31,16 +30,16 @@ You coordinate. Each PR has one worker, dispatched per the Workers section of th
 
 Stop and rethink the plan when the first PR has not merged after its fix round and re-check, or when you have spent more effort verifying than building. Either the PR is too big, or the bar is wrong, or the approach is. Tell him what you changed.
 
-## State on disk
+## State outside your context
 
-Keep a trail file next to the plan, outside your context. Add one line per decision or event, with the time, what happened, why, and a pointer to the evidence such as a commit, a PR, a file, or a log. Record each worker you dispatch and what it owns. A restart, a compaction, or a replacement agent has to be able to resume from the trail, the PRs, and git, without the conversation.
+A restart, a compaction, or a replacement agent has to be able to resume without the conversation. With docket, the task store is that state. Each task's history records who claimed it from which thread, what was handed in, your verdicts, and his decisions, so add a note to the task for each decision you make for him, with why and a pointer to the evidence. Without docket, keep a trail file next to the plan with one line per decision or event, and record each worker you dispatch and what it owns. Resume from that state, the PRs, and git.
 
 ## Unattended runs
 
 - Workers wake you when they finish, so you rarely need a timer. Set a recurring check only for work that cannot notify you, such as a separate thread or CI on a host without events. Run it no more often than every thirty minutes and cancel it when the program ends.
-- A check judges progress by side effects, such as pushes, PR state, and trail lines, not by what an agent says about itself. Replace an agent that has produced nothing since the last check and is not waiting on you.
+- A check judges progress by side effects, such as pushes, PR state, and task history or trail lines, not by what an agent says about itself. Replace an agent that has produced nothing since the last check and is not waiting on you.
 - Message him only when something changed that he would want to know, such as a merge, a decision made on his behalf, a blocker, or a change of plan. Otherwise stay quiet.
-- A usage-limit error is not a failure of the work. Do not replace the agents it stopped. Note in the trail where each stood, and resume from their side effects after the limit resets.
+- A usage-limit error is not a failure of the work. Do not replace the agents it stopped. Note where each stood, on its task or in the trail, and resume from their side effects after the limit resets.
 
 ## Finish
 
