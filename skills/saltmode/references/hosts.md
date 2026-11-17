@@ -14,7 +14,7 @@ A worker starts with no context and does not load the worker skill by itself, wh
 
 ## Task store
 
-When you have the docket tools, docket holds the plan's tasks and their history, and it is how you ask Saltbo things. He answers its cards on any device, his phone included, and a card spares him reading a wall of text. Without docket, ask in text and use the fallbacks the skill and program name.
+When you have the docket tools, docket holds the plan's tasks and their history, and it is how you ask Saltbo things. He answers its cards on any device, his phone included, and a card spares him reading a wall of text. Without docket, ask in text, and each brief carries its task.
 
 - A choice between options is a choice card, with your recommended option marked.
 - A plan is a review card with the project as its commit target. What he approves enters the task store and can be claimed, what he marks to change stays in planning with his reason, and what he drops is cancelled. His answer to a question on a task stays on that task, where its worker reads it.

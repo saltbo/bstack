@@ -31,7 +31,7 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | Handbook | Version | For | Applies to |
 | --- | --- | --- | --- |
 | [project](lifecycle/project.md) | 3 | leader | all |
-| [planning](lifecycle/planning.md) | 1 | leader | all |
+| [planning](lifecycle/planning.md) | 2 | leader | all |
 | [design](lifecycle/design.md) | 2 | worker | all |
 | [openapi](lifecycle/openapi.md) | 3 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
