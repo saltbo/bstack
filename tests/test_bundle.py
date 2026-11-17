@@ -23,9 +23,9 @@ HANDBOOK = SUITE / "bstack-handbook"
 LINK = re.compile(r"\[[^\]\n]+\]\(([^\s)]+)\)")
 # Budgets keep the role skills and each handbook small. Raise one only with a reason.
 LINE_BUDGETS = {
-    "autopilot/SKILL.md": 60,
+    "autopilot/SKILL.md": 45,
     "bugfix/SKILL.md": 35,
-    "xplan/SKILL.md": 65,
+    "xplan/SKILL.md": 50,
     "xplan/references/run.md": 45,
     "xplan/references/hosts.md": 45,
     "bstack-worker/SKILL.md": 70,
@@ -72,7 +72,7 @@ class BundleTests(unittest.TestCase):
 
     def test_leader_brief_names_the_worker_skill_criteria_and_handbooks(self):
         leader = (SUITE / "xplan/SKILL.md").read_text()
-        for phrase in ("Every brief opens by telling the worker to run `skills show bstack-worker`", "acceptance criteria, as a closed list", "The handbooks that apply"):
+        for phrase in ("The brief opens with `skills show bstack-worker`", "acceptance criteria as a closed list", "the handbooks that apply"):
             self.assertIn(phrase, leader)
         hosts = (SUITE / "xplan/references/hosts.md").read_text()
         self.assertIn("skills show bstack-worker", hosts)

@@ -31,6 +31,6 @@ A blocker gets two real attempts at its cause. After that, the report carries it
 
 ## Report
 
-Follow [reporting](../bstack-handbook/policies/reporting.md), in the language the user used. It leads with what now works and the PR, then the decisions made for the user, the handbooks followed as `id@version`, and each Default departed from, with the reason.
+Follow [reporting](../bstack-handbook/policies/reporting.md), in the language the user used. It leads with what now works and the PR, then the decisions made for the user, and each Default departed from, with the reason.
 
 The handbook and these skills stay as they are during the work. A wrong or missing entry is a follow-up for the keeper. Project instructions in `AGENTS.md` outrank this file wherever they are more specific.
