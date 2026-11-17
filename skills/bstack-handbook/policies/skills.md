@@ -1,6 +1,6 @@
 ---
 id: skills
-version: 7
+version: 8
 audience: leader, worker
 applies: all
 ---
@@ -20,7 +20,7 @@ The store is searchable, so this table lists only what a search by topic might m
 
 | When the task involves | Read |
 | --- | --- |
-| Writing or revising Markdown: `AGENTS.md`, `README.md`, a skill, a prompt | [bstack-writing](../../bstack-writing/SKILL.md), pinned |
+| Writing or revising a Markdown file: `AGENTS.md`, `README.md`, a skill | [bstack-writing](../../bstack-writing/SKILL.md), pinned |
 | Agent identity, authenticated `git`, `gh`, `wrangler` | `realmroot`, pinned |
 | Dotfiles and global agent instructions | `manage-dotfiles`, native |
 | Creating a git worktree by hand | `manage-worktrees`, native |

@@ -1,9 +1,9 @@
 ---
 name: bstack-writing
-description: How to write and revise Markdown that people or agents read, such as
-  AGENTS.md, README.md, a skill, a prompt, or any other document. Use it whenever
-  you create or change such a file, including when a correction to an agent's
-  behavior leads to changing its instructions.
+description: How to write and revise a Markdown file that people or agents read,
+  such as AGENTS.md, README.md, a skill, or any other .md file. Use it whenever
+  you create or change a .md file, including when a correction to an agent's
+  behavior leads to changing the Markdown that instructs it.
 ---
 
 # Writing
@@ -43,6 +43,6 @@ A new document starts the same way. Decide what each section is for before writi
 | --- | --- |
 | `AGENTS.md`, `CLAUDE.md`, and other instructions an agent reads on entering a repository | [agents-md](references/agents-md.md) |
 | `README.md` | [readme](references/readme.md) |
-| A skill, a brief to another agent, a system prompt | [skills](references/skills.md) |
+| A skill, and other agent instructions kept as Markdown, such as a subagent or command definition | [skills](references/skills.md) |
 
-Any other document follows this page alone. Where the [handbook](../bstack-handbook/lifecycle/project.md) gives a record its own place, such as product behavior in `spec/` or the reason for a design in `docs/adr/`, a document links to it instead of restating it.
+Any other Markdown file follows this page alone. Where the [handbook](../bstack-handbook/lifecycle/project.md) gives a record its own place, such as product behavior in `spec/` or the reason for a design in `docs/adr/`, a document links to it instead of restating it.
