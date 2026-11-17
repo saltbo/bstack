@@ -1,8 +1,9 @@
 # bstack
 
 Saltbo's working system for coding agents. It has a handbook of his standing
-decisions and explicit skills for three roles. The leader and worker skills are installed, and the keeper stays in this repository. It runs on Claude Code, Codex,
-and Pi.
+decisions, skills that carry work from a request to merged, and a skill for
+writing the Markdown that agents and people read. The keeper stays in this
+repository and installs nowhere. It runs on Claude Code, Codex, and Pi.
 
 | Part | Role |
 | --- | --- |
@@ -11,6 +12,7 @@ and Pi.
 | `bugfix` | One bug. The agent reproduces it, fixes its cause, then finishes under autopilot |
 | `xplan` | Coordinator. It settles the requirement, breaks it into docket tasks, has them approved on a review card, delegates each to a worker, then accepts and merges every PR under autopilot |
 | `bstack-worker` | Worker. The xplan leader names it in every brief. It fixes how one change is built or verified and how it is reported |
+| `bstack-writing` | Writing. How AGENTS.md, README.md, skills, and other Markdown are written, and how they are revised by rewriting the sentence at fault rather than adding one |
 | `keeper` | Keeper, for this repository only. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
 
 ## Design
@@ -36,13 +38,22 @@ skills install saltbo/bstack
 ```
 
 `skills` is the store command from [bbox](https://github.com/saltbo/bbox). It keeps
-the handbook, the leader, and the worker under `~/.local/share/bbox/skills/` and out of the directories an
-agent scans, so nothing is loaded until it is asked for. Pi needs
+the skills under `~/.local/share/bbox/skills/` and out of the directories an
+agent scans, so a skill is loaded only once it is asked for or pinned. Pi needs
 `pi install npm:pi-subagents` for subagents.
+
+```bash
+for name in autopilot bugfix xplan bstack-writing; do skills pin "$name"; done
+```
+
+Pinning exposes a skill natively. autopilot, bugfix, and xplan can then be entered as
+`/autopilot` in Claude Code and Pi, or `$autopilot` in Codex. `bstack-writing`
+is the one skill an agent loads without being asked, because it is needed
+whenever Markdown is written, and nobody remembers to ask for it then.
 
 ## Use
 
-Every skill is explicit-only. Tell the agent to load the entry that fits the work.
+Every skill except `bstack-writing` is explicit-only. Tell the agent to load the entry that fits the work.
 
 ```
 Run `skills show bugfix` and work under it. Fix this regression.
@@ -54,9 +65,6 @@ The keeper reviews how the work went and revises the text. It is a project skill
 of this repository, in `.agents/skills/keeper`, so it is entered from a session
 here. [AGENTS.md](AGENTS.md) says what the repository is for and how its text is
 written.
-
-`skills pin autopilot bugfix xplan` exposes them natively, so they can also be entered as
-`/autopilot` in Claude Code and Pi, or `$autopilot` in Codex.
 
 ## Layout
 
@@ -71,6 +79,7 @@ written.
 | [bugfix/](skills/bugfix/SKILL.md) | Bug skill |
 | [xplan/](skills/xplan/SKILL.md) | Leader skill |
 | [bstack-worker/](skills/bstack-worker/SKILL.md) | Worker skill |
+| [bstack-writing/](skills/bstack-writing/SKILL.md) | Writing skill, with a page each for AGENTS.md, README.md, and skills |
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | Keeper skill, for this repository only |
 | [AGENTS.md](AGENTS.md) | What the repository is for, how its text is written, and how it is maintained |
 
@@ -84,7 +93,7 @@ python3 skills/bstack-handbook/scripts/handbook.py check
 python3 skills/bstack-handbook/scripts/check_resource_paths.py --profile bep '/orders/{orderId}'
 ```
 
-The tests cover structure, links, explicit-only metadata, line budgets, and the
+The tests cover structure, links, invocation metadata, line budgets, and the
 rule that a changed handbook must have its version raised. They
 do not prove agent behavior. [Evaluation](docs/evaluation.md) records the
 behavior cases and the last run.

@@ -13,7 +13,10 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SUITE = ROOT / "skills"
-SKILLS = ["autopilot", "bugfix", "xplan", "bstack-worker", "bstack-handbook"]
+SKILLS = ["autopilot", "bugfix", "xplan", "bstack-worker", "bstack-handbook", "bstack-writing"]
+# Writing is needed whenever Markdown is written, when nobody thinks to ask for it, so it alone loads implicitly.
+IMPLICIT = ["bstack-writing"]
+EXPLICIT = [n for n in SKILLS if n not in IMPLICIT]
 # bugfix and xplan end under autopilot, so each links to it.
 ENTRIES = ["bugfix", "xplan"]
 # The keeper serves this repository only, so it lives outside the installed suite.
@@ -28,6 +31,10 @@ LINE_BUDGETS = {
     "xplan/SKILL.md": 40,
     "bstack-worker/SKILL.md": 70,
     "bstack-handbook/SKILL.md": 90,
+    "bstack-writing/SKILL.md": 50,
+    "bstack-writing/references/agents-md.md": 40,
+    "bstack-writing/references/readme.md": 30,
+    "bstack-writing/references/skills.md": 35,
 }
 HANDBOOK_LINE_BUDGET = 65
 SHOUTING = re.compile(r"\b(MUST|NEVER|ALWAYS|CRITICAL|IMPORTANT|MANDATORY)\b")
@@ -59,14 +66,22 @@ class BundleTests(unittest.TestCase):
             self.assertRegex(metadata, rf"(?m)^name: {name}$")
             self.assertRegex(metadata, r"(?m)^description: \S")
 
-    def test_every_skill_is_explicit_only_on_every_host(self):
-        for name in SKILLS:
+    def test_every_skill_but_writing_is_explicit_only_on_every_host(self):
+        for name in EXPLICIT:
             with self.subTest(skill=name):
                 metadata = (SUITE / name / "SKILL.md").read_text().split("---", 2)[1]
                 self.assertRegex(metadata, r"(?m)^disable-model-invocation: true$")
                 codex = (SUITE / name / "agents/openai.yaml").read_text()
                 self.assertRegex(codex, r"(?m)^policy:\n  allow_implicit_invocation: false$")
                 self.assertIn("$" + name, codex)
+
+    def test_writing_loads_implicitly_on_every_host(self):
+        for name in IMPLICIT:
+            with self.subTest(skill=name):
+                metadata = (SUITE / name / "SKILL.md").read_text().split("---", 2)[1]
+                self.assertNotRegex(metadata, r"disable-model-invocation")
+                codex = (SUITE / name / "agents/openai.yaml").read_text()
+                self.assertRegex(codex, r"(?m)^policy:\n  allow_implicit_invocation: true$")
 
     def test_leader_brief_names_the_worker_skill_criteria_and_handbooks(self):
         leader = (SUITE / "xplan/SKILL.md").read_text()

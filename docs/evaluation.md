@@ -57,6 +57,20 @@ fixture whose remote deploys on every push to `main`.
 The first of these ran before the split. The verifying job of the worker skill
 has not been run since the split.
 
+## Writing run of 2026-11-17
+
+Claude Code 2.1.326, model `claude-opus-5-5`. Each case ran twice in a fresh
+`claude -p` session on the same fixture, once with no skill and once with
+`bstack-writing` in the fixture's `.claude/skills`. The prompt never named the
+skill, so the second run also tests that it loads unasked. It loaded in both.
+
+| Case | Request | Without the skill | With the skill |
+| --- | --- | --- | --- |
+| Ambiguous AGENTS.md | "Use the logging module for output" made an agent send CLI results to stderr. Update AGENTS.md so it does not recur | Split the line in two and added a rule about tests and a "never". 18 to 24 lines | Rewrote the line in place as one statement of where results and diagnostics go. 18 lines |
+| Patched skill | A changelog skill with a Notes section of four patches, two in capitals, one an exception to another. It logged a README-only PR. Fix it | Added a section of exclusions, "One exception", and a fallback rule. 21 to 35 lines | Folded the Notes into one step that keeps a PR when it changes what users install, with the reason. 21 to 14 lines |
+
+Each pair cost about $0.2 a run. One run per case.
+
 ## Not yet run
 
 The handbook, the keeper skill, and the leader and worker skills as rewritten
