@@ -1,20 +1,28 @@
 # Evaluation
 
-The repository tests check structure. This page records how the skill behaves in
-real sessions, and how to repeat the check.
+The repository tests check structure. This page says how to check behavior, and records what real sessions did.
 
 ## Method
 
-Each case runs in a fresh headless session (`claude -p`) inside a copy of a small
-fixture repository. The prompt tells the agent to read the skill and then gives an
-ordinary user request. Results come from the session's reported turns, time, and
-cost, the tool calls in its transcript, and the state of the fixture repository
-afterwards. The agent's own summary is not counted as evidence.
+Both kinds of run use bstack as it is in the checkout, and both count only what the session did and left behind. The agent's own summary is not evidence.
 
-The fixture is `orderdesk`, a Python library with a CLI and a real bug. Its cursor
-pagination skips orders that share a timestamp.
+- **Skill evals**, in `evals/`, check one skill. Each case runs in fresh sessions with bstack loaded and without it, three times by default, and the score is the difference. Run them with `claude plugin eval . --scaffold --trust-plugin --allow-tools Edit Write`. `.claude-plugin/plugin.json` exists so that the command can load `skills/`.
+- **End-to-end cases**, in `e2e/`, check the system. Each is one real session, started with `python3 e2e/run.py [case]`, on a fixture repository with the skills installed and pinned as on Saltbo's machine, and without his own skills and instructions. The case's `check.sh` judges the outcome, and the keeper's [session script](../.agents/skills/keeper/scripts/session.py) reports on the transcript: the skills and handbooks it read, its failed calls, the errors it hit more than once, its questions, and its cost.
+
+Results land under `evals/results/` and `e2e/results/`, which are not committed. A run worth keeping is summarized below.
 
 ## Cases
+
+| Case | Kind | Request | Pass when |
+| --- | --- | --- | --- |
+| `writing-agents-md` | eval, e2e | "Use the logging module for output" sent CLI results to stderr. Fix AGENTS.md | The line is rewritten in place, with no patch words, and the file does not grow |
+| `writing-patched-skill` | eval | A changelog skill with four patches in a Notes section logged a README-only PR. Fix it | The rule is stated once, with its reason, and the file does not grow |
+| `writing-not-markdown` | eval | Rename a field in Python code | `bstack-writing` does not load |
+| `bugfix-paging` | e2e | "Some orders never show up when I page", under bugfix | The fix is on `origin/main`, every order is listed, the gate passes |
+
+## Run of 2026-11-15
+
+These cases ran by hand on a fixture that is no longer kept. `bugfix-paging` carries its bug forward.
 
 | Case | Request | Pass when |
 | --- | --- | --- |
@@ -23,8 +31,6 @@ pagination skips orders that share a timestamp.
 | Review report | A report with two run-proved defects, one of them a document that overstates the code, plus five unrun or hypothetical findings | The two are fixed, the document is corrected rather than the code, the five are filed as follow-ups, and no new mechanism is built |
 | Plan | A nine-feature product with a cross-cutting OAuth resource-server requirement, plan only | One screen. First PR is a thin end-to-end slice. The OAuth work is spread across the PRs that need it. Several PRs can run in parallel |
 | Program | Three features plus the bug, "I'm offline, merge to main yourself" | Everything merged and proved over HTTP. At most one verifier on the risky change, at most one fix round, the rest filed as follow-ups |
-
-## Run of 2026-11-15
 
 Claude Code 2.1.325, model `claude-fable-5-2`, session effort `xhigh`.
 
@@ -71,11 +77,21 @@ skill, so the second run also tests that it loads unasked. It loaded in both.
 
 Each pair cost about $0.2 a run. One run per case.
 
+## Eval and end-to-end run of 2026-11-17
+
+Claude Code 2.1.326, model `claude-opus-5-5`, one run per arm.
+
+| Case | Kind | With bstack | Without | Notes |
+| --- | --- | --- | --- | --- |
+| `writing-agents-md` | eval | 1.00 | 0.00 | Without it, the agent kept a "never" and failed the judge |
+| `writing-patched-skill` | eval | 1.00 | 0.50 | Without it, the patches stayed beside a new exclusion |
+| `writing-not-markdown` | eval | 1.00 | 1.00 | The skill stayed out of a code-only change |
+| `writing-agents-md` | e2e | Pass, 12 s, $0.15 | | Loaded unasked, one line rewritten, 18 lines kept |
+| `bugfix-paging` | e2e | Pass, 47 s, $0.41 | | Reproduced, fixed, squash-merged and pushed to `main`. It read the handbook before acting and asked nothing. It reported as pending that no handbook entry says which commit email the agent identity uses |
+
 ## Not yet run
 
-The handbook, the keeper skill, and the leader and worker skills as rewritten
-around the handbook have not been run in a session. Every result on this page
-predates them.
+xplan, the worker, and the keeper have no case yet. The end-to-end cases have no forge, so they do not exercise PRs, CI, or a program of several PRs.
 
 ## Baseline
 
@@ -93,6 +109,6 @@ review rounds for one PR. That program was not re-run on the old suite here.
 
 ## Limits
 
-- One run per case. The numbers show the behavior once, not its variance.
-- The fixture is small. The Program case has three features and no GitHub remote, so it does not exercise real PRs, CI, or a program of a dozen PRs over several hours.
-- Only Claude Code was run. Codex and Pi were not.
+- The recorded runs are one per case. They show the behavior once, not its variance, which the evals measure when run three times or more.
+- The fixtures are small and have no forge.
+- Only Claude Code was run, and the session script reads only Claude Code transcripts. Codex and Pi were not.

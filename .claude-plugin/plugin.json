@@ -1,0 +1,4 @@
+{
+  "name": "bstack",
+  "description": "Saltbo's working system for coding agents. The manifest exists so that `claude plugin eval` can load the skills under skills/."
+}
