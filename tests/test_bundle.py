@@ -13,7 +13,9 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SUITE = ROOT / "skills"
-SKILLS = ["saltmode", "bstack-worker", "bstack-handbook"]
+SKILLS = ["autopilot", "bugfix", "xplan", "bstack-worker", "bstack-handbook"]
+# bugfix and xplan end under autopilot, so each links to it.
+ENTRIES = ["bugfix", "xplan"]
 # The keeper serves this repository only, so it lives outside the installed suite.
 KEEPER = ROOT / ".agents/skills/keeper"
 KEEPER_LINE_BUDGET = 50
@@ -21,9 +23,9 @@ HANDBOOK = SUITE / "bstack-handbook"
 LINK = re.compile(r"\[[^\]\n]+\]\(([^\s)]+)\)")
 # Budgets keep the role skills and each handbook small. Raise one only with a reason.
 LINE_BUDGETS = {
-    "saltmode/SKILL.md": 80,
-    "saltmode/references/program.md": 60,
-    "saltmode/references/hosts.md": 45,
+    "autopilot/SKILL.md": 45,
+    "bugfix/SKILL.md": 35,
+    "xplan/SKILL.md": 40,
     "bstack-worker/SKILL.md": 70,
     "bstack-handbook/SKILL.md": 90,
 }
@@ -50,7 +52,7 @@ def handbook_files():
 
 
 class BundleTests(unittest.TestCase):
-    def test_suite_is_two_role_skills_and_the_handbook(self):
+    def test_suite_is_the_role_skills_and_the_handbook(self):
         self.assertEqual({SUITE / n / "SKILL.md" for n in SKILLS}, set(SUITE.rglob("SKILL.md")))
         for name in SKILLS:
             metadata = (SUITE / name / "SKILL.md").read_text().split("---", 2)[1]
@@ -67,14 +69,15 @@ class BundleTests(unittest.TestCase):
                 self.assertIn("$" + name, codex)
 
     def test_leader_brief_names_the_worker_skill_criteria_and_handbooks(self):
-        leader = (SUITE / "saltmode/SKILL.md").read_text()
-        for phrase in ("Every brief opens by telling the worker to run `skills show bstack-worker`", "acceptance criteria, as a closed list", "The handbooks that apply"):
+        leader = (SUITE / "xplan/SKILL.md").read_text()
+        for phrase in ("The brief opens with `skills show bstack-worker`", "acceptance criteria as a closed list", "the handbooks that apply"):
             self.assertIn(phrase, leader)
-        hosts = (SUITE / "saltmode/references/hosts.md").read_text()
-        self.assertIn("skills show bstack-worker", hosts)
-        for tool in ("delegate_task", "t3_thread_launch", "hc run"):
-            self.assertIn(tool, hosts)
-        self.assertIn("bstack-handbook/", hosts)
+
+    def test_bugfix_and_xplan_finish_under_autopilot(self):
+        autopilot = (SUITE / "autopilot/SKILL.md").resolve()
+        for name in ENTRIES:
+            with self.subTest(entry=name):
+                self.assertIn(autopilot, set(local_targets(SUITE / name / "SKILL.md")))
 
     def test_worker_report_format_is_fixed(self):
         worker = (SUITE / "bstack-worker/SKILL.md").read_text()

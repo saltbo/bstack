@@ -1,0 +1,6 @@
+interface:
+  display_name: "Xplan"
+  short_description: "Coordinate: break work into tasks, delegate, merge"
+  default_prompt: "Use $xplan for this task."
+policy:
+  allow_implicit_invocation: false

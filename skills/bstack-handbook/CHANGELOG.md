@@ -211,3 +211,87 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: Large plans were written into docs/plans in each repository and repeated in worker briefs and a trail file, while the tasks themselves already lived in docket
 - Expect: A leader plans a large change as docket tasks under the project, posts them to Saltbo as one review card, and keeps their state in the task history
 - Outcome: pending
+
+## agents@6 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: saltmode split into autopilot, bugfix, and xplan
+- Saw: The entry named saltmode, which no longer exists
+- Expect: Agents name xplan as the leader a session in another repository runs, and load autopilot, bugfix, and xplan from the store
+- Outcome: pending
+
+## skills@6 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: saltmode split into autopilot, bugfix, and xplan
+- Saw: The entry named saltmode, which no longer exists
+- Expect: Agents name xplan as the leader a session in another repository runs, and load autopilot, bugfix, and xplan from the store
+- Outcome: pending
+
+## project@4 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## planning@3 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## verification@6 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## deploy@2 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## operate@2 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## cf-workers@4 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## follow-ups@4 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## identity@5 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## build@3 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Two entries contradicted each other: 'Smallest change that meets the criteria' and 'The most correct change, not the smallest'
+- Expect: One entry: the most correct change within the criteria, with anything else as a follow-up and a refactor when the design is wrong for the task
+- Outcome: pending
+
+## agents@7 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: the three leader skills start only by hand, except autopilot for a session in another repository
+- Saw: A session in another repository was told to run xplan, so an agent started a skill the user starts by hand
+- Expect: A session in another repository is started with autopilot, carrying the goal and acceptance criteria the first leader gives it
+- Outcome: pending

@@ -1,6 +1,6 @@
 ---
 id: skills
-version: 5
+version: 6
 audience: leader, worker
 applies: all
 ---
@@ -11,7 +11,7 @@ Specialist skills are not loaded into the session. They live in a store that the
 
 ## Decisions
 
-- **Skills are stored by source and loaded on demand.** The agent's own skill directories hold only the `skill-finder` router and the few pinned skills. Everything else, saltmode and the three skills it uses included, is loaded from the store. (2026-11-15)
+- **Skills are stored by source and loaded on demand.** The agent's own skill directories hold only the `skill-finder` router and the few pinned skills. Everything else, the leader skills and the handbook and worker they use included, is loaded from the store. (2026-11-15)
 - **A tool that prints its own guide is read from the tool**, not from a skill. `ego-browser skill` and `hc --skill` are the two so far. Read the guide before the first use in a session. (2026-11-15)
 
 ## Index
