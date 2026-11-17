@@ -1,6 +1,6 @@
 ---
 id: verification
-version: 5
+version: 6
 audience: leader, worker
 applies: all
 ---
@@ -32,7 +32,7 @@ How a change is verified on its way from "built" to "merged", without the two si
 - **The leader writes the bar and the worker writes the tests.** The worker does not change a scenario's text or weaken an existing test. If one is wrong, it says so in its report and the leader decides. (2026-11-15)
 - **A leader that builds a change itself does the worker's checks.** It proves every criterion locally and on the preview, and that walk stands in for the acceptance sample. A high-risk change it built still gets the second check. (2026-11-15)
 - **The worker is exhaustive.** It proves every criterion locally, opens the PR as a draft, gets CI green, proves every criterion again on the preview, and only then marks the PR ready. Ready means exactly that, so the handoff is one visible event. (2026-11-15)
-- **The leader's acceptance is a sample and a judgment, not a code review.** It does not read the whole diff. It checks four things. The changed files stay inside the brief. Every change in behavior has its scenario, and no test, spec file, or gate setting was weakened without a stated reason. Each new API and new table follows the [openapi](openapi.md) and [design](design.md) handbooks. Every criterion has preview evidence. Then it walks the main path of the feature on the preview once, or for an API sends one or two requests, and merges. (2026-11-15)
+- **The leader's acceptance is a sample and a judgment.** It checks four things. The changed files stay inside the brief. Every change in behavior has its scenario, and no test, spec file, or gate setting was weakened without a stated reason. Each new API and new table follows the [openapi](openapi.md) and [design](design.md) handbooks. Every criterion has preview evidence. Then it walks the main path of the feature on the preview once, or for an API sends one or two requests, and merges. (2026-11-15)
 - **Code quality is held by the project's gate, not by reading.** A quality rule worth having is written as a check in CI. (2026-08-30, 2026-11-15)
 - **A new API or a new table needs no approval.** It is the one part of the code the leader reads, and the report lists each one. (2026-11-15)
 - **A project that can have a preview environment has one.** A web project can, and a Cloudflare Workers project always can. The project's `Handbook` block says where it is. A missing one is a gap, not an exemption, and for a web project the default is to build it as its own PR first. (2026-11-15)
@@ -43,13 +43,13 @@ How a change is verified on its way from "built" to "merged", without the two si
 - **Checking costs less than building.** When checking a PR has taken longer than building it, stop and rethink its size or its criteria. (2026-11-15)
 - **A browser is driven with ego-browser**, in the test profile that the user-level agent instructions name. The shared test account is already signed in there, so a sign-in needs no credentials and no human check. (2026-11-15)
 - **Proof is from a user's point of view**, through the real UI, CLI, or API with real data. It does not depend on reading the database or the source, and a timeout is never a pass. (2026-07-30)
-- **Verification is not skipped.** A blocker met while proving is investigated and fixed. A skip is allowed only after several different attempts, and the report names what was skipped, why, and the evidence. (2026-05-05)
+- **Verification runs to the end.** A blocker met while proving is investigated and fixed. Only after several different attempts may a check be skipped, and the report names what was skipped, why, and the evidence. (2026-05-05)
 - **Normal flows.** Extreme edge cases are not part of acceptance unless the criteria name them. (2026-09-05)
 - **A bug fix shows red, then green.** The report carries the new test's failing output before the fix and its passing output after. (2026-06-06)
 - **The leader does the final acceptance of a whole program itself**, against real upstream services, not fakes. (2026-07-07, 2026-11-15)
-- **Saltbo is not the tester.** Work is not handed back for him to try. (repeated since 2026-05)
+- **The agent does the testing.** Work reaches him already proved. (repeated since 2026-05)
 - **Live check.** After a deploy, exercise the changed behavior on the live system once, per [deploy](deploy.md). A failure is handled per [operate](operate.md) and never reopens the PR. (2026-11-15)
-- **A change to what users see does not wait for him.** Day-to-day UI and UX work follows the product's standard and style, and the PR carries screenshots. (2026-11-15)
+- **A change to what users see goes ahead without him.** Day-to-day UI and UX work follows the product's standard and style, and the PR carries screenshots. (2026-11-15)
 
 ## Defaults
 

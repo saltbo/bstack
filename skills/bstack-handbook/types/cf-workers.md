@@ -1,6 +1,6 @@
 ---
 id: cf-workers
-version: 3
+version: 4
 audience: leader, worker
 applies: projects that declare this type
 ---
@@ -11,7 +11,7 @@ Typical stack: Hono on Workers, D1, a React SPA. A project of this type follows 
 
 ## Decisions
 
-- **Tests run on GitHub Actions. Deploys run on Cloudflare Workers Builds.** GitHub Actions runs the project's gate on every push. Workers Builds, connected to the repository, deploys the production branch and creates a preview for every other branch. GitHub Actions does not deploy. Where [verification](../lifecycle/verification.md) says CI is green, both have passed on the commit.
+- **Tests run on GitHub Actions. Deploys run on Cloudflare Workers Builds.** GitHub Actions runs the project's gate on every push. Workers Builds, connected to the repository, deploys the production branch and creates a preview for every other branch. Where [verification](../lifecycle/verification.md) says CI is green, both have passed on the commit.
 - **Every project of this type has a preview for each PR.** Workers Builds produces it with its preview command, `npx wrangler preview`, and reports the address on the PR. Preview proof and the leader's sample run there.
 - **Preview code is per branch. Preview data is shared.** A project with a database has one preview D1 database, separate from production, that every branch's preview uses. It works as the pre-release database. A project without a database needs nothing more than the per-branch preview.
 - **A push to the production branch deploys.** Agents push and re-check, and do not run a manual deploy. A D1 migration needed by a release is applied as part of it. (repeated, 2026-06-26, 2026-06-02)

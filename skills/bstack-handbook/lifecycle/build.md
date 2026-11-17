@@ -1,6 +1,6 @@
 ---
 id: build
-version: 2
+version: 3
 audience: worker
 applies: all
 ---
@@ -12,8 +12,7 @@ applies: all
 - **Analyzing a bug and fixing a bug are different jobs.** An analysis ends in a diagnosis with evidence and changes no product code. A fix starts from a reproduction and ends with that reproduction passing.
 - **Reproduce before changing anything.** Keep the command. It is the first acceptance criterion of the fix.
 - **Fix the cause.** When two fixes built on the same belief have failed, test the belief before writing a third.
-- **Smallest change that meets the criteria.** Anything else noticed on the way is a follow-up.
-- **The most correct change, not the smallest.** When the existing design is wrong for the task, refactor it instead of stacking on top. A mechanical move is not a refactor. (repeated, 2026-06 to 2026-09)
+- **The most correct change within the criteria.** Anything else noticed on the way is a follow-up. When the existing design is wrong for the task, refactor it instead of stacking on top. A refactor changes the design, and a mechanical move leaves it as it was. (repeated, 2026-06 to 2026-09)
 - **No fallbacks.** One stable path, and a loud error when it fails. Do not hide a gap behind a default or a second attempt. (repeated, 2026-01 to 2026-08)
 - **When code the task touches disagrees with the handbook, the stage decides.** In a development project, bring that code into line as part of the task and keep nothing of the old shape. In a live project, keep the existing shape for this task and file an issue so the migration is planned. A new piece is never written to match an old piece the handbook says is wrong. (2026-11-15)
 - **Compatibility follows the project's stage.** In a development project, write none and delete the old path. In a live project, it is owed only to a released version that real users depend on, and it lives in one place that is easy to delete. (repeated, 2026-07-30, 2026-08-02)

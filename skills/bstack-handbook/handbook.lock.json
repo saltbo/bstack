@@ -12,20 +12,20 @@
     "hash": "93b3231c6a530a03"
   },
   "build": {
-    "version": 2,
-    "hash": "0fab2db15e7ea5e6"
+    "version": 3,
+    "hash": "3f10052053543085"
   },
   "cf-workers": {
-    "version": 3,
-    "hash": "907faf34160f14e0"
+    "version": 4,
+    "hash": "e6f1bd5d1f8eabba"
   },
   "client-app": {
     "version": 1,
     "hash": "18b27d7d03778e4f"
   },
   "deploy": {
-    "version": 1,
-    "hash": "4214cec8153c3db5"
+    "version": 2,
+    "hash": "c2d56a0af64c0fbb"
   },
   "design": {
     "version": 2,
@@ -36,8 +36,8 @@
     "hash": "49b23d6612780012"
   },
   "follow-ups": {
-    "version": 3,
-    "hash": "689d4d7217f5490b"
+    "version": 4,
+    "hash": "053d727d53c9518c"
   },
   "frontend": {
     "version": 1,
@@ -48,24 +48,24 @@
     "hash": "bd17312cf5c538d4"
   },
   "identity": {
-    "version": 4,
-    "hash": "a064e3b3f08a3f95"
+    "version": 5,
+    "hash": "c28dadfcd8c2b7b2"
   },
   "openapi": {
     "version": 3,
     "hash": "b679f498b2c2275c"
   },
   "operate": {
-    "version": 1,
-    "hash": "c2476205a64046eb"
+    "version": 2,
+    "hash": "d012bbc9544c9a74"
   },
   "planning": {
-    "version": 1,
-    "hash": "c5722076656c7d6b"
+    "version": 2,
+    "hash": "d3e1a2968fc61857"
   },
   "project": {
-    "version": 3,
-    "hash": "55b02a9f5127e800"
+    "version": 4,
+    "hash": "d46a9701217a8d59"
   },
   "pull-requests": {
     "version": 3,
@@ -92,8 +92,8 @@
     "hash": "5774a16a305900c9"
   },
   "verification": {
-    "version": 5,
-    "hash": "c65dee46dd750dd6"
+    "version": 6,
+    "hash": "de41d71be6411d0a"
   },
   "versioning": {
     "version": 1,

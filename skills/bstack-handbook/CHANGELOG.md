@@ -218,3 +218,66 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The entry named saltmode, which no longer exists
 - Expect: Agents name xplan as the leader a session in another repository runs, and load autopilot, bugfix, and xplan from the store
 - Outcome: pending
+
+## project@4 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## planning@2 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## verification@6 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## deploy@2 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## operate@2 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## cf-workers@4 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## follow-ups@4 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## identity@5 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Entries stated a rule, then corrected or restated it with a negative sentence
+- Expect: Each entry states what holds, once and positively, with its meaning unchanged
+- Outcome: pending
+
+## build@3 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: asked that every description be stated positively
+- Saw: Two entries contradicted each other: 'Smallest change that meets the criteria' and 'The most correct change, not the smallest'
+- Expect: One entry: the most correct change within the criteria, with anything else as a follow-up and a refactor when the design is wrong for the task
+- Outcome: pending

@@ -7,7 +7,7 @@ and Pi.
 | Part | Role |
 | --- | --- |
 | `bstack-handbook` | Versioned decisions by lifecycle stage and project type, plus an index of specialist skills. Agents look here before asking him |
-| `autopilot` | Hand-over. Sent in the middle of a session, it takes the work under way to merged: commit, PR, proof, acceptance, merge, report. It dispatches no one |
+| `autopilot` | Hand-over. Sent in the middle of a session, it takes the work under way to merged: commit, PR, proof, acceptance, merge, report. It builds the change itself |
 | `bugfix` | One bug. The agent reproduces it and fixes the cause itself, then finishes under autopilot |
 | `xplan` | Leader for a feature, a version, or a program of PRs. It settles the target with him, plans, dispatches workers, and merges each PR under autopilot |
 | `bstack-worker` | Worker. The xplan leader names it in every brief. It fixes how one change is built or verified and how it is reported |
@@ -16,8 +16,8 @@ and Pi.
 ## Design
 
 Current models plan, decompose, and verify well without being told how. So this
-system does not teach method. It records what an agent cannot work out by itself,
-which is what Saltbo has already decided, and it keeps that record versioned so a
+system records only what an agent cannot work out by itself, which is what
+Saltbo has already decided, and it keeps that record versioned so a
 behavior can be traced to the text that produced it. Each handbook is one flat
 file of dated decisions.
 
@@ -25,8 +25,8 @@ file of dated decisions.
   from with a stated reason, or an open question with the default to use until
   he answers.
 - Every PR and every worker report names the handbooks it followed as `id@version`.
-- A leader or worker never edits a handbook during a task. The keeper revises it
-  afterwards, and each revision records what was seen and what should change.
+- The keeper revises a handbook after the work, and each revision records what
+  was seen and what should change. A task runs on one version throughout.
 - A project declares its type and its facts. The rules stay here.
 
 ## Install

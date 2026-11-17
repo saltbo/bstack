@@ -4,7 +4,7 @@ Saltbo's working system for coding agents. It is a handbook of his standing deci
 
 ## What this repository is for
 
-It solves one problem. An agent that is unsure what it should do looks here and finds what it should do. It does not teach an agent how to do anything, because the agent already knows how.
+It solves one problem. An agent that is unsure what it should do looks here and finds what it should do. How to do it is left to the agent, which already knows.
 
 ## How the text is written
 
@@ -12,7 +12,7 @@ Everything under `skills/` and `.agents/skills/` gives information and goals.
 
 - Information is what an agent cannot work out by itself. That is what Saltbo has decided and why, facts about his environment, who holds which role, and the process the work moves through, meaning who hands what to whom and when something counts as done. A process is information, and it stays.
 - A goal is the result that has to hold, such as "nothing of the PR is left behind after a merge".
-- Execution does not belong. That is which command to run, with which flags, in which order. Name a tool when the choice of tool is itself a decision, or a fact the agent could not guess. Do not write how to call it.
+- Execution is left to the agent. That is which command to run, with which flags, in which order. A tool is named when the choice of tool is itself a decision, or a fact the agent could not guess, and how to call it is left to the agent.
 - A rule carries its reason where the reason is not obvious, so an agent can judge a case the rule did not foresee.
 - When an agent got something wrong, ask first whether the text caused it. If the goal was already stated, the text is not at fault and gets no new line.
 - Write plain sentences, without emphasis in capitals. The line budgets in `tests/test_bundle.py` keep every file small. Raise one only with a reason.
@@ -32,7 +32,7 @@ Everything under `skills/` and `.agents/skills/` gives information and goals.
 
 ## How it is maintained
 
-- A leader or a worker never changes a handbook or a skill during a task. Changes are made here, afterwards, by the keeper, from evidence of what the text made an agent do.
+- Handbooks and skills are changed here, after the work, by the keeper, from evidence of what the text made an agent do.
 - A handbook entry is a Decision, a Default, or an Open question. Nothing becomes a Decision until Saltbo has confirmed it as a standing one. A handbook marked `owner-only` is changed only by him.
 - Every change to a handbook raises its version through `skills/bstack-handbook/scripts/handbook.py`, which also keeps the index, the lock, and the changelog. The skills carry no version, and the commit records a change to one.
 - The issue tracker takes only problems with the text of a handbook or a skill. A defect in a product or a tool is filed with that product.

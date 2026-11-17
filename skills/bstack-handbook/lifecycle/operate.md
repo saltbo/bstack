@@ -1,6 +1,6 @@
 ---
 id: operate
-version: 1
+version: 2
 audience: leader
 applies: all
 ---
@@ -11,7 +11,7 @@ applies: all
 
 - **A failed deploy is repaired without asking**, by the rule for the project's stage below, and reported.
 - **In a live project, roll back first, and keep the evidence.** Before rolling back, save whatever the investigation needs and a rollback would destroy, such as logs or a snapshot of the affected data. If it will still be there afterwards, roll back at once. Then find the root cause. (2026-11-15)
-- **In a development project, there is no need to roll back first.** Go straight to the root cause. (2026-11-15)
+- **In a development project, go straight to the root cause.** (2026-11-15)
 - **Find the cause, not a way around it.** Rolling back a suspect dependency upgrade to test it is fine. Rewriting around the problem is not. (2026-06-02)
 - **Live data is migrated, not accommodated.** No compatibility or mapping logic in code. A one-off data fix is a throwaway script run against the database, kept out of the product code. (repeated, 2026-08-21, 2026-09-03)
 - **Migrations stay simple and run directly**, without downtime windows. Migrations that never shipped are squashed into one. A project not yet launched needs none. (2026-08-06, 2026-06-07)

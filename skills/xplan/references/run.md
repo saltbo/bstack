@@ -23,7 +23,7 @@ Keep a trail file next to the plan, outside your context. Add one line per decis
 - Workers wake you when they finish, so you rarely need a timer. Set a recurring check only for work that cannot notify you, such as a separate thread or CI on a host without events. Run it no more often than every thirty minutes and cancel it when the program ends.
 - A check judges progress by side effects, such as pushes, PR state, and trail lines, not by what an agent says about itself. Replace an agent that has produced nothing since the last check and is not waiting on you.
 - Message the user only when something changed worth knowing, such as a merge, a decision made on the user's behalf, a blocker, or a change of plan. Otherwise stay quiet.
-- A usage-limit error is not a failure of the work. Do not replace the agents it stopped. Note in the trail where each stood, and resume from their side effects after the limit resets.
+- A usage-limit error pauses the work. Keep the agents it stopped, note in the trail where each stood, and resume from their side effects after the limit resets.
 
 ## Finish
 

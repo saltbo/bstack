@@ -1,6 +1,6 @@
 ---
 id: identity
-version: 4
+version: 5
 audience: leader, worker
 applies: all
 ---
@@ -14,7 +14,7 @@ applies: all
 - **Realmroot first, then his account.** When Realmroot has no integration for a service, use his developer account without asking and say so in the report. (2026-09-07)
 - **Agents hold only short-lived tokens.** A grant may persist. The token does not. (2026-08-03)
 - **Use the CLI access that exists**, such as `wrangler` and `gh`, instead of asking him for a token or a login. (2026-05-05)
-- **Sign-in checks use the shared test account at user level.** It exists already and the user-level agent instructions say where its credentials are. An agent does not create an account for a project. A separate account is made only when a test needs a specific identity, such as a paid plan or an admin role, and then its password is in a local env file noted in the project's instructions, never in source code. (2026-11-15, replacing the per-app rule of 2026-09-24)
+- **Sign-in checks use the shared test account at user level.** It exists already and the user-level agent instructions say where its credentials are. A separate account is made only when a test needs a specific identity, such as a paid plan or an admin role, and then its password is in a local env file noted in the project's instructions, never in source code. (2026-11-15, replacing the per-app rule of 2026-09-24)
 - **An agent may complete a sign-in or approve its own access request in his logged-in browser** when the task needs it, unless he is testing that approval flow himself. (2026-09-05, 2026-11-15)
 
 ## Open

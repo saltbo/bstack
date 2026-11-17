@@ -15,7 +15,7 @@ The goal is working software merged, with evidence, in as few turns from the use
 
 ## The target
 
-What a feature does, what a version contains, and how a product looks are the user's calls, per [planning](../bstack-handbook/lifecycle/planning.md). Show only the target, such as the menu, the API list, or the command set, with every open question at once and a recommended default for each. A new feature waits for confirmation, and once the target is approved it is built exactly. Engineering choices are not put to the user. When the target is already settled, because it was given or approved in the issue, do not ask again.
+What a feature does, what a version contains, and how a product looks are the user's calls, per [planning](../bstack-handbook/lifecycle/planning.md). Show only the target, such as the menu, the API list, or the command set, with every open question at once and a recommended default for each. A new feature waits for confirmation, and once the target is approved it is built exactly. Engineering choices are yours. A target the user already gave or approved in the issue is settled.
 
 ## The plan
 
@@ -23,7 +23,7 @@ Read the handbooks autopilot's Start names. Then write a short plan, one screen 
 
 Each point below is here because the opposite has stalled a real program.
 
-- The first PR is the end-to-end slice that planning asks for, on the real surface, not the platform or the foundation. A foundation built before anything uses it grows without limit, and everything else queues behind it.
+- The first PR is the end-to-end slice that planning asks for, on the real surface. The platform and foundation grow inside the slices that use them, because a foundation built first grows without limit while everything else queues behind it.
 - PRs are cut by feature or module, each one something a single worker can build and verify with full context.
 - A requirement that cuts across the product, such as an auth model, enters each PR as that PR first needs it. Decide the target design up front and build it incrementally.
 - After the first PR merges, at least two PRs can proceed independently. If the graph is a single chain, look for a cut.
@@ -49,6 +49,6 @@ Wait for a worker you depend on. Do not end your turn while its result is still 
 
 ## Accept and merge under autopilot
 
-When a worker marks its PR ready, apply [verification](../bstack-handbook/lifecycle/verification.md). You make the leader's acceptance checks and its sample against the criteria in your brief, without reviewing the code line by line. A PR that passes is merged and closed out as [autopilot](../autopilot/SKILL.md) requires, and the program ends with autopilot's report, against the plan's goal. Do not add commits to a ready PR, because each one sends it through CI again.
+When a worker marks its PR ready, apply [verification](../bstack-handbook/lifecycle/verification.md). You make the leader's acceptance checks and its sample against the criteria in your brief. A PR that passes is merged and closed out as [autopilot](../autopilot/SKILL.md) requires, and the program ends with autopilot's report, against the plan's goal. Do not add commits to a ready PR, because each one sends it through CI again.
 
 Do not edit the handbook or these skills during a task. Project instructions in `AGENTS.md` outrank this file wherever they are more specific.

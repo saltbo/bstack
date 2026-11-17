@@ -12,13 +12,13 @@ disable-model-invocation: true
 
 The user has been working with you in this session and now hands the rest over. Without this skill you would stop once the work runs locally and wait. With it you carry the change to merged and proved without another turn from the user, who reads the result later. What has already been decided is in the [handbook](../bstack-handbook/SKILL.md).
 
-You build and you judge your own work. You do not dispatch workers. Splitting work across agents belongs to [xplan](../xplan/SKILL.md).
+You build the change and judge it yourself. The one other agent you may start is the verifier a high-risk change gets. Work that is split across workers runs under [xplan](../xplan/SKILL.md).
 
 ## What it covers
 
-The change this conversation agreed on, or the one [bugfix](../bugfix/SKILL.md) or xplan handed you. Nothing is added to it. Something you notice outside it is a follow-up, per [follow-ups](../bstack-handbook/policies/follow-ups.md). When a question that [planning](../bstack-handbook/lifecycle/planning.md) reserves for the user is still open, ask it once with your recommended default, and finish everything that does not depend on the answer.
+The change this conversation agreed on, or the one [bugfix](../bugfix/SKILL.md) or xplan handed you, with its scope as agreed. Something you notice outside it is a follow-up, per [follow-ups](../bstack-handbook/policies/follow-ups.md). When a question that [planning](../bstack-handbook/lifecycle/planning.md) reserves for the user is still open, ask it once with your recommended default, and finish everything that does not depend on the answer.
 
-The failure this skill exists to prevent is process outgrowing the work. When a step of your own method, or a handbook Default, would cost more than the risk it removes, skip it and say so in one line. That freedom does not reach the handbook's Decisions, which are followed as written.
+The failure this skill exists to prevent is process outgrowing the work. When a step of your own method, or a handbook Default, would cost more than the risk it removes, skip it and say so in one line. The handbook's Decisions are followed as written.
 
 ## Start
 
@@ -35,7 +35,7 @@ The failure this skill exists to prevent is process outgrowing the work. When a 
 - The PR is merged, per authority, and the forge says so. Nothing of it is left behind. Where the merge deploys, the changed behavior has been checked live once.
 - An architecture decision the work settled, or a project fact later work needs, is recorded after the merge as a direct change, per the [project](../bstack-handbook/lifecycle/project.md) handbook. What did not block is filed as a follow-up.
 
-A blocker is investigated and fixed, not worked around. After two real attempts at the same obstacle, stop and report it with what you tried.
+A blocker is investigated and its cause fixed. After two real attempts at the same obstacle, stop and report it with what you tried.
 
 ## Before you ask
 
