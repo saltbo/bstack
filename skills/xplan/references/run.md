@@ -1,27 +1,10 @@
-# Programs
+# Running a program
 
-Use this when the work needs several PRs or he will be away while it runs. The aim is a steady sequence of merged PRs, each proved, with the first one merged early.
-
-## Plan
-
-Write a short plan, one screen if you can, in the project's `docs/plans/`. It holds three things.
-
-- The goal, and what he will be able to do at the end.
-- The PRs in order. Each gets its acceptance criteria, as scenarios in `spec/`, meaning what a user can see or do after it merges and how that will be shown.
-- Which PRs depend on which.
-
-Shape the plan as follows. Each point is here because the opposite has stalled a real program.
-
-- The first PR is the end-to-end slice that [planning](../../bstack-handbook/lifecycle/planning.md) asks for, on the real surface. It is not the platform or the foundation. A foundation built before anything uses it grows without limit, and everything else queues behind it.
-- A requirement that cuts across the product, such as an auth model or a compliance checklist, enters each PR as that PR first needs it. Decide the target design up front and build it incrementally.
-- After the first PR merges, at least two PRs can proceed independently. If the graph is a single chain, look for a cut.
-- Work that only he can do, such as approving a registration in his own account, sits at the end and off the path of everything else.
-
-Post the plan together with any question only he can answer, then begin. He can redirect while you work. Wait for a go only when he asked for a plan and nothing else.
+Use this when the work needs several PRs or he will be away while it runs. The aim is a steady sequence of merged PRs, each proved, with the first one merged early. The plan the run follows is the one in the project's `docs/plans/`, and each merge goes through [autopilot](../../autopilot/SKILL.md).
 
 ## Run
 
-You coordinate. Each PR has one worker, dispatched per the Workers section of the skill and working in its own worktree, so your context stays small. The worker builds, proves the change locally and on the preview, and marks its PR ready. Then you apply the verification handbook to its report and merge.
+You coordinate. Each PR has one worker, dispatched per the Workers section of [xplan](../SKILL.md) and working in its own worktree, so your context stays small. The worker builds, proves the change locally and on the preview, and marks its PR ready. Then you apply the verification handbook to its report and merge.
 
 - Take the first PR all the way to merged before you dispatch others. It tests the plan, your brief, and the project's gates at the cost of one PR.
 - Run independent PRs in parallel, within the host's limits. A dependent PR waits for its parent to merge and then branches from trunk. Avoid stacks. When one is unavoidable, keep it two PRs deep.

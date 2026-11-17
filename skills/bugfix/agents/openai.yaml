@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bugfix"
+  short_description: "Fix one bug, then finish under autopilot"
+  default_prompt: "Use $bugfix for this task."
+policy:
+  allow_implicit_invocation: false

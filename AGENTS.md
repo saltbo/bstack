@@ -22,7 +22,9 @@ Everything under `skills/` and `.agents/skills/` gives information and goals.
 | Path | Holds |
 | --- | --- |
 | `skills/bstack-handbook/` | The handbook. Installed on his machines |
-| `skills/saltmode/` | The leader skill. Installed |
+| `skills/autopilot/` | Takes work already under way in a session to merged and proved. Installed |
+| `skills/bugfix/` | Fixes one bug, then finishes under autopilot. Installed |
+| `skills/xplan/` | The leader skill for a feature or a program. It plans and dispatches workers, and merges under autopilot. Installed |
 | `skills/bstack-worker/` | The worker skill. Installed |
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | The keeper skill. It serves this repository only and is installed nowhere else |
 | [docs/evaluation.md](docs/evaluation.md) | How the skills behaved in real sessions |
@@ -40,6 +42,6 @@ Everything under `skills/` and `.agents/skills/` gives information and goals.
 
 Types: none. This is a repository of text and matches no type handbook
 Stage: live
-Facts: installed on Saltbo's machine from this checkout by the `skills` command of bbox. saltmode is pinned, and the pin points at this working tree, so the branch checked out here is the saltmode that runs
+Facts: installed on Saltbo's machine from this checkout by the `skills` command of bbox. autopilot, bugfix, and xplan are pinned, and the pins point at this working tree, so the branch checked out here is the leader that runs
 Preview: none. Nothing is deployed
 Exceptions: none

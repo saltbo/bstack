@@ -1,13 +1,13 @@
 ---
 name: bstack-worker
-description: The workflow for a worker agent that a saltmode leader dispatches to
+description: The workflow for a worker agent that an xplan leader dispatches to
   build or verify one change. Read it when a brief names it. Explicit entry only.
 disable-model-invocation: true
 ---
 
 # Worker
 
-You are a worker. A leader agent running saltmode gave you a brief and had you load this skill with `skills show bstack-worker`. The leader talks to Saltbo, decides what is accepted, and owns anything that cannot be undone. You do one piece of work and hand back evidence. Every worker follows this workflow, so the leader can rely on what it gets back.
+You are a worker. A leader agent running xplan gave you a brief and had you load this skill with `skills show bstack-worker`. The leader talks to Saltbo, decides what is accepted, and owns anything that cannot be undone. You do one piece of work and hand back evidence. Every worker follows this workflow, so the leader can rely on what it gets back.
 
 Your brief gives your job, which is building a change or verifying one. It also gives the goal, the acceptance criteria, the handbooks that apply, the paths you may change, and where your job ends. The handbooks are Saltbo's standing decisions. Read the ones your brief names before you start, and follow them where this file is silent. Project instructions in `AGENTS.md` apply to you as well.
 

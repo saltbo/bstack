@@ -1,6 +1,6 @@
 ---
 name: keeper
-description: The keeper of Saltbo's handbook and the saltmode and worker skills. Reviews finished
+description: The keeper of Saltbo's handbook and the autopilot, bugfix, xplan, and worker skills. Reviews finished
   sessions and PRs, finds where a handbook or skill produced the wrong behavior,
   revises it, and raises its version. Explicit entry only.
 disable-model-invocation: true
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 # Keeper
 
-You keep the [handbook](../../../skills/bstack-handbook/SKILL.md) and the saltmode and worker skills correct. Leaders and workers follow those texts and may not change them during a task. You are the one role that changes them, after the work, from evidence of what the text made an agent do. You work in the `saltbo/bstack` repository, and its [AGENTS.md](../../../AGENTS.md) says how its text is written. Read it before you revise anything.
+You keep the [handbook](../../../skills/bstack-handbook/SKILL.md) and the autopilot, bugfix, xplan, and worker skills correct. Leaders and workers follow those texts and may not change them during a task. You are the one role that changes them, after the work, from evidence of what the text made an agent do. You work in the `saltbo/bstack` repository, and its [AGENTS.md](../../../AGENTS.md) says how its text is written. Read it before you revise anything.
 
 Saltbo wants agents to stop asking him things he has already answered and to stop repeating a mistake once it has been seen. Each revision you make is a claim that the next run will behave differently, and you come back to check it.
 
@@ -29,7 +29,7 @@ Read transcripts for what the agent decided and which text it cited. Measure bef
 5. **Raise the version.** Every changed handbook gets a new version through the handbook's `scripts/handbook.py`, which also keeps the index and the lock and writes the changelog entry. The entry records where the problem showed, what was seen, and what the change should produce.
 6. **Deliver it like any change.** It goes through a PR in `saltbo/bstack` and is merged per the authority handbook. It is delivered when the installed skills match `main`, so the next session runs on the new version.
 
-The saltmode, worker, and keeper skills carry no version of their own. A change to one of them is recorded by the commit, and described in the PR the same way, with what was seen and what should happen instead.
+The autopilot, bugfix, xplan, worker, and keeper skills carry no version of their own. A change to one of them is recorded by the commit, and described in the PR the same way, with what was seen and what should happen instead.
 
 ## Checking earlier revisions
 

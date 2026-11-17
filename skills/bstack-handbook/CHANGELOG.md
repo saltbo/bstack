@@ -204,3 +204,17 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The API handbook was named api.
 - Expect: It is named openapi, with its version carried over as openapi@3, and this handbook links to it under that name.
 - Outcome: pending
+
+## agents@6 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: saltmode split into autopilot, bugfix, and xplan
+- Saw: The entry named saltmode, which no longer exists
+- Expect: Agents name xplan as the leader a session in another repository runs, and load autopilot, bugfix, and xplan from the store
+- Outcome: pending
+
+## skills@6 (2026-11-17)
+
+- Source: Saltbo, 2026-11-17: saltmode split into autopilot, bugfix, and xplan
+- Saw: The entry named saltmode, which no longer exists
+- Expect: Agents name xplan as the leader a session in another repository runs, and load autopilot, bugfix, and xplan from the store
+- Outcome: pending

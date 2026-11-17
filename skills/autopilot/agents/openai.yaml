@@ -1,0 +1,6 @@
+interface:
+  display_name: "Autopilot"
+  short_description: "Hand over the work under way: PR, proof, merge"
+  default_prompt: "Use $autopilot for this task."
+policy:
+  allow_implicit_invocation: false

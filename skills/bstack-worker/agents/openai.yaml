@@ -1,6 +1,6 @@
 interface:
   display_name: "Worker"
-  short_description: "Workflow for a worker dispatched by a saltmode leader"
+  short_description: "Workflow for a worker dispatched by an xplan leader"
   default_prompt: "Use $bstack-worker for this brief."
 policy:
   allow_implicit_invocation: false

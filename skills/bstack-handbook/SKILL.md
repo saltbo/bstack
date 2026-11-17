@@ -2,7 +2,7 @@
 name: bstack-handbook
 description: Saltbo's handbook. Versioned decisions that agents follow instead of
   asking him, by lifecycle stage and project type, with an index of specialist
-  skills. Read by saltmode, worker, and keeper. Explicit entry only.
+  skills. Read by autopilot, bugfix, xplan, worker, and keeper. Explicit entry only.
 disable-model-invocation: true
 ---
 
@@ -53,8 +53,8 @@ Do not edit a handbook during a task. A task runs on one version from start to f
 | [identity](policies/identity.md) | 4 | leader, worker | all |
 | [reporting](policies/reporting.md) | 1 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 3 | leader, worker | all |
-| [skills](policies/skills.md) | 5 | leader, worker | all |
-| [agents](policies/agents.md) | 5 | leader | all |
+| [skills](policies/skills.md) | 6 | leader, worker | all |
+| [agents](policies/agents.md) | 6 | leader | all |
 <!-- index:end -->
 
 ## What a project declares

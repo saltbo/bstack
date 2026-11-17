@@ -1,0 +1,6 @@
+interface:
+  display_name: "Xplan"
+  short_description: "Leader for a feature or program: plan, dispatch, merge"
+  default_prompt: "Use $xplan for this task."
+policy:
+  allow_implicit_invocation: false

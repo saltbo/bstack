@@ -1,14 +1,16 @@
 # bstack
 
 Saltbo's working system for coding agents. It has a handbook of his standing
-decisions and three explicit skills, one per role. Two of them are installed, and the keeper stays in this repository. It runs on Claude Code, Codex,
+decisions and explicit skills for three roles. The leader and worker skills are installed, and the keeper stays in this repository. It runs on Claude Code, Codex,
 and Pi.
 
 | Part | Role |
 | --- | --- |
 | `bstack-handbook` | Versioned decisions by lifecycle stage and project type, plus an index of specialist skills. Agents look here before asking him |
-| `saltmode` | Leader. Saltbo invokes it. It talks to him, dispatches workers, accepts their work, and merges |
-| `bstack-worker` | Worker. The leader names it in every brief. It fixes how one change is built or verified and how it is reported |
+| `autopilot` | Hand-over. Sent in the middle of a session, it takes the work under way to merged: commit, PR, proof, acceptance, merge, report. It dispatches no one |
+| `bugfix` | One bug. The agent reproduces it and fixes the cause itself, then finishes under autopilot |
+| `xplan` | Leader for a feature, a version, or a program of PRs. It settles the target with him, plans, dispatches workers, and merges each PR under autopilot |
+| `bstack-worker` | Worker. The xplan leader names it in every brief. It fixes how one change is built or verified and how it is reported |
 | `keeper` | Keeper, for this repository only. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
 
 ## Design
@@ -40,10 +42,12 @@ agent scans, so nothing is loaded until it is asked for. Pi needs
 
 ## Use
 
-Every skill is explicit-only. Tell the agent to load the leader for work.
+Every skill is explicit-only. Tell the agent to load the entry that fits the work.
 
 ```
-Run `skills show saltmode` and work under it. Fix this regression.
+Run `skills show bugfix` and work under it. Fix this regression.
+Run `skills show xplan` and work under it. Add export to CSV.
+Run `skills show autopilot` and finish this.
 ```
 
 The keeper reviews how the work went and revises the text. It is a project skill
@@ -51,8 +55,8 @@ of this repository, in `.agents/skills/keeper`, so it is entered from a session
 here. [AGENTS.md](AGENTS.md) says what the repository is for and how its text is
 written.
 
-`skills pin saltmode` exposes the leader natively, so it can also be entered as
-`/saltmode` in Claude Code and Pi, or `$saltmode` in Codex.
+`skills pin autopilot bugfix xplan` exposes them natively, so they can also be entered as
+`/autopilot` in Claude Code and Pi, or `$autopilot` in Codex.
 
 ## Layout
 
@@ -63,7 +67,9 @@ written.
 | [bstack-handbook/types/](skills/bstack-handbook/types) | One file per kind of project: Cloudflare Workers app, client app, Go tool, self-hosted service |
 | [bstack-handbook/policies/](skills/bstack-handbook/policies) | Policies that apply to every task: authority, identity, resources, pull requests, follow-ups, reporting, agents, and the index of specialist skills |
 | [bstack-handbook/CHANGELOG.md](skills/bstack-handbook/CHANGELOG.md) | Every revision, with what was seen and what it should change |
-| [saltmode/](skills/saltmode/SKILL.md) | Leader skill, with [program](skills/saltmode/references/program.md) and [hosts](skills/saltmode/references/hosts.md) |
+| [autopilot/](skills/autopilot/SKILL.md) | Hand-over skill, from built to merged |
+| [bugfix/](skills/bugfix/SKILL.md) | Bug skill |
+| [xplan/](skills/xplan/SKILL.md) | Leader skill, with [run](skills/xplan/references/run.md) and [hosts](skills/xplan/references/hosts.md) |
 | [bstack-worker/](skills/bstack-worker/SKILL.md) | Worker skill |
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | Keeper skill, for this repository only |
 | [AGENTS.md](AGENTS.md) | What the repository is for, how its text is written, and how it is maintained |
