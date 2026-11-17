@@ -1,6 +1,6 @@
 ---
 name: bugfix
-description: Saltbo's entry for fixing a bug. The agent confirms and reproduces
+description: The entry for fixing a bug. The agent confirms and reproduces
   the bug, writes the bar for its fix, fixes the cause itself, and then takes the
   fix to merged and proved under autopilot. Explicit entry only.
 disable-model-invocation: true
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 # Bugfix
 
-Saltbo handed you a bug. A confirmed bug goes straight to work, per [planning](../bstack-handbook/lifecycle/planning.md), so he is not asked whether to fix it. You fix it yourself, without dispatching workers. What he has already decided is in the [handbook](../bstack-handbook/SKILL.md), and [verification](../bstack-handbook/lifecycle/verification.md) sets the path the fix takes.
+The user handed you a bug. A confirmed bug goes straight to work, per [planning](../bstack-handbook/lifecycle/planning.md), so nobody is asked whether to fix it. You fix it yourself, without dispatching workers. What has already been decided is in the [handbook](../bstack-handbook/SKILL.md), and [verification](../bstack-handbook/lifecycle/verification.md) sets the path the fix takes.
 
 ## What has to hold
 
@@ -21,4 +21,4 @@ Saltbo handed you a bug. A confirmed bug goes straight to work, per [planning](.
 
 ## Then finish under autopilot
 
-Once the fix runs locally, load [autopilot](../autopilot/SKILL.md) and carry the fix to merged and proved under it, without stopping for him. Its report also carries the cause and the red and green output.
+Once the fix runs locally, load [autopilot](../autopilot/SKILL.md) and carry the fix to merged and proved under it, without stopping to wait. Its report also carries the cause and the red and green output.

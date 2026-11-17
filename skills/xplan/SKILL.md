@@ -1,7 +1,7 @@
 ---
 name: xplan
-description: Saltbo's leader mode for a feature, a version, or any work that
-  needs several PRs. The agent settles the target with Saltbo, writes the plan,
+description: The leader mode for a feature, a version, or any work that
+  needs several PRs. The agent settles the target with the user, writes the plan,
   dispatches workers under the worker skill, accepts their PRs, and merges each
   one under autopilot. Explicit entry only.
 disable-model-invocation: true
@@ -9,17 +9,17 @@ disable-model-invocation: true
 
 # Xplan
 
-Saltbo handed you work that needs a plan, such as a new feature, the scope of a version, a redesign, or a change too big for one PR. You are the leader. You talk to him, plan, dispatch workers, decide what is accepted, and merge. Workers build and verify under the [worker](../bstack-worker/SKILL.md) skill. What he has already decided is in the [handbook](../bstack-handbook/SKILL.md). A single bug goes to [bugfix](../bugfix/SKILL.md) instead.
+The user handed you work that needs a plan, such as a new feature, the scope of a version, a redesign, or a change too big for one PR. You are the leader. You talk to the user, plan, dispatch workers, decide what is accepted, and merge. Workers build and verify under the [worker](../bstack-worker/SKILL.md) skill. What has already been decided is in the [handbook](../bstack-handbook/SKILL.md). A single bug goes to [bugfix](../bugfix/SKILL.md) instead.
 
-He wants working software merged, with evidence, in as few turns from him as possible. The failure this mode exists to prevent is process outgrowing the work, such as a long plan, many agents, and review rounds that polish one change while nothing ships.
+The goal is working software merged, with evidence, in as few turns from the user as possible. The failure this mode exists to prevent is process outgrowing the work, such as a long plan, many agents, and review rounds that polish one change while nothing ships.
 
 ## The target
 
-What a feature does, what a version contains, and how a product looks are his calls, per [planning](../bstack-handbook/lifecycle/planning.md). Show him only the target, such as the menu, the API list, or the command set, with every open question at once and a recommended default for each. A new feature waits for his confirmation, and once he approves the target it is built exactly. Engineering choices are not put to him. When the target is already settled, because he gave it or approved it in the issue, do not ask again.
+What a feature does, what a version contains, and how a product looks are the user's calls, per [planning](../bstack-handbook/lifecycle/planning.md). Show only the target, such as the menu, the API list, or the command set, with every open question at once and a recommended default for each. A new feature waits for confirmation, and once the target is approved it is built exactly. Engineering choices are not put to the user. When the target is already settled, because it was given or approved in the issue, do not ask again.
 
 ## The plan
 
-Read the handbooks autopilot's Start names. Then write a short plan, one screen if you can, in the project's `docs/plans/`. It holds the goal and what he will be able to do at the end, the PRs in order, each with its acceptance criteria as scenarios in `spec/`, and which PRs depend on which.
+Read the handbooks autopilot's Start names. Then write a short plan, one screen if you can, in the project's `docs/plans/`. It holds the goal and what the user will be able to do at the end, the PRs in order, each with its acceptance criteria as scenarios in `spec/`, and which PRs depend on which.
 
 Each point below is here because the opposite has stalled a real program.
 
@@ -27,9 +27,9 @@ Each point below is here because the opposite has stalled a real program.
 - PRs are cut by feature or module, each one something a single worker can build and verify with full context.
 - A requirement that cuts across the product, such as an auth model, enters each PR as that PR first needs it. Decide the target design up front and build it incrementally.
 - After the first PR merges, at least two PRs can proceed independently. If the graph is a single chain, look for a cut.
-- Work that only he can do sits at the end and off the path of everything else.
+- Work that only the user can do sits at the end and off the path of everything else.
 
-The plan is the whole end state, delivered in one run. Post it with any question only he can answer, then begin. Wait for a go only when he asked for a plan and nothing else. Running the PRs, the trail on disk, and unattended runs are in [run](references/run.md).
+The plan is the whole end state, delivered in one run. Post it with any question only the user can answer, then begin. Wait for a go only when the ask was for a plan and nothing else. Running the PRs, the trail on disk, and unattended runs are in [run](references/run.md).
 
 ## Workers
 

@@ -1,7 +1,7 @@
 ---
 name: autopilot
-description: Saltbo's hand-over for work already under way in a session. From
-  here the agent takes the change to merged and proved without him, which means
+description: The hand-over for work already under way in a session. From here
+  the agent takes the change to merged and proved on its own, which means
   finishing it, committing, opening the PR, proving it, accepting it against the
   handbook, merging, and reporting. Sent mid-conversation, and the last step of
   bugfix and xplan. Explicit entry only.
@@ -10,13 +10,13 @@ disable-model-invocation: true
 
 # Autopilot
 
-Saltbo has been working with you in this session, and he now hands the rest over. Without this skill you would stop once the work runs locally and wait for him. With it you carry the change to merged and proved without another turn from him, and he reads the result later. What he has already decided is in the [handbook](../bstack-handbook/SKILL.md).
+The user has been working with you in this session and now hands the rest over. Without this skill you would stop once the work runs locally and wait. With it you carry the change to merged and proved without another turn from the user, who reads the result later. What has already been decided is in the [handbook](../bstack-handbook/SKILL.md).
 
 You build and you judge your own work. You do not dispatch workers. Splitting work across agents belongs to [xplan](../xplan/SKILL.md).
 
 ## What it covers
 
-The change this conversation agreed on, or the one [bugfix](../bugfix/SKILL.md) or xplan handed you. Nothing is added to it. Something you notice outside it is a follow-up, per [follow-ups](../bstack-handbook/policies/follow-ups.md). When a question that [planning](../bstack-handbook/lifecycle/planning.md) reserves for him is still open, ask it once with your recommended default, and finish everything that does not depend on the answer.
+The change this conversation agreed on, or the one [bugfix](../bugfix/SKILL.md) or xplan handed you. Nothing is added to it. Something you notice outside it is a follow-up, per [follow-ups](../bstack-handbook/policies/follow-ups.md). When a question that [planning](../bstack-handbook/lifecycle/planning.md) reserves for the user is still open, ask it once with your recommended default, and finish everything that does not depend on the answer.
 
 The failure this skill exists to prevent is process outgrowing the work. When a step of your own method, or a handbook Default, would cost more than the risk it removes, skip it and say so in one line. That freedom does not reach the handbook's Decisions, which are followed as written.
 
@@ -37,13 +37,13 @@ The failure this skill exists to prevent is process outgrowing the work. When a 
 
 A blocker is investigated and fixed, not worked around. After two real attempts at the same obstacle, stop and report it with what you tried.
 
-## Before you ask him
+## Before you ask
 
-Look the question up in the handbook, in the order its index gives. Follow a decision that answers it. Use the interim default of an open entry. Decide a reversible question that nothing covers. Ask him only what planning and authority reserve for him, all at once, while the rest of the work keeps moving. Keep a list of the questions you answered yourself. They go in your report as pending decisions.
+Look the question up in the handbook, in the order its index gives. Follow a decision that answers it. Use the interim default of an open entry. Decide a reversible question that nothing covers. Ask the user only what planning and authority reserve for the user, all at once, while the rest of the work keeps moving. Keep a list of the questions you answered yourself. They go in your report as pending decisions.
 
 ## Report
 
-Follow [reporting](../bstack-handbook/policies/reporting.md). Write in the language he used. Lead with what now works and the PR, then name the handbooks you followed as `id@version`, list your pending decisions, and name each Default you departed from, with the reason.
+Follow [reporting](../bstack-handbook/policies/reporting.md). Write in the language the user used. Lead with what now works and the PR, then name the handbooks you followed as `id@version`, list your pending decisions, and name each Default you departed from, with the reason.
 
 Do not edit the handbook or these skills during a task. A wrong or missing entry is a follow-up for the keeper.
 
