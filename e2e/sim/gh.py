@@ -592,6 +592,19 @@ def api(args, slug):
                     value = {"number": item["number"], "title": item["title"], "body": item["body"],
                              "state": "open" if item["state"] == "OPEN" else "closed", "merged": item["state"] == "MERGED",
                              "html_url": (pr_url if kind == "pulls" else issue_url)(target, item["number"])}
+        elif re.match(r"repos/[^/]+/[^/]+/branches/[^/]+/protection/required_pull_request_reviews$", path):
+            raise Fail(json.dumps({"message": "Required pull request reviews not enabled", "status": "404"})
+                       + "\ngh: Required pull request reviews not enabled (HTTP 404)")
+        elif re.match(r"repos/[^/]+/[^/]+/branches/[^/]+/protection$", path):
+            if path.split("/")[4] == "main" and sim.repo_config(target).get("required_checks", True):
+                jobs = sorted({r["job"] for r in repo["runs"]})
+                value = {"url": f"https://api.github.com/{path}",
+                         "required_status_checks": {"strict": False, "contexts": jobs,
+                                                    "checks": [{"context": j, "app_id": 15368} for j in jobs]},
+                         "enforce_admins": {"enabled": False}, "allow_force_pushes": {"enabled": False},
+                         "allow_deletions": {"enabled": False}}
+            else:
+                raise Fail(json.dumps({"message": "Branch not protected", "status": "404"}) + "\ngh: Branch not protected (HTTP 404)")
         elif re.match(r"repos/[^/]+/[^/]+/deployments$", path):
             value = [{"id": i + 1, "sha": d["sha"], "ref": d["branch"], "environment": d["target"].capitalize(),
                       "created_at": d["at"], "payload": {"url": d["url"]}, "description": d["url"]}
@@ -631,6 +644,16 @@ def api(args, slug):
         raise Fail(json.dumps({"message": "Not Found", "documentation_url": "https://docs.github.com/rest", "status": "404"})
                    + f"\ngh: Not Found (HTTP 404)")
     emit(value, argparse.Namespace(json=None, jq=args.jq))
+
+
+def repo_clone(args, slug):
+    target = args.name.replace("https://github.com/", "").removesuffix(".git")
+    if target not in sim.config()["repos"]:
+        raise Fail(f"GraphQL: Could not resolve to a Repository with the name '{target}'. (repository)")
+    dest = args.directory or target.split("/")[1]
+    result = subprocess.run(["git", "clone", "-q", f"https://github.com/{target}.git", dest], capture_output=True, text=True)
+    if result.returncode != 0:
+        raise Fail(result.stderr.strip())
 
 
 def repo_view(args, slug):
@@ -768,6 +791,8 @@ def build():
     repo = top.add_parser("repo").add_subparsers(dest="cmd", required=True)
     p = command(repo, "view", repo_view, "name")
     json_flags(p)
+    p = command(repo, "clone", repo_clone, "name")
+    p.add_argument("directory", nargs="?")
     auth = top.add_parser("auth").add_subparsers(dest="cmd", required=True)
     command(auth, "status", auth_status)
     return parser
@@ -778,7 +803,8 @@ def main(argv):
     try:
         args = build().parse_args(argv)
         args.json = getattr(args, "json", None)
-        slug = current_repo(getattr(args, "repo_inner", None) or args.repo) if args.group not in ("auth",) else None
+        outside = args.group == "auth" or (args.group == "repo" and args.cmd == "clone")
+        slug = None if outside else current_repo(getattr(args, "repo_inner", None) or args.repo)
         if slug and slug not in sim.config()["repos"]:
             raise Fail(f"GraphQL: Could not resolve to a Repository with the name '{slug}'. (repository)")
         if getattr(args, "web", False):

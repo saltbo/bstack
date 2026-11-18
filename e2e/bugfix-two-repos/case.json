@@ -1,0 +1,5 @@
+{"repos": {
+  "saltbo/orderdesk": {"fixture": "../fixtures/orderdesk", "worker": null, "required_checks": true, "issues": [{"title": "Some orders never show up in the list", "body": "When I page through `python3 -m orderdesk list`, order 3 is missing. All five orders should be listed.", "labels": ["bug"]}]},
+  "saltbo/receipts": {"fixture": "../fixtures/receipts", "worker": null, "required_checks": true, "issues": [
+    {"title": "Tax is rounded down", "body": "`python3 -m receipts total 1999` prints 2158. With 8% tax it is 2158.92, which rounds to 2159.", "labels": ["bug"]}]}},
+  "start": "saltbo/orderdesk", "timeout": 2700}

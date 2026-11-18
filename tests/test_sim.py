@@ -66,6 +66,10 @@ class GitHubFlowTests(unittest.TestCase):
             raise AssertionError(f"{args}: {result.stdout}{result.stderr}")
         return result
 
+    def test_gh_clones_a_repository_of_the_stand_in(self):
+        self.sh(["gh", "repo", "clone", "saltbo/orderdesk", str(self.tmp / "cloned")], cwd=self.tmp)
+        self.assertTrue((self.tmp / "cloned/orderdesk/store.py").exists())
+
     def test_a_branch_goes_from_push_to_merged(self):
         self.assertIn("https://github.com/saltbo/orderdesk.git", self.sh(["git", "remote", "-v"]).stdout)
         self.sh(["git", "checkout", "-q", "-b", "fix/readme"])

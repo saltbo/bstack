@@ -9,7 +9,7 @@ Codex, and Pi.
 | --- | --- |
 | `bstack-handbook` | Versioned decisions by lifecycle stage and project type, plus an index of specialist skills. Agents look here before asking him |
 | `autopilot` | Hand-over. Sent in the middle of a session, it carries the agreed change to merged and proved, then reports |
-| `bugfix` | One bug. The agent reproduces it, fixes its cause, then finishes under autopilot |
+| `bugfix` | One or more bugs, such as a list of issues. The agent reproduces each, fixes its cause in a PR of its own, then finishes each under autopilot |
 | `xplan` | Coordinator. It settles the requirement, breaks it into docket tasks, has them approved on a review card, delegates each to a worker, then accepts and merges every PR under autopilot |
 | `bstack-worker` | Worker. The xplan leader names it in every brief. It fixes how one change is built or verified and how it is reported |
 | `bstack-writing` | Writing. How AGENTS.md, README.md, skills, and other Markdown are written, and how they are revised by rewriting the sentence at fault rather than adding one |

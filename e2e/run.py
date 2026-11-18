@@ -10,8 +10,8 @@ The session starts in a clone of that repository, with dependencies installed,
 and works as it would on Saltbo's machine. `git` and `gh` reach the stand-in's
 GitHub, a push runs the repository's workflow and, for a Workers project,
 deploys a preview or production on the local Workers runtime. It sees only this
-checkout's skills, and none of the user's own skills, instructions, or
-credentials. Browser checks run in ego-browser task spaces of their own, which
+checkout's skills and the user-level instructions in `sim/user-agents.md`, and
+none of the user's own skills, settings, MCP servers, or credentials. Browser checks run in ego-browser task spaces of their own, which
 are closed afterwards. Nothing else it does leaves the scratch directory, which
 is removed afterwards. One run at a time holds the machine, because sessions
 choose local ports for their own dev servers. The transcript, the stand-in's state and call log, and the reports
@@ -43,6 +43,8 @@ PINNED = ["autopilot", "bugfix", "xplan", "bstack-writing"]
 # Tools on the machine that would reach real services, or carry the user's own setup.
 HIDDEN_TOOLS = ["realmroot", "gh", "wrangler", "hc", "agent-browser"]
 DOCKET = Path(os.environ.get("BSTACK_E2E_DOCKET", Path.home() / "Develop/bogit/docket"))
+# The user-level instructions of the stand-in's machine, maintained here for it.
+USER_INSTRUCTIONS = SIM / "user-agents.md"
 # What a session must never change on the user's machine. A change is reported as a leak.
 GUARDED = [Path.home() / p for p in (".claude/skills", ".agents/skills", ".agents/.skill-lock.json", ".gitconfig",
                                      ".config/gh", ".local/share/bbox/skills", ".local/share/docket/tasks.db")]
@@ -152,6 +154,8 @@ def platform(case, root):
         sh(["cp", "-cR", repos[start]["deps"], str(work / "node_modules")], root)
     (work / ".git/info/exclude").write_text(".claude/\n")
     (work / ".claude/skills").mkdir(parents=True)
+    # User-level settings stay out, so these reach the session as the project's local instructions.
+    shutil.copy(USER_INSTRUCTIONS, work / ".claude/CLAUDE.md")
     # The session's own `skills` calls refresh the router skill, so they must see the same directories.
     env["BBOX_SKILLS_AGENT_DIRS"] = str(work / ".claude/skills")
     sh(["skills", "install", *[a for n in INSTALLED for a in ("-s", n)], str(ROOT)], root, env)
@@ -278,8 +282,10 @@ def run_case(case, out, args):
         seconds = round(time.time() - started)
         wait_quiet()
 
+        (out / "final.txt").write_text(str(final.get("result", "")))
         check_env = dict(env, STATE=str(root / "sim/state.json"), WORK=str(work), PROXY_PORT=str(proxy_port),
-                         DOCKET_DB=str(root / "docket/tasks.db"))
+                         DOCKET_DB=str(root / "docket/tasks.db"), FINAL=str(out / "final.txt"),
+                         E2E_LIB=str(E2E / "lib.sh"))
         check = sh(["bash", str(case / "check.sh")], work, check_env, check=False)
 
         saved = transcript_dir(work)
@@ -293,7 +299,6 @@ def run_case(case, out, args):
         for name in ("state.json", "calls.log"):
             if (root / "sim" / name).exists():
                 shutil.copy(root / "sim" / name, out / name)
-        (out / "final.txt").write_text(str(final.get("result", "")))
         (out / "check.txt").write_text(check.stdout + check.stderr)
         calls = [json.loads(l) for l in (out / "calls.log").read_text().splitlines()] if (out / "calls.log").exists() else []
         summary = {
@@ -304,6 +309,7 @@ def run_case(case, out, args):
             "failed_calls": len(signals.get("failed_calls", [])),
             "repeated_errors": len(signals.get("repeated_failures", [])),
             "questions_to_user": len(signals.get("questions_to_user", [])),
+            "subagents": signals.get("subagents", []),
             "platform_calls": len(calls),
             "platform_gaps": [c["argv"] for c in calls if c.get("note")],
         }
@@ -337,24 +343,43 @@ def main():
     parser.add_argument("--model")
     parser.add_argument("--timeout", type=int, default=1800)
     parser.add_argument("--keep", action="store_true", help="keep the scratch directory")
+    parser.add_argument("-j", "--jobs", type=int, default=1,
+                        help="cases to run at once; give it only to cases whose sessions start no dev server")
+    parser.add_argument("--results", help=argparse.SUPPRESS)
+    parser.add_argument("--no-lock", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
 
     # Sessions pick local ports for their own dev servers, so two runs at once can reach each other's.
-    CACHE.mkdir(parents=True, exist_ok=True)
-    lock = open(CACHE / "run.lock", "w")
-    try:
-        import fcntl
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    except BlockingIOError:
-        print("another e2e run is in progress; waiting for it", file=sys.stderr)
-        fcntl.flock(lock, fcntl.LOCK_EX)
+    if not args.no_lock:
+        CACHE.mkdir(parents=True, exist_ok=True)
+        lock = open(CACHE / "run.lock", "w")
+        try:
+            import fcntl
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            print("another e2e run is in progress; waiting for it", file=sys.stderr)
+            fcntl.flock(lock, fcntl.LOCK_EX)
     names = args.cases or sorted(p.name for p in E2E.iterdir() if (p / "case.json").exists())
-    results = E2E / "results" / datetime.now().strftime("%Y%m%d-%H%M%S")
+    results = Path(args.results) if args.results else E2E / "results" / datetime.now().strftime("%Y%m%d-%H%M%S")
     failed = False
-    for name in names:
-        summary = run_case(E2E / name, results / name, args)
-        failed |= summary["outcome"] != "pass"
-        print(json.dumps(summary, ensure_ascii=False))
+    if args.jobs > 1:
+        # Each case in a process of its own, because a case sets the process environment for its session.
+        from concurrent.futures import ThreadPoolExecutor
+        base = [sys.executable, str(Path(__file__).resolve()), "--no-lock", "--results", str(results),
+                "--timeout", str(args.timeout), *(["--model", args.model] if args.model else []),
+                *(["--keep"] if args.keep else [])]
+        def one(name):
+            return subprocess.run(base + [name], capture_output=True, text=True, stdin=subprocess.DEVNULL)
+        with ThreadPoolExecutor(max_workers=args.jobs) as pool:
+            for name, done in zip(names, pool.map(one, names)):
+                lines = [l for l in done.stdout.splitlines() if l.startswith("{")]
+                print(lines[-1] if lines else json.dumps({"case": name, "outcome": "error", "stderr": done.stderr[-500:]}))
+                failed |= done.returncode != 0
+    else:
+        for name in names:
+            summary = run_case(E2E / name, results / name, args)
+            failed |= summary["outcome"] != "pass"
+            print(json.dumps(summary, ensure_ascii=False))
     print(f"results in {results}")
     sys.exit(1 if failed else 0)
 

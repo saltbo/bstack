@@ -138,8 +138,14 @@ def setup(root, cfg):
     global ROOT
     ROOT = root
     with state() as data:
-        for slug in cfg["repos"]:
-            new_repo(data, slug)
+        for slug, repo in cfg["repos"].items():
+            entry = new_repo(data, slug)
+            for issue in repo.get("issues", []):
+                number = entry["next"]
+                entry["next"] += 1
+                entry["issues"][str(number)] = {"number": number, "title": issue["title"], "body": issue.get("body", ""),
+                                                "state": "OPEN", "author": "saltbo", "created": now(), "updated": now(),
+                                                "comments": [], "labels": issue.get("labels", [])}
     for slug, repo in cfg["repos"].items():
         if repo.get("production"):
             deploy(slug, "main", ref_sha(slug, "main"), production=True)
