@@ -337,3 +337,10 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The rule for issues in saltbo/bstack named a keeper role that no agent took.
 - Expect: An issue carries the session ID so that whoever works on it can trace the problem through the transcript.
 - Outcome: pending
+
+## build@4 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: build.md carried a general checklist for measuring performance, condensed from the port this system replaced: method a capable model already knows, and the last text that needed that port's MIT notice.
+- Expect: build.md holds Saltbo's decisions only, and the repository carries no text derived from the port, and no notice for it.
+- Outcome: pending

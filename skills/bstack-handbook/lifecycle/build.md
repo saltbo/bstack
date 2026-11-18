@@ -1,6 +1,6 @@
 ---
 id: build
-version: 3
+version: 4
 audience: worker
 applies: all
 ---
@@ -21,17 +21,3 @@ applies: all
 - **Keep configuration minimal.** Delete unused environment variables, keep fixed values in code, and use a secret only for a real secret. (2026-09-04)
 - **Find the cause from real observed data**, not from a guess, and say whether it is one case or a systemic problem. (2026-07-24)
 - **Reduce a bug to the smallest reproduction**, trace it through the real public seam, and remove temporary instrumentation before finishing. (2026-09)
-
-## Measuring performance
-
-Before reporting a performance number, write the claim in the words you would ship and answer each question from a run. A quick ballpark may be one run, says so, and still answers questions 4 and 7.
-
-1. **What limits it?** Name the limiter, and profile in a run you do not report.
-2. **Was each side tuned?** Both sides run the way production runs them, on the same data.
-3. **Does it break a limit?** Do the arithmetic. A result past a physical limit measured something else.
-4. **Did it error?** Count failures and check the outputs are correct.
-5. **Does it reproduce?** At least five runs per side, alternating, reported as median and range.
-6. **Does it matter?** Give a micro result as a share of the path a user waits on.
-7. **Did the work happen?** Confirm the timed region did the work.
-
-Lead with the verdict, which is faster, slower, no measurable difference, or inconclusive. Give the number with its unit, run count, range, and limiter. Try the cheap fixes first, which are to skip the work, do it once, do less, do it later, and do it concurrently.
