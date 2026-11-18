@@ -1,0 +1,4 @@
+{"repos": {"saltbo/orderdesk": {"fixture": "../fixtures/orderdesk", "worker": null, "required_checks": true, "issues": [
+  {"title": "Some orders never show up in the list", "body": "When I page through `python3 -m orderdesk list`, order 3 is missing. All five orders should be listed.", "labels": ["bug"]},
+  {"title": "Add a --json flag to the list", "body": "I want `python3 -m orderdesk list --json` to print the orders as JSON for a script of mine.", "labels": ["bug"]}]}},
+  "start": "saltbo/orderdesk", "timeout": 1800}

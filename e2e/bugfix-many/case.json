@@ -1,0 +1,6 @@
+{"repos": {"saltbo/orderdesk": {"fixture": "../fixtures/orderdesk-five-bugs", "worker": null, "required_checks": true, "issues": [
+  {"title": "Some orders never show up in the list", "body": "When I page through `python3 -m orderdesk list`, order 3 is missing. All five orders should be listed.", "labels": ["bug"]},
+  {"title": "Revenue is too low", "body": "`python3 -m orderdesk revenue` prints 83, but the five orders add up to 113.", "labels": ["bug"]},
+  {"title": "Average order value is rounded down to a whole number", "body": "`python3 -m orderdesk average` prints 22. The orders average 22.6.", "labels": ["bug"]},
+  {"title": "since leaves out orders placed at the given time", "body": "`python3 -m orderdesk since 105` should list orders 2, 3, 4 and 5, since 2 and 3 were placed at 105. It lists only 4 and 5.", "labels": ["bug"]}]}},
+  "start": "saltbo/orderdesk", "timeout": 2700}

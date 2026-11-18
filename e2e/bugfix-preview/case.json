@@ -1,0 +1,4 @@
+{"repos": {"saltbo/notes": {"fixture": "../fixtures/notes-order-bug", "worker": "notes", "required_checks": true, "preview": true, "production": true,
+  "migrate": ["node node_modules/wrangler/bin/wrangler.js d1 migrations apply notes --local --persist-to {persist}"],
+  "issues": [{"title": "Newest note is at the bottom", "body": "On the notes page the note I just added shows up last. The newest note should be first.", "labels": ["bug"]}]}},
+  "start": "saltbo/notes", "timeout": 1800}

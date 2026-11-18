@@ -16,7 +16,7 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 | --- | --- |
 | `skills/bstack-handbook/` | The handbook. Installed on his machines |
 | `skills/autopilot/` | Takes work already under way in a session to merged and proved. Installed |
-| `skills/bugfix/` | Fixes one bug, then finishes under autopilot. Installed |
+| `skills/bugfix/` | Fixes one or more bugs, each in a PR of its own, then finishes under autopilot. Installed |
 | `skills/xplan/` | The coordinator skill. It breaks work into tasks, delegates them to workers, and merges under autopilot. Installed |
 | `skills/bstack-worker/` | The worker skill. Installed |
 | `skills/bstack-writing/` | How Markdown is written and revised, skills included. Installed, pinned, and loaded without being asked for |

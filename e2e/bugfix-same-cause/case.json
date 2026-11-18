@@ -1,0 +1,4 @@
+{"repos": {"saltbo/orderdesk": {"fixture": "../fixtures/orderdesk-same-cause", "worker": null, "required_checks": true, "issues": [
+  {"title": "Order 3 is missing from the list", "body": "`python3 -m orderdesk list` shows orders 1, 2, 4 and 5. Order 3 is gone.", "labels": ["bug"]},
+  {"title": "CSV export drops an order", "body": "`python3 -m orderdesk export` has a header and only four rows, but the shop has five orders.", "labels": ["bug"]}]}},
+  "start": "saltbo/orderdesk", "timeout": 1800}
