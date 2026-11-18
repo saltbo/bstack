@@ -52,9 +52,9 @@ A task runs on one version from start to finish. A gap or a wrong entry is repor
 | [follow-ups](policies/follow-ups.md) | 6 | leader, worker | all |
 | [identity](policies/identity.md) | 5 | leader, worker | all |
 | [reporting](policies/reporting.md) | 2 | leader | all |
-| [pull-requests](policies/pull-requests.md) | 3 | leader, worker | all |
+| [pull-requests](policies/pull-requests.md) | 4 | leader, worker | all |
 | [skills](policies/skills.md) | 8 | leader, worker | all |
-| [agents](policies/agents.md) | 7 | leader | all |
+| [agents](policies/agents.md) | 8 | leader | all |
 <!-- index:end -->
 
 ## What a project declares

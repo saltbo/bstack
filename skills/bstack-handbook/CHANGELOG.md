@@ -344,3 +344,17 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: build.md carried a general checklist for measuring performance, condensed from the port this system replaced: method a capable model already knows, and the last text that needed that port's MIT notice.
 - Expect: build.md holds Saltbo's decisions only, and the repository carries no text derived from the port, and no notice for it.
 - Outcome: pending
+
+## agents@8 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: Agents created branches and worktrees by hand, next to the repository and under codex/ and agent/ names, where the environment's delegation could have given them a working copy.
+- Expect: Work takes the directory and branch the environment's tool gives it, and branches and worktrees are made by hand only where no tool gives them.
+- Outcome: pending
+
+## pull-requests@4 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: Branches outlived their work: closed or dropped work, branches checked out to review or verify a PR, and local branches whose remote was deleted at merge. The rule covered only merges.
+- Expect: Whatever an agent created by hand is gone when its work ends, however it ends; what an environment's tool created is left to that tool.
+- Outcome: pending
