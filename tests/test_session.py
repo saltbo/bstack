@@ -95,13 +95,17 @@ class SessionScriptTests(unittest.TestCase):
 
 
 class CaseLayoutTests(unittest.TestCase):
-    def test_every_end_to_end_case_has_a_request_a_fixture_and_a_check(self):
-        cases = [p for p in (ROOT / "e2e").iterdir() if p.is_dir() and p.name[0] not in "._" and p.name != "results"]
+    def test_every_end_to_end_case_has_a_request_a_check_and_its_fixtures(self):
+        cases = [p for p in (ROOT / "e2e").iterdir() if (p / "case.json").exists()]
         self.assertTrue(cases)
         for case in cases:
             with self.subTest(case=case.name):
-                for part in ("request.md", "fixture", "check.sh"):
+                for part in ("request.md", "check.sh"):
                     self.assertTrue((case / part).exists(), part)
+                spec = json.loads((case / "case.json").read_text())
+                self.assertIn(spec["start"], spec["repos"])
+                for repo in spec["repos"].values():
+                    self.assertTrue((case / repo["fixture"]).is_dir(), repo["fixture"])
 
     def test_every_eval_case_has_a_prompt_and_graders(self):
         cases = [p for p in (ROOT / "evals").iterdir() if p.is_dir() and p.name[0] not in "._" and p.name != "results"]
@@ -112,7 +116,8 @@ class CaseLayoutTests(unittest.TestCase):
                 self.assertTrue(list((case / "graders").glob("*.md")))
 
     def test_the_scripts_are_executable(self):
-        for path in (SCRIPT, ROOT / "e2e/run.py"):
+        for path in (SCRIPT, ROOT / "e2e/run.py", ROOT / "e2e/sim/sim.py", ROOT / "e2e/sim/bin/gh",
+                     ROOT / "e2e/sim/bin/wrangler", ROOT / "e2e/sim/git-remote-https"):
             self.assertTrue(os.access(path, os.X_OK), path)
 
 

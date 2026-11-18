@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "${SIM_PYTHON:-python3}" "$(dirname "$(readlink -f "$0")")/../sim.py" wrangler "$@"

@@ -1,0 +1,16 @@
+#!/bin/sh
+# git's https transport for the stand-in: https://github.com/<owner>/<repo> is served from the local bare repository.
+case "$2" in
+  https://github.com/*|http://github.com/*) ;;
+  *) echo "fatal: unable to access '$2': Could not resolve host" >&2; exit 128 ;;
+esac
+path="${2#*://github.com/}"
+path="${path%/}"
+path="${path%.git}.git"
+repo="$SIM_ROOT/github/$path"
+if [ ! -d "$repo" ]; then
+  echo "remote: Repository not found." >&2
+  echo "fatal: repository '$2' not found" >&2
+  exit 128
+fi
+exec git -c protocol.ext.allow=always remote-ext "$1" "%S $repo"

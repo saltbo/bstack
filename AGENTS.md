@@ -23,7 +23,7 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 | [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | The keeper skill. It serves this repository only and is installed nowhere else |
 | [.agents/skills/keeper/scripts/session.py](.agents/skills/keeper/scripts/session.py) | Turns a Claude Code session into evidence for the keeper. It judges nothing |
 | `evals/` | Cases for one skill, run by `claude plugin eval`, which loads `skills/` through `.claude-plugin/plugin.json` |
-| `e2e/` | Cases for the whole system, each one real session, run by `e2e/run.py` |
+| `e2e/` | Cases for the whole system, each one real session on the local stand-in for GitHub and Cloudflare in `e2e/sim/`, run by `e2e/run.py` |
 | [docs/evaluation.md](docs/evaluation.md) | How to run both, and how the skills behaved in recorded runs |
 | `tests/` | Checks of structure, links, budgets, and versions. They do not prove behavior |
 
