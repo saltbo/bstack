@@ -41,7 +41,7 @@ A new document starts the same way. Decide what each section is for before writi
 
 | Document | Read |
 | --- | --- |
-| `AGENTS.md`, `CLAUDE.md`, and other instructions an agent reads on entering a repository | [agents-md](references/agents-md.md) |
+| `AGENTS.md`, `CLAUDE.md`, and other instructions an agent reads on entering a repository | [agents](references/agents.md) |
 | `README.md` | [readme](references/readme.md) |
 | A skill, and other agent instructions kept as Markdown, such as a subagent or command definition | [skills](references/skills.md) |
 
