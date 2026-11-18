@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Turn a Claude Code session into evidence for the keeper.
+"""Turn a Claude Code session into evidence of what an agent did and which text it followed.
 
 The script reads a session transcript, its subagents included, and prints a
 numbered timeline and the signals worth a look: skills loaded, handbooks cited,

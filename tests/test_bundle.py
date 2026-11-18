@@ -19,9 +19,10 @@ IMPLICIT = ["bstack-writing"]
 EXPLICIT = [n for n in SKILLS if n not in IMPLICIT]
 # bugfix and xplan end under autopilot, so each links to it.
 ENTRIES = ["bugfix", "xplan"]
-# The keeper serves this repository only, so it lives outside the installed suite.
-KEEPER = ROOT / ".agents/skills/keeper"
-KEEPER_LINE_BUDGET = 50
+# Skills of this repository only live outside the installed suite, in .agents/skills, and Claude Code
+# reads skills only from .claude/skills, so each is linked there.
+PROJECT_SKILLS = ROOT / ".agents/skills"
+PROJECT_SKILL_LINE_BUDGET = 50
 HANDBOOK = SUITE / "bstack-handbook"
 LINK = re.compile(r"\[[^\]\n]+\]\(([^\s)]+)\)")
 # Budgets keep the role skills and each handbook small. Raise one only with a reason.
@@ -188,18 +189,24 @@ class BundleTests(unittest.TestCase):
             )
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
-    def test_keeper_is_local_explicit_only_and_lean(self):
-        text = (KEEPER / "SKILL.md").read_text()
-        metadata = text.split("---", 2)[1]
-        self.assertRegex(metadata, r"(?m)^name: keeper$")
-        self.assertRegex(metadata, r"(?m)^disable-model-invocation: true$")
-        self.assertRegex((KEEPER / "agents/openai.yaml").read_text(), r"(?m)^policy:\n  allow_implicit_invocation: false$")
-        self.assertLessEqual(text.count("\n"), KEEPER_LINE_BUDGET)
-        self.assertIsNone(SHOUTING.search(text))
-        self.assertFalse((SUITE / "bstack-keeper").exists())
+    def test_project_skills_are_lean_and_reach_every_host(self):
+        skills = sorted(p for p in PROJECT_SKILLS.iterdir() if (p / "SKILL.md").exists())
+        self.assertTrue(skills)
+        for skill in skills:
+            with self.subTest(skill=skill.name):
+                text = (skill / "SKILL.md").read_text()
+                self.assertRegex(text.split("---", 2)[1], rf"(?m)^name: {skill.name}$")
+                self.assertLessEqual(text.count("\n"), PROJECT_SKILL_LINE_BUDGET)
+                self.assertIsNone(SHOUTING.search(text))
+                self.assertIn("$" + skill.name, (skill / "agents/openai.yaml").read_text())
+                link = ROOT / ".claude/skills" / skill.name
+                self.assertTrue(link.is_symlink(), f"{link} is not a link")
+                self.assertEqual(skill.resolve(), link.resolve())
+                self.assertFalse((SUITE / skill.name).exists())
 
     def test_repository_docs_have_resolvable_local_links(self):
-        for source in [ROOT / "README.md", ROOT / "AGENTS.md", KEEPER / "SKILL.md", *sorted((ROOT / "docs").glob("*.md"))]:
+        for source in [ROOT / "README.md", ROOT / "AGENTS.md", *sorted(PROJECT_SKILLS.glob("*/SKILL.md")),
+                       *sorted((ROOT / "docs").glob("*.md"))]:
             for target in local_targets(source):
                 self.assertTrue(target.exists(), f"missing documentation target: {source}: {target}")
 

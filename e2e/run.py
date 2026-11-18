@@ -36,7 +36,7 @@ from pathlib import Path
 E2E = Path(__file__).resolve().parent
 ROOT = E2E.parent
 SIM = E2E / "sim"
-SESSION = ROOT / ".agents/skills/keeper/scripts/session.py"
+SESSION = ROOT / ".agents/skills/revise-from-evidence/scripts/session.py"
 CACHE = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "bstack-e2e"
 INSTALLED = ["autopilot", "bstack-handbook", "bstack-worker", "bstack-writing", "bugfix", "xplan"]
 PINNED = ["autopilot", "bugfix", "xplan", "bstack-writing"]

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Revise from evidence"
+  short_description: "Trace wrong behavior to the text that caused it, revise it, prove it"
+  default_prompt: "Use $revise-from-evidence for this task."
+policy:
+  allow_implicit_invocation: true

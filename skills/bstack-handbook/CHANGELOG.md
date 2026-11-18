@@ -2,8 +2,8 @@
 
 Each entry is a claim to check later. `Source` is the session, PR, or issue that
 showed the problem. `Saw` is what went wrong. `Expect` is what the new text should
-produce. The keeper sets `Outcome` to `held` or `recurred` once later work has run
-on that version.
+produce. `Outcome` is set to `held` or `recurred` once later work has run on that
+version.
 
 ## all@1 (2026-11-15)
 
@@ -315,4 +315,25 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Source: session 2026-11-17, Saltbo
 - Saw: Issues in saltbo/bstack named a session or a PR loosely, so the keeper could not find the transcript that showed the problem.
 - Expect: Every issue in saltbo/bstack carries the host and session ID, and the keeper reads it with session.py.
+- Outcome: pending
+
+## authority@2 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: The handbook named a keeper role that no agent took: the maintenance skill was invisible to Claude Code and explicit-only, so problems were left for nobody.
+- Expect: Any agent may propose a change to this file; only Saltbo applies one.
+- Outcome: pending
+
+## reporting@2 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: Pending decisions were addressed to a keeper role that no agent took.
+- Expect: Pending decisions are listed so that they can become handbook entries, by whichever agent maintains saltbo/bstack.
+- Outcome: pending
+
+## follow-ups@6 (2026-11-17)
+
+- Source: session 2026-11-17, Saltbo
+- Saw: The rule for issues in saltbo/bstack named a keeper role that no agent took.
+- Expect: An issue carries the session ID so that whoever works on it can trace the problem through the transcript.
 - Outcome: pending

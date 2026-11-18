@@ -2,8 +2,8 @@
 
 Saltbo's working system for coding agents. It has a handbook of his standing
 decisions, skills that carry work from a request to merged, and a skill for
-writing the Markdown that agents and people read. The keeper stays in this
-repository and installs nowhere. It runs on Claude Code, Codex, and Pi.
+writing the Markdown that agents and people read. It runs on Claude Code,
+Codex, and Pi.
 
 | Part | Role |
 | --- | --- |
@@ -13,7 +13,6 @@ repository and installs nowhere. It runs on Claude Code, Codex, and Pi.
 | `xplan` | Coordinator. It settles the requirement, breaks it into docket tasks, has them approved on a review card, delegates each to a worker, then accepts and merges every PR under autopilot |
 | `bstack-worker` | Worker. The xplan leader names it in every brief. It fixes how one change is built or verified and how it is reported |
 | `bstack-writing` | Writing. How AGENTS.md, README.md, skills, and other Markdown are written, and how they are revised by rewriting the sentence at fault rather than adding one |
-| `keeper` | Keeper, for this repository only. After the work, it traces wrong behavior to the text that caused it, revises that text, and raises its version |
 
 ## Design
 
@@ -27,8 +26,9 @@ file of dated decisions.
   from with a stated reason, or an open question with the default to use until
   he answers.
 - Every PR and every worker report names the handbooks it followed as `id@version`.
-- The keeper revises a handbook after the work, and each revision records what
-  was seen and what should change. A task runs on one version throughout.
+- A handbook is revised after the work that showed the problem, and each
+  revision records what was seen and what should change. A task runs on one
+  version throughout.
 - A project declares its type and its facts. The rules stay here.
 
 ## Install
@@ -61,10 +61,10 @@ Run `skills show xplan` and work under it. Add export to CSV.
 Run `skills show autopilot` and finish this.
 ```
 
-The keeper reviews how the work went and revises the text. It is a project skill
-of this repository, in `.agents/skills/keeper`, so it is entered from a session
-here. [AGENTS.md](AGENTS.md) says what the repository is for and how its text is
-written.
+Any agent working in this repository maintains it. [AGENTS.md](AGENTS.md) says
+what the repository is for and how its text is written and changed, and the
+project skill `revise-from-evidence` says how a wrong behavior is traced to its
+text, revised, and proved.
 
 ## Layout
 
@@ -80,7 +80,7 @@ written.
 | [xplan/](skills/xplan/SKILL.md) | Leader skill |
 | [bstack-worker/](skills/bstack-worker/SKILL.md) | Worker skill |
 | [bstack-writing/](skills/bstack-writing/SKILL.md) | Writing skill, with a page each for AGENTS.md, README.md, and skills |
-| [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | Keeper skill, for this repository only |
+| [.agents/skills/revise-from-evidence/](.agents/skills/revise-from-evidence/SKILL.md) | Project skill for tracing a behavior to its text, revising it, and proving it |
 | [AGENTS.md](AGENTS.md) | What the repository is for, how its text is written, and how it is maintained |
 | `evals/`, `e2e/` | Behavior cases for one skill and for the whole system |
 

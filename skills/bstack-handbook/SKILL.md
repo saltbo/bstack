@@ -2,7 +2,7 @@
 name: bstack-handbook
 description: Saltbo's handbook. Versioned decisions that agents follow instead of
   asking him, by lifecycle stage and project type, with an index of specialist
-  skills. Read by autopilot, bugfix, xplan, worker, and keeper. Explicit entry only.
+  skills. Read by autopilot, bugfix, xplan, and the worker. Explicit entry only.
 disable-model-invocation: true
 ---
 
@@ -23,7 +23,7 @@ If a **Decisions** entry answers it, follow it and do not ask. A decision holds 
 
 Cite what you followed as `id@version`, for example `verification@1`, in your report and in the PR. That is how a later reader tells which text produced a decision.
 
-A task runs on one version from start to finish. Report a gap or a wrong entry per [follow-ups](policies/follow-ups.md), and the keeper revises it afterwards.
+A task runs on one version from start to finish. A gap or a wrong entry is reported per [follow-ups](policies/follow-ups.md), as an issue in `saltbo/bstack`, and revised there after the task.
 
 ## Handbooks
 
@@ -47,11 +47,11 @@ A task runs on one version from start to finish. Report a gap or a wrong entry p
 | [client-app](types/client-app.md) | 1 | leader, worker | projects that declare this type |
 | [cf-workers](types/cf-workers.md) | 4 | leader, worker | projects that declare this type |
 | [go-cli](types/go-cli.md) | 1 | leader, worker | projects that declare this type |
-| [authority](policies/authority.md) | 1 | leader | all |
+| [authority](policies/authority.md) | 2 | leader | all |
 | [resources](policies/resources.md) | 1 | leader | all |
-| [follow-ups](policies/follow-ups.md) | 5 | leader, worker | all |
+| [follow-ups](policies/follow-ups.md) | 6 | leader, worker | all |
 | [identity](policies/identity.md) | 5 | leader, worker | all |
-| [reporting](policies/reporting.md) | 1 | leader | all |
+| [reporting](policies/reporting.md) | 2 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 3 | leader, worker | all |
 | [skills](policies/skills.md) | 8 | leader, worker | all |
 | [agents](policies/agents.md) | 7 | leader | all |
@@ -78,4 +78,4 @@ An entry says what has to be true or what to do. It names the outcome and leaves
 
 ## Changing a handbook
 
-Only the keeper changes handbooks, in the `saltbo/bstack` repository where the keeper skill lives, and only Saltbo changes one marked `owner-only`. An entry becomes a Decision only after he has confirmed it as one. Every change goes through `scripts/handbook.py`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.
+Handbooks change only in the `saltbo/bstack` repository, never during a task that runs on them, and only Saltbo changes one marked `owner-only`. An entry becomes a Decision only after he has confirmed it as one. Every change goes through `scripts/handbook.py`, which raises the version and adds a [changelog](CHANGELOG.md) entry saying what was seen and what the change should produce.

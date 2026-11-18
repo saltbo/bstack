@@ -1,6 +1,6 @@
 ---
 id: authority
-version: 1
+version: 2
 audience: leader
 applies: all
 owner-only: true
@@ -8,7 +8,7 @@ owner-only: true
 
 # Authority
 
-Only Saltbo changes this file. The keeper may propose a change and may not apply one.
+Only Saltbo changes this file. An agent may propose a change and may not apply one.
 
 ## Decisions
 

@@ -1,4 +1,4 @@
-"""Check the keeper's session script on a small synthetic transcript, and the shape of the behavior cases."""
+"""Check the session script on a small synthetic transcript, and the shape of the behavior cases."""
 
 from pathlib import Path
 import json
@@ -9,7 +9,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / ".agents/skills/keeper/scripts/session.py"
+SCRIPT = ROOT / ".agents/skills/revise-from-evidence/scripts/session.py"
 SESSION = "00000000-0000-4000-8000-000000000001"
 
 
