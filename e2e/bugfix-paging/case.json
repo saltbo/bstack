@@ -1,0 +1,5 @@
+{
+  "repos": {"saltbo/orderdesk": {"fixture": "../fixtures/orderdesk", "worker": null, "required_checks": true}},
+  "start": "saltbo/orderdesk",
+  "timeout": 1200
+}

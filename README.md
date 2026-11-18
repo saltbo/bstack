@@ -104,7 +104,8 @@ python3 e2e/run.py
 ```
 
 The first scores each skill with and without bstack. The second runs whole
-sessions on fixture repositories and reports on their transcripts.
+sessions on a local stand-in for GitHub and Cloudflare, from the request to a
+merged PR running in production, and reports on their transcripts.
 [Evaluation](docs/evaluation.md) describes both and records the last runs.
 
 ## History

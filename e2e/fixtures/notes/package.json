@@ -1,0 +1,24 @@
+{
+  "name": "notes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply notes --local",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:scenarios": "node scripts/check-scenarios.mjs",
+    "verify": "pnpm typecheck && pnpm test:scenarios && pnpm test"
+  },
+  "dependencies": {
+    "hono": "4.6.14"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20241218.0",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8",
+    "wrangler": "3.99.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

@@ -1,0 +1,9 @@
+{
+  "repos": {"saltbo/notes": {"fixture": "../fixtures/notes", "worker": "notes", "required_checks": true,
+    "preview": true, "production": true,
+    "migrate": ["node node_modules/wrangler/bin/wrangler.js d1 migrations apply notes --local --persist-to {persist}"]}},
+  "start": "saltbo/notes",
+  "docket": true,
+  "max_replies": 4,
+  "timeout": 3600
+}
