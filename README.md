@@ -107,13 +107,3 @@ The first scores each skill with and without bstack. The second runs whole
 sessions on a local stand-in for GitHub and Cloudflare, from the request to a
 merged PR running in production, and reports on their transcripts.
 [Evaluation](docs/evaluation.md) describes both and records the last runs.
-
-## History
-
-Until November 2026 this repository was a 56-skill port of
-[pstack](https://github.com/cursor/plugins/tree/fd268b808c786469e6dd8c8d9db864d0de4d669e/pstack).
-Its first real program spent five hours on four review rounds for one PR and
-merged nothing. The port was then replaced by this system. [upstream.json](upstream.json)
-records what was removed. The performance checklist in the handbook's `lifecycle/build.md` and parts of the
-engineering references derive from MIT-licensed work, credited in
-[the skill license](skills/bstack-handbook/LICENSE.txt) and [licenses](licenses/pstack-MIT.txt).

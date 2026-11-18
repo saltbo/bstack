@@ -36,7 +36,7 @@ A task runs on one version from start to finish. A gap or a wrong entry is repor
 | [openapi](lifecycle/openapi.md) | 3 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
 | [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
-| [build](lifecycle/build.md) | 3 | worker | all |
+| [build](lifecycle/build.md) | 4 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
 | [verification](lifecycle/verification.md) | 6 | leader, worker | all |
 | [versioning](lifecycle/versioning.md) | 1 | leader, worker | all |
