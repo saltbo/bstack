@@ -33,7 +33,7 @@ LINE_BUDGETS = {
     "bstack-worker/SKILL.md": 70,
     "bstack-handbook/SKILL.md": 90,
     "bstack-writing/SKILL.md": 50,
-    "bstack-writing/references/agents-md.md": 40,
+    "bstack-writing/references/agents.md": 40,
     "bstack-writing/references/readme.md": 30,
     "bstack-writing/references/skills.md": 35,
 }
