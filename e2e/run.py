@@ -285,7 +285,7 @@ def run_case(case, out, args):
         (out / "final.txt").write_text(str(final.get("result", "")))
         check_env = dict(env, STATE=str(root / "sim/state.json"), WORK=str(work), PROXY_PORT=str(proxy_port),
                          DOCKET_DB=str(root / "docket/tasks.db"), FINAL=str(out / "final.txt"),
-                         E2E_LIB=str(E2E / "lib.sh"))
+                         E2E_LIB=str(E2E / "lib.sh"), START=spec["start"])
         check = sh(["bash", str(case / "check.sh")], work, check_env, check=False)
 
         saved = transcript_dir(work)

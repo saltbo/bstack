@@ -29,6 +29,17 @@ check_clean() {
   [ "$left" = 0 ] || fail "$repo: $left branch(es) left on the remote"
   open=$(jq --arg r "$repo" '[.repos[$r].prs[] | select(.state=="OPEN")] | length' "$STATE")
   [ "$open" = 0 ] || fail "$repo: $open PR(s) still open"
+  [ "$repo" != "$START" ] || check_local_clean
+}
+
+# Nothing the session made by hand is left in the working copy it started in: no branch but main, and no
+# worktree. What the harness made for its subagents, under .claude/worktrees, is the harness's to reclaim.
+check_local_clean() {
+  local branches trees
+  branches=$(git -C "$WORK" for-each-ref --format='%(refname:short)' refs/heads | grep -vx main | grep -v '^worktree-agent-' | tr '\n' ' ')
+  [ -z "$branches" ] || fail "local branches left: $branches"
+  trees=$(git -C "$WORK" worktree list --porcelain | sed -n 's/^worktree //p' | grep -vx "$WORK" | grep -v "^$WORK/.claude/worktrees/" | tr '\n' ' ')
+  [ -z "$trees" ] || fail "worktrees left: $trees"
 }
 
 # A fresh clone of a repository's main, in $MAIN.

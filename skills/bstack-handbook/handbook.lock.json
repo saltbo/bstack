@@ -1,7 +1,7 @@
 {
   "agents": {
-    "version": 7,
-    "hash": "9b8c148f83bfb0b7"
+    "version": 8,
+    "hash": "c360a9a468cbed73"
   },
   "authority": {
     "version": 2,
@@ -68,8 +68,8 @@
     "hash": "d46a9701217a8d59"
   },
   "pull-requests": {
-    "version": 3,
-    "hash": "7e782970ae26bfa2"
+    "version": 4,
+    "hash": "45ff1e2cbebd21e7"
   },
   "release": {
     "version": 1,

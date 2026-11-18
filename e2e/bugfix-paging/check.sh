@@ -1,5 +1,6 @@
 # The fix reached main through a merged PR whose CI passed, every order is listed, and nothing is left behind.
 set -u
+source "$E2E_LIB"
 repo=saltbo/orderdesk
 fail() { echo "FAIL: $*"; status=1; }
 status=0
@@ -20,4 +21,6 @@ left=$(git ls-remote --heads "https://github.com/$repo.git" | grep -v refs/heads
 [ "$left" = 0 ] || fail "$left branch(es) left on the remote"
 open=$(jq --arg r "$repo" '[.repos[$r].prs[] | select(.state=="OPEN")] | length' "$STATE")
 [ "$open" = 0 ] || fail "$open PR(s) still open"
+check_local_clean
+[ "$status" = 0 ] || exit 1
 exit $status

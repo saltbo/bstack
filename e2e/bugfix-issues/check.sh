@@ -1,5 +1,6 @@
 # Each issue was fixed by a merged PR of its own with green CI, the issues are closed, and nothing is left behind.
 set -u
+source "$E2E_LIB"
 repo=saltbo/orderdesk
 status=0
 fail() { echo "FAIL: $*"; status=1; }
@@ -28,4 +29,6 @@ revenue=$(python3 -m orderdesk revenue)
 python3 -m unittest -q >/dev/null 2>&1 || fail "the gate fails on main"
 left=$(git ls-remote --heads origin | grep -v refs/heads/main | wc -l | tr -d ' ')
 [ "$left" = 0 ] || fail "$left branch(es) left on the remote"
+check_local_clean
+[ "$status" = 0 ] || exit 1
 exit $status

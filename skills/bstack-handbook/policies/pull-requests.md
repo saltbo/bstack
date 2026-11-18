@@ -1,6 +1,6 @@
 ---
 id: pull-requests
-version: 3
+version: 4
 audience: leader, worker
 applies: all
 ---
@@ -33,7 +33,7 @@ The leader merges, or a worker whose brief says to.
 
 - Merge when the PR passes [verification](../lifecycle/verification.md).
 - Squash-merge. The PR counts as merged when the forge says it is, because a merge queue can accept the command without merging.
-- After a merge, nothing of the PR is left behind. Its branch and its worktree are gone, locally and on the remote. A follow-up goes on a new branch.
+- When a piece of work ends, by a merge, a close, or being dropped, nothing an agent created for it by hand is left, locally or on the remote: its branches, its worktrees, and the local branches it checked out to review or verify a PR. What an environment's tool created for it is that tool's to reclaim. A follow-up goes on a new branch. (2026-11-17)
 - After a rebase, earlier proof still stands when the change itself is unchanged.
 
 ### CI and review bots

@@ -1,6 +1,6 @@
 ---
 id: agents
-version: 7
+version: 8
 audience: leader
 applies: all
 ---
@@ -12,7 +12,7 @@ applies: all
 - **One session per git repository.** Work in another repository goes to an independent session there, started with autopilot. The first leader gives it the goal and the acceptance criteria and follows it by its PRs and its report. (2026-11-15, 2026-11-17)
 - **The rule of two subagents and five review rounds is retired.** Acceptance has one fix round. (2026-11-15)
 - **Guidance for agents lives in skills and this handbook**, written as rules that trust the model, not as step-by-step procedure, and without project implementation detail. (2026-06-27, 2026-09-13)
-- **Dispatch uses the tool of the environment the leader runs in.** In T3 Code that is T3's own delegation, in Herdr it is `hc`, and elsewhere it is the harness's own subagents. This holds for workers, verifiers, and sessions in other repositories. (2026-11-15)
+- **Dispatch uses the tool of the environment the leader runs in, and so does the working copy.** In T3 Code that is T3's own delegation, in Herdr it is `hc`, and elsewhere it is the harness's own subagents. This holds for workers, verifiers, and sessions in other repositories. When the tool can give the work its own directory and branch, the work takes those, and nobody creates a branch or a worktree for it by hand. (2026-11-15, 2026-11-17)
 - **A worker has no helper subagents.** It writes its own tests, and the leader is the second reader. (2026-11-15)
 
 ## Defaults
