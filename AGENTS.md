@@ -20,8 +20,7 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 | `skills/xplan/` | The coordinator skill. It breaks work into tasks, delegates them to workers, and merges under autopilot. Installed |
 | `skills/bstack-worker/` | The worker skill. Installed |
 | `skills/bstack-writing/` | How Markdown is written and revised, skills included. Installed, pinned, and loaded without being asked for |
-| [.agents/skills/keeper/](.agents/skills/keeper/SKILL.md) | The keeper skill. It serves this repository only and is installed nowhere else |
-| [.agents/skills/keeper/scripts/session.py](.agents/skills/keeper/scripts/session.py) | Turns a Claude Code session into evidence for the keeper. It judges nothing |
+| [.agents/skills/revise-from-evidence/](.agents/skills/revise-from-evidence/SKILL.md) | How to trace a wrong behavior to the text that caused it, revise it, and prove the revision, with `scripts/session.py`. A skill of this repository only, linked into `.claude/skills/` because Claude Code reads skills only from there |
 | `evals/` | Cases for one skill, run by `claude plugin eval`, which loads `skills/` through `.claude-plugin/plugin.json` |
 | `e2e/` | Cases for the whole system, each one real session on the local stand-in for GitHub and Cloudflare in `e2e/sim/`, run by `e2e/run.py` |
 | [docs/evaluation.md](docs/evaluation.md) | How to run both, and how the skills behaved in recorded runs |
@@ -29,7 +28,7 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 
 ## How it is maintained
 
-- Handbooks and skills are changed here, after the work, by the keeper, from evidence of what the text made an agent do.
+- Any agent working in this repository maintains it. A handbook or a skill changes here from evidence of what its text made an agent do, as [revise-from-evidence](.agents/skills/revise-from-evidence/SKILL.md) describes, and never in the middle of a task that runs on it, because a task runs on one version from start to finish.
 - A handbook entry is a Decision, a Default, or an Open question. Nothing becomes a Decision until Saltbo has confirmed it as a standing one. A handbook marked `owner-only` is changed only by him.
 - Every change to a handbook raises its version through `skills/bstack-handbook/scripts/handbook.py`, which also keeps the index, the lock, and the changelog. The skills carry no version, and the commit records a change to one.
 - The issue tracker takes only problems with the text of a handbook or a skill. A defect in a product or a tool is filed with that product.
@@ -39,6 +38,6 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 
 Types: none. This is a repository of text and matches no type handbook
 Stage: live
-Facts: installed on Saltbo's machine from this checkout by the `skills` command of bbox. autopilot, bugfix, and xplan are pinned, and the pins point at this working tree, so the branch checked out here is the leader that runs
+Facts: installed on Saltbo's machine from this checkout by the `skills` command of bbox, whose `skills list` shows which skills are pinned. Pins point at this working tree, so the branch checked out here is the one that runs
 Preview: none. Nothing is deployed
 Exceptions: none

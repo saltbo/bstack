@@ -1,6 +1,6 @@
 ---
 id: follow-ups
-version: 5
+version: 6
 audience: leader, worker
 applies: all
 ---
@@ -10,7 +10,7 @@ applies: all
 ## Decisions
 
 - **A problem outside the task goes to the project's issue tracker.** One issue per problem, with the command or observation that shows it. The current PR keeps to its task.
-- **The tracker of `saltbo/bstack` takes only problems with the text of a handbook or a skill.** That is a text that led an agent to the wrong action, or was silent where the agent had to decide. The issue names the handbook id and version, and the host and ID of the session where it showed, such as Claude Code's `$CLAUDE_CODE_SESSION_ID`, because the keeper traces the problem through that session's transcript. A PR alone does not identify the session. A defect or a missing feature in a product or a tool goes to that product, also when a handbook entry mentions the subject. (2026-11-15, 2026-11-17)
+- **The tracker of `saltbo/bstack` takes only problems with the text of a handbook or a skill.** That is a text that led an agent to the wrong action, or was silent where the agent had to decide. The issue names the handbook id and version, and the host and ID of the session where it showed, such as Claude Code's `$CLAUDE_CODE_SESSION_ID`, because the problem is traced through that session's transcript. A PR alone does not identify the session. A defect or a missing feature in a product or a tool goes to that product, also when a handbook entry mentions the subject. (2026-11-15, 2026-11-17)
 - **A worker lists follow-ups in its report.** The leader files them.
 - **A gap in another project or upstream is filed there**, with a tracking issue in the project that depends on it. (2026-08-29)
 - **An issue is written from the user's view.** The title and body describe the symptom. A comment gives the cause, the workaround, and the one upstream issue to track. (2026-05-05)

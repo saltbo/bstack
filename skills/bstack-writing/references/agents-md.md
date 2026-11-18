@@ -2,13 +2,13 @@
 
 Every agent that works in the repository reads this file at the start of every session, before it knows what its task is. So each line costs every session, and a wrong line misleads all of them. It is held to a higher standard than any other document in the repository.
 
-The reader is a capable model that can read the code, run it, and look things up. It needs only what none of that would tell it.
+The reader is a capable model that can read the repository, run commands on the machine, and look things up. It needs only what none of that would tell it.
 
 ## What goes in
 
 - What the repository is for, in a few sentences, and what it is easily mistaken for.
 - Decisions its owner made that the code does not show, each with its reason.
-- Facts about its environment: where it runs, what deploys it, which commands make up the gate, the names of its resources. A fact is checked against the running system or its configuration before it is written.
+- Facts about its environment that no file or command shows, such as where it runs, what deploys it, and which commands make up the gate. A fact is checked against the running system or its configuration before it is written.
 - Where things are, when the layout does not explain itself.
 - In a project under the handbook, the `## Handbook` block that its [index](../../bstack-handbook/SKILL.md) describes. The block carries facts, and the rules stay in the handbook.
 

@@ -14,7 +14,7 @@ A model changes a document by adding to it. Asked to fix a behavior, it appends 
 
 - **The document reads as if written in one pass**, by one writer who knew everything that is known today. It carries no trace of its history: no sentence that answers a past incident, no word added to steer an earlier sentence, no exception to an exception.
 - **Each subject has one home.** A fact, decision, or rule is stated in one place, and every other place that needs it links there.
-- **Each sentence earns its place.** A reader would act differently, or misunderstand, without it.
+- **Each sentence earns its place, and stays true.** A reader would act differently, or misunderstand, without it. A fact that a file, a command, or the code shows at any time is not copied in, because the copy goes stale the first time its source changes and nothing tells the writer. The document says where to look instead.
 - **Who reads the document decides what goes in.** The pages for each kind of document below say who that is.
 
 ## Changing a document
