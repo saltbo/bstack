@@ -21,7 +21,7 @@ Saltbo wants agents to stop asking what he already answered and to stop repeatin
 
 ## What the evidence decides
 
-- A behavior the text caused gets that text rewritten. A behavior the text already ruled out, or one a harness, tool, or model limit caused, gets no new line. It is filed where it belongs, or noted in the report.
+- A behavior the text caused gets that text rewritten. A behavior the text already ruled out, or one a harness, tool, or model limit caused, gets no new line here. A defect in a tool is filed with that tool. A fact about Saltbo's machine that broke a usual command, such as `sed` being GNU sed, goes in his user-level instructions, `~/.agents/AGENTS.md`, which chezmoi manages.
 - A wrong behavior seen in an end-to-end run counts only when the stand-in behaved like the real service. A call the stand-in got wrong is fixed in `e2e/sim/` first, and the run repeated.
 - Something Saltbo said that should hold from now on, across projects, becomes a Decision only after he confirms it as one. Until then it is an Open entry with its interim default. A project fact goes in that project's `Handbook` block.
 

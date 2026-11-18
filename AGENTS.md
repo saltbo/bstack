@@ -38,6 +38,6 @@ Every document here is written and revised per [bstack-writing](skills/bstack-wr
 
 Types: none. This is a repository of text and matches no type handbook
 Stage: live
-Facts: installed on Saltbo's machine from this checkout by the `skills` command of bbox, whose `skills list` shows which skills are pinned. Pins point at this working tree, so the branch checked out here is the one that runs
+Facts: installed on Saltbo's machine from this checkout by the `skills` command of bbox. Pins point at this working tree, so the branch checked out here is the one that runs
 Preview: none. Nothing is deployed
 Exceptions: none

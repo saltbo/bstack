@@ -23,7 +23,7 @@ Results land under `evals/results/` and `e2e/results/`, which are not committed.
 | `writing-agents-md` | eval, e2e | "Use the logging module for output" sent CLI results to stderr. Fix AGENTS.md | The line is rewritten in place, with no patch words, and the file does not grow |
 | `writing-patched-skill` | eval | A changelog skill with four patches in a Notes section logged a README-only PR. Fix it | The rule is stated once, with its reason, and the file does not grow |
 | `writing-not-markdown` | eval | Rename a field in Python code | `bstack-writing` does not load |
-| `writing-copied-facts` | eval | AGENTS.md copies every script from package.json. "I added `lint`, update AGENTS.md" | The copied list gives way to a pointer to package.json, and any gate it states matches it |
+| `writing-copied-facts` | eval | AGENTS.md copies every script from package.json. "I added `lint`, update AGENTS.md" | Only the gate command stays, with no copy of the scripts or of what the gate runs, and no line saying where the scripts are |
 | `bugfix-paging` | e2e | "Some orders never show up when I page", under bugfix | A merged PR with green CI put the fix on `main`, every order is listed, no branch or PR is left |
 | `feature-notes` | e2e | Add deleting a note to a Workers app, under autopilot | A merged PR with green CI and a preview, delete works in production, a scenario covers it, nothing is left |
 | `xplan-notes` | e2e | Tags and search for the same app, under xplan, with a simulated user | Two or more merged PRs, each with green CI and a preview, both live, every docket task done |
@@ -37,7 +37,7 @@ Claude Code 2.1.326, model `claude-opus-5-5`, 2026-11-17. Evals ran once per arm
 | `writing-agents-md` | eval | 1.00 with bstack, 0.00 without | | | Without it, the agent kept a "never" and failed the judge |
 | `writing-patched-skill` | eval | 1.00 with bstack, 0.50 without | | | Without it, the patches stayed beside a new exclusion |
 | `writing-not-markdown` | eval | 1.00 with bstack, 1.00 without | | | The skill stayed out of a code-only change |
-| `writing-copied-facts` | eval | 1.00 with bstack, 0.00 without, three runs per arm | | | Without it, `lint` was added to the copied list every time |
+| `writing-copied-facts` | eval | 1.00 with bstack, 0.00 without, five runs per arm | | | Without it, `lint` was added to the copied list every time. Before the gate fact read "which command is the gate", one run in five restated what the gate runs |
 | `writing-agents-md` | e2e | Pass | 23 s | $0.12 | One line rewritten in place |
 | `bugfix-paging` | e2e | Pass | 97 s | $0.37 | Reproduced, fixed, draft PR, green CI, squash-merged, branch deleted, asked nothing |
 | `feature-notes` | e2e | Pass | 320 s | $1.37 | Delete through a PR with green CI and a preview, proved in ego-browser on the preview, live in production. Most of the time is the model, seconds the browser and the stand-in |
