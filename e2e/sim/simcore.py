@@ -504,6 +504,59 @@ def shutdown():
     with state(write=False) as data:
         pids = [d.get("pid") for repo in data["repos"].values() for d in repo["deployments"]]
         pids.append(data.get("proxy_pid"))
-    for pid in filter(None, pids):
-        with contextlib.suppress(ProcessLookupError, PermissionError):
-            os.killpg(pid, signal.SIGTERM)
+    groups = [pid for pid in filter(None, pids) if signal_group(pid, signal.SIGTERM)]
+    deadline = time.time() + 10
+    while groups and time.time() < deadline:
+        time.sleep(0.2)
+        groups = [pid for pid in groups if signal_group(pid, 0)]
+
+
+def signal_group(pid, sig):
+    """Send `sig` to a process group, and say whether the group still exists."""
+    try:
+        os.killpg(pid, sig)
+        return True
+    except (ProcessLookupError, PermissionError):
+        return False
+
+
+def processes_under(root):
+    """The processes, other than this one, whose command line or working directory lies under `root`.
+
+    A session starts servers of its own, such as `pnpm dev`, in a session of their own, so they
+    outlive it unless something stops them."""
+    forms = {str(root)} | ({str(root).removeprefix("/private")} if str(root).startswith("/private/") else set())
+    def under(text):
+        return any(text == f or f + "/" in text or text.endswith(" " + f) for f in forms)
+    found = {}
+    ps = subprocess.run(["ps", "-axo", "pid=,command="], capture_output=True, text=True).stdout
+    for line in ps.splitlines():
+        pid, _, command = line.strip().partition(" ")
+        if pid.isdigit() and under(command):
+            found[int(pid)] = command
+    lsof = subprocess.run(["lsof", "-a", "-d", "cwd", "-Fpn"], capture_output=True, text=True).stdout
+    pid = None
+    for line in lsof.splitlines():
+        if line.startswith("p"):
+            pid = int(line[1:])
+        elif line.startswith("n") and pid and pid not in found and under(line[1:]):
+            found[pid] = subprocess.run(["ps", "-o", "command=", "-p", str(pid)], capture_output=True, text=True).stdout.strip()
+    found.pop(os.getpid(), None)
+    return {pid: command for pid, command in found.items() if command}
+
+
+def stop_processes_under(root, grace=5):
+    """Stop every process under `root`, TERM first and KILL after `grace` seconds. Returns what was running."""
+    running = processes_under(root)
+    left = running
+    for sig in (signal.SIGTERM, signal.SIGKILL):
+        for pid in left:
+            with contextlib.suppress(ProcessLookupError, PermissionError):
+                os.kill(pid, sig)
+        deadline = time.time() + grace
+        while left and time.time() < deadline:
+            time.sleep(0.2)
+            left = processes_under(root)
+        if not left:
+            break
+    return running

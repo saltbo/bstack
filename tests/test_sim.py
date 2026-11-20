@@ -105,3 +105,50 @@ class GitHubFlowTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def spawn(args, cwd):
+    """A process in a session of its own, as a session's background server is, so it outlives its parent."""
+    return subprocess.Popen(args, cwd=cwd, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                            stderr=subprocess.DEVNULL, start_new_session=True)
+
+
+class ProcessCleanupTests(unittest.TestCase):
+    """What a case starts under its scratch directory is stopped at its end, and nothing else is."""
+
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp(prefix="bstack-e2e-test-")).resolve()
+        self.outside = Path(tempfile.mkdtemp()).resolve()
+        self.addCleanup(shutil.rmtree, self.root, True)
+        self.addCleanup(shutil.rmtree, self.outside, True)
+
+    def test_processes_under_the_directory_are_stopped_and_others_are_not(self):
+        by_cwd = spawn(["sleep", "300"], self.root)
+        by_path = spawn([sys.executable, "-c", "import time; time.sleep(300)", str(self.root / "marker")], self.outside)
+        stubborn = spawn(["sh", "-c", "trap '' TERM; while :; do sleep 1; done"], self.root)
+        bystander = spawn(["sleep", "300"], self.outside)
+        self.addCleanup(bystander.wait)
+        self.addCleanup(bystander.kill)
+        stopped = simcore.stop_processes_under(self.root, grace=1)
+        self.assertLessEqual({by_cwd.pid, by_path.pid, stubborn.pid}, set(stopped))
+        for proc in (by_cwd, by_path, stubborn):
+            proc.wait(timeout=5)
+        self.assertIsNone(bystander.poll())
+        self.assertEqual({}, simcore.processes_under(self.root))
+
+    @unittest.skipUnless(shutil.which("pnpm") and list(Path.home().glob(".cache/bstack-e2e/deps/*/node_modules/wrangler")),
+                         "needs pnpm and the e2e dependency cache")
+    def test_a_dev_server_a_session_left_running_is_stopped(self):
+        # As in feature-notes: the session ran `pnpm dev` in its checkout and ended without stopping it.
+        work = self.root / "Develop/notes"
+        shutil.copytree(ROOT / "e2e/fixtures/notes", work)
+        deps = next(Path.home().glob(".cache/bstack-e2e/deps/*/node_modules/wrangler")).parent
+        subprocess.run(["cp", "-cR", str(deps), str(work / "node_modules")], check=True)
+        port = simcore.free_port()
+        server = spawn(["pnpm", "dev", "--port", str(port)], work)
+        self.assertTrue(simcore.wait_port(port, 60), "wrangler dev did not start")
+        stopped = simcore.stop_processes_under(self.root)
+        self.assertTrue(any("wrangler" in c and "dev" in c for c in stopped.values()), stopped)
+        server.wait(timeout=10)
+        self.assertEqual({}, simcore.processes_under(self.root))
+        self.assertFalse(simcore.wait_port(port, 1))
