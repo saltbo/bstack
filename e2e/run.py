@@ -13,7 +13,8 @@ deploys a preview or production on the local Workers runtime. It sees only this
 checkout's skills and the user-level instructions in `sim/user-agents.md`, and
 none of the user's own skills, settings, MCP servers, or credentials. Browser checks run in ego-browser task spaces of their own, which
 are closed afterwards. Nothing else it does leaves the scratch directory, which
-is removed afterwards. One run at a time holds the machine, because sessions
+is removed afterwards, once every process still running under it, such as a dev
+server the session started, is stopped and listed in `processes_left`. One run at a time holds the machine, because sessions
 choose local ports for their own dev servers. The transcript, the stand-in's state and call log, and the reports
 go to `e2e/results/<time>/<case>/`.
 
@@ -25,6 +26,7 @@ import hashlib
 import json
 import os
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
@@ -237,7 +239,7 @@ def run_case(case, out, args):
     os.environ.update(ORIGINAL_ENV)
     root = Path(tempfile.mkdtemp(prefix=f"bstack-e2e-{case.name}-")).resolve()
     out.mkdir(parents=True, exist_ok=True)
-    work = None
+    work = docket_proc = None
     try:
         before = fingerprint()
         spaces_before = browser_spaces()
@@ -317,6 +319,8 @@ def run_case(case, out, args):
             docket_proc.terminate()
             shutil.copytree(root / "docket", out / "docket", dirs_exist_ok=True)
         simcore.shutdown()
+        # What the session started and left running, such as its own `pnpm dev`, is stopped and reported.
+        summary["processes_left"] = sorted(simcore.stop_processes_under(root).values())
         if transcript_dir(work).exists():
             shutil.rmtree(transcript_dir(work))
         left = sorted(browser_spaces() - spaces_before)
@@ -327,8 +331,12 @@ def run_case(case, out, args):
         (out / "result.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
         return summary
     finally:
+        if docket_proc:
+            docket_proc.terminate()
         if simcore.ROOT.exists():
             simcore.shutdown()
+        # Whatever ended the case, a failure, a timeout, or an interrupt, nothing it started outlives its directory.
+        simcore.stop_processes_under(root)
         if work is not None and transcript_dir(work).exists():
             shutil.rmtree(transcript_dir(work))
         if args.keep:
@@ -348,6 +356,9 @@ def main():
     parser.add_argument("--results", help=argparse.SUPPRESS)
     parser.add_argument("--no-lock", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
+    # A run stopped from outside still cleans up each case, as an interrupt does.
+    for sig in (signal.SIGTERM, signal.SIGHUP):
+        signal.signal(sig, lambda signum, frame: sys.exit(128 + signum))
 
     # Sessions pick local ports for their own dev servers, so two runs at once can reach each other's.
     if not args.no_lock:
