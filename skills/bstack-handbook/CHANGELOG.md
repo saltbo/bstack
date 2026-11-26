@@ -358,3 +358,31 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: Branches outlived their work: closed or dropped work, branches checked out to review or verify a PR, and local branches whose remote was deleted at merge. The rule covered only merges.
 - Expect: Whatever an agent created by hand is gone when its work ends, however it ends; what an environment's tool created is left to that tool.
 - Outcome: pending
+
+## planning@4 (2026-11-26)
+
+- Source: Saltbo, Edith's session of 2026-11-26, on zpan PR #622
+- Saw: A contributor's sign-in language menu (PR #622) waited days for Saltbo's go because every new feature waited for him, and no project wrote down what its product is for.
+- Expect: A feature inside a project's positioning is built and merged without asking him. Only a change of direction, such as a change to the positioning or to a global UX rule, waits for him.
+- Outcome: pending
+
+## project@5 (2026-11-26)
+
+- Source: Saltbo, Edith's session of 2026-11-26, on zpan PR #622
+- Saw: No project recorded its positioning, so an agent could not tell an expected feature from a change of direction, and no record had a place for the UX rules every page follows.
+- Expect: Each project keeps its positioning at the top of spec/README.md, and a product with a UI keeps UX.md and DESIGN.md at its root; spec scenarios carry no screen mechanics.
+- Outcome: pending
+
+## frontend@2 (2026-11-26)
+
+- Source: Saltbo, Edith's session of 2026-11-26, on zpan PR #622
+- Saw: The written UI standard every product needed had no name or place, so neither zpan nor zpan-cloud had one, and a small UI change such as where a language menu goes had nothing to be judged against.
+- Expect: A product's UI work follows its UX.md and DESIGN.md, with general practice from the UI skills, and a missing one is drafted rather than asked about change by change.
+- Outcome: pending
+
+## skills@9 (2026-11-26)
+
+- Source: Saltbo, Edith's session of 2026-11-26, on zpan PR #622
+- Saw: The installed UI skills, ui-ux-pro-max and web-design-guidelines, were not in the index, and ui-ux-pro-max writes its own design-system files that would duplicate DESIGN.md.
+- Expect: UI work loads ui-ux-pro-max while building and web-design-guidelines before ready, and no design-system/ folder appears beside DESIGN.md.
+- Outcome: pending

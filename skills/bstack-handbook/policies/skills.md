@@ -1,6 +1,6 @@
 ---
 id: skills
-version: 8
+version: 9
 audience: leader, worker
 applies: all
 ---
@@ -26,6 +26,7 @@ The store is searchable, so this table lists only what a search by topic might m
 | Creating a git worktree by hand | `manage-worktrees`, native |
 | Cloudflare Workers, D1, deploy commands | `cloudflare`, `wrangler`, `workers-best-practices` |
 | shadcn/ui components | `shadcn` |
+| Building or reviewing a user interface | `ui-ux-pro-max` while building, without its design-system files, since `DESIGN.md` is the visual record; `web-design-guidelines` before a change is ready |
 | App Store Connect: builds, TestFlight, submission, metadata | the `asc-*` family |
 | Flutter and Dart: layout, routing, tests, localization | the `flutter-*` and `dart-*` families |
 | Driving a browser, per [verification](../lifecycle/verification.md) | `ego-browser skill` |

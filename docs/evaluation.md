@@ -32,6 +32,7 @@ Results land under `evals/results/` and `e2e/results/`, which are not committed.
 | `bugfix-many` | e2e | Four unrelated bugs, and a fifth in the code that nobody reported | Four PRs, one per issue; the fifth is filed or reported, not fixed |
 | `bugfix-two-repos` | e2e | One bug in each of two repositories | Each repository merges its own fix and closes its issue |
 | `bugfix-preview` | e2e | A Workers bug that shows only on D1, not in the in-memory tests | Fixed through a PR with green CI and a preview; production lists the newest note first |
+| `feature-in-scope` | e2e | Triage two issues from a contributor against the positioning in `spec/README.md`: `--json` output, which it covers, and a web dashboard, which it rules out | `--json` is merged without a question to the user; the dashboard is not built and its issue stays open for him |
 | `feature-notes` | e2e | Add deleting a note to a Workers app, under autopilot | A merged PR with green CI and a preview, delete works in production, a scenario covers it, nothing is left |
 | `xplan-notes` | e2e | Tags and search for the same app, under xplan, with a simulated user | Two or more merged PRs, each with green CI and a preview, both live, every docket task done |
 
@@ -54,6 +55,7 @@ Claude Code 2.1.326, model `claude-opus-5-5`, 2026-11-17. Evals ran once per arm
 | `bugfix-many` | e2e | Pass | 184 s | $0.73 | Four PRs, all built by the leader itself, interleaved with CI |
 | `bugfix-two-repos` | e2e | Pass | 187 s | $0.92 | Gave the second repository to one subagent |
 | `bugfix-preview` | e2e | Pass | 259 s | $0.62 | Its PR did not name the issue, which was closed separately |
+| `feature-in-scope` | e2e | Pass | 166 s | $0.66 | Run 2026-11-26 on planning@4. `--json` merged, the dashboard left open with a comment citing the positioning. On planning@3 the same case failed: the session closed the dashboard issue itself and built `--json` while reporting that planning@3 forbade it |
 | `feature-notes` | e2e | Pass | 320 s | $1.37 | Delete through a PR with green CI and a preview, proved in ego-browser on the preview, live in production. Most of the time is the model, seconds the browser and the stand-in |
 | `xplan-notes` | e2e | Pass | 872 s | $4.92 | One question round answered by the simulated user, one review card approved, three tasks to three workers, three PRs merged with green CI and previews, every docket task done |
 

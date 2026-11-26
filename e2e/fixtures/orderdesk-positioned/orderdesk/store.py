@@ -1,0 +1,27 @@
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class Order:
+    id: int
+    created_at: int
+    total: int
+
+
+ORDERS = [
+    Order(1, 100, 30),
+    Order(2, 105, 12),
+    Order(3, 105, 7),
+    Order(4, 110, 55),
+    Order(5, 110, 9),
+]
+
+
+def page(orders, after=None, limit=2):
+    """Return one page of orders, oldest first, and the cursor for the next page."""
+    ordered = sorted(orders, key=lambda o: o.created_at)
+    if after is not None:
+        ordered = [o for o in ordered if o.created_at > after]
+    items = ordered[:limit]
+    cursor = items[-1].created_at if len(items) == limit else None
+    return items, cursor
