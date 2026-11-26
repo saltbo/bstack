@@ -1,6 +1,6 @@
 ---
 id: project
-version: 4
+version: 5
 audience: leader
 applies: all
 ---
@@ -15,8 +15,10 @@ applies: all
 - **A full-stack web project starts from `saas-web-starter`**, with frontend and backend in one repository, on the Workers runtime, with pnpm and the latest toolchain. (2026-10-15)
 - **Sign-in is Realmroot over OIDC.** The app checks tokens and permissions in API middleware and builds no login or session layer of its own. (2026-05-26, 2026-11-15)
 - **Every repository has a `spec/` folder of `.feature` files** as the source of truth for product behavior, and its gate checks that each scenario is covered by a test, per [testing](testing.md). Markdown does not hold product behavior or API descriptions. (2026-06-27, 2026-09-03, 2026-11-15)
+- **`spec/README.md` opens with the product's positioning**: what the product is, who it is for, what it does, and what it deliberately does not do. Every feature is judged against it, per [planning](planning.md), and it sits where every change in behavior starts. (2026-11-26)
+- **A product with a user interface has `UX.md` and `DESIGN.md` at the repository root**, per [frontend](frontend.md). A missing one is a gap to close, like a missing `spec/`. (2026-11-26)
 - **Every repository has a `docs/adr/` folder of architecture decision records.** An ADR keeps a project decision that later engineering work needs to know, with its reason. Judge by lasting architectural relevance, which a reversible decision can have and an incidental implementation detail lacks. A missing folder is a gap to close, like a missing `spec/`. (2026-09-02, 2026-11-15)
-- **Each record has its place.** `spec/` says what the product does. `docs/adr/` says why the project is built the way it is. This handbook holds what applies across projects. A choice that would hold for his other projects too is reported for the handbook, not written as an ADR. (2026-11-15)
+- **Each record has its place.** The positioning says what the product is for. `spec/` says what it does, in product language, never how a screen shows it, such as which dialog opens or where a form sits. `UX.md` holds the interaction rules every page follows, and `DESIGN.md` the visual system. `docs/adr/` says why the project is built the way it is. This handbook holds what applies across projects. A choice that would hold for his other projects too is reported for the handbook, not written as an ADR. (2026-11-15, 2026-11-26)
 - **The leader writes the ADR.** When a task settles such a decision, including one a worker reports under its decisions, the leader records it after the PR merges, as a direct change on trunk, so a PR that is ready is not sent through CI again. Before reopening a technical choice, read the ADRs. A decision that replaces an earlier one says so and marks the old record superseded. (2026-11-15)
 - **The feedback loop is set up, not described.** Hooks, CI checks, and test commands exist and run. (2026-07-06)
 - **Nothing personal goes in the repository**, such as a local development domain. (2026-07-30)

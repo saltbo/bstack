@@ -40,8 +40,8 @@
     "hash": "6e67b3fbd9149a02"
   },
   "frontend": {
-    "version": 1,
-    "hash": "85dd2d45d8b268ac"
+    "version": 2,
+    "hash": "2deb70086052456c"
   },
   "go-cli": {
     "version": 1,
@@ -60,12 +60,12 @@
     "hash": "d012bbc9544c9a74"
   },
   "planning": {
-    "version": 3,
-    "hash": "d1ce5881f4e6592e"
+    "version": 4,
+    "hash": "1e8bd14f1c36ca38"
   },
   "project": {
-    "version": 4,
-    "hash": "d46a9701217a8d59"
+    "version": 5,
+    "hash": "c418009441345745"
   },
   "pull-requests": {
     "version": 4,
@@ -84,8 +84,8 @@
     "hash": "555dee1eb54f1667"
   },
   "skills": {
-    "version": 8,
-    "hash": "3037bb3c861eca50"
+    "version": 9,
+    "hash": "1a332d49e4ca8985"
   },
   "testing": {
     "version": 1,

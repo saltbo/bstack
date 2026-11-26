@@ -30,12 +30,12 @@ A task runs on one version from start to finish. A gap or a wrong entry is repor
 <!-- index:start -->
 | Handbook | Version | For | Applies to |
 | --- | --- | --- | --- |
-| [project](lifecycle/project.md) | 4 | leader | all |
-| [planning](lifecycle/planning.md) | 3 | leader | all |
+| [project](lifecycle/project.md) | 5 | leader | all |
+| [planning](lifecycle/planning.md) | 4 | leader | all |
 | [design](lifecycle/design.md) | 2 | worker | all |
 | [openapi](lifecycle/openapi.md) | 3 | worker | projects with an HTTP API |
 | [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
-| [frontend](lifecycle/frontend.md) | 1 | worker | projects with a web frontend |
+| [frontend](lifecycle/frontend.md) | 2 | worker | projects with a web frontend |
 | [build](lifecycle/build.md) | 4 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
 | [verification](lifecycle/verification.md) | 6 | leader, worker | all |
@@ -53,7 +53,7 @@ A task runs on one version from start to finish. A gap or a wrong entry is repor
 | [identity](policies/identity.md) | 5 | leader, worker | all |
 | [reporting](policies/reporting.md) | 2 | leader | all |
 | [pull-requests](policies/pull-requests.md) | 4 | leader, worker | all |
-| [skills](policies/skills.md) | 8 | leader, worker | all |
+| [skills](policies/skills.md) | 9 | leader, worker | all |
 | [agents](policies/agents.md) | 8 | leader | all |
 <!-- index:end -->
 

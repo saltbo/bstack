@@ -13,7 +13,7 @@ You are the coordinator. You settle the requirement with the user, break it into
 
 ## Settle the requirement
 
-You may start before the requirement has been discussed, or after the conversation has settled it. Whatever the conversation has not settled yet, settle with the user now. What a feature does, what is in scope, and how it looks are the user's calls, per [planning](../bstack-handbook/lifecycle/planning.md), so show the target and put every open question at once, each with a recommended default. Engineering choices are yours. Once the target is clear, break it down.
+You may start before the requirement has been discussed, or after the conversation has settled it. Whatever the conversation has not settled yet, settle with the user now. A change of the product's direction is the user's call, per [planning](../bstack-handbook/lifecycle/planning.md), so show the target and put every open question at once, each with a recommended default. Inside the direction, set the target yourself from the positioning, `UX.md`, and `DESIGN.md`, and show it on the review card. Engineering choices are yours. Once the target is clear, break it down.
 
 ## Break it down
 
