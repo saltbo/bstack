@@ -412,5 +412,5 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 
 - Source: Saltbo, session of 2026-11-27, reviewing the zpan schema
 - Saw: No handbook said how a table is designed, so each zpan table followed the habit of the moment: seconds and milliseconds mixed in one table, folders referenced by path, foreign keys only on new tables, five ways to mark a delete, tenant ids copied into child tables, one config table per feature, and indexes nobody's query needed.
-- Expect: A new table has UUIDv7 ids, UTC millisecond times, created_at, updated_at, and deleted_at with soft delete, foreign keys to ids, a tenant id only on top-level resources, one source per fact, reused shared structures, and an index only for a named query.
+- Expect: A new table is named for its entity in the one word the code and API use, with no vendor or protocol in the name, and has UUIDv7 ids, UTC millisecond times, created_at, updated_at, and deleted_at with soft delete, foreign keys to ids, a tenant id only on top-level resources, one source per fact, reused shared structures, and an index only for a named query.
 - Outcome: pending
