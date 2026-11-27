@@ -8,8 +8,8 @@
     "hash": "4195fc31bcac336e"
   },
   "backend": {
-    "version": 1,
-    "hash": "93b3231c6a530a03"
+    "version": 2,
+    "hash": "c7e91321303ba6f2"
   },
   "build": {
     "version": 4,
@@ -23,13 +23,17 @@
     "version": 1,
     "hash": "18b27d7d03778e4f"
   },
+  "database": {
+    "version": 1,
+    "hash": "43a76a7cea37e5c0"
+  },
   "deploy": {
     "version": 2,
     "hash": "c2d56a0af64c0fbb"
   },
   "design": {
-    "version": 2,
-    "hash": "787507905e65cd8f"
+    "version": 3,
+    "hash": "4ce91eba44bef2c1"
   },
   "docker-service": {
     "version": 1,
@@ -92,8 +96,8 @@
     "hash": "5774a16a305900c9"
   },
   "verification": {
-    "version": 6,
-    "hash": "de41d71be6411d0a"
+    "version": 7,
+    "hash": "0a5718e2f136e250"
   },
   "versioning": {
     "version": 1,

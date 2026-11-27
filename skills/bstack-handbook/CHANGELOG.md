@@ -386,3 +386,31 @@ Saltbo confirmed every entry under Decisions as it stood at this date, including
 - Saw: The installed UI skills, ui-ux-pro-max and web-design-guidelines, were not in the index, and ui-ux-pro-max writes its own design-system files that would duplicate DESIGN.md.
 - Expect: UI work loads ui-ux-pro-max while building and web-design-guidelines before ready, and no design-system/ folder appears beside DESIGN.md.
 - Outcome: pending
+
+## backend@2 (2026-11-27)
+
+- Source: Saltbo, session of 2026-11-27, reviewing the zpan schema
+- Saw: The rule for which fields are real columns sat in backend, the only place any table design was written down.
+- Expect: Schema rules have one home in database; backend keeps only how repositories are shaped.
+- Outcome: pending
+
+## design@3 (2026-11-27)
+
+- Source: Saltbo, session of 2026-11-27, reviewing the zpan schema
+- Saw: design named the area handbooks a design is judged by, and none covered a relational schema.
+- Expect: A table design is judged by database alongside openapi, backend, and frontend.
+- Outcome: pending
+
+## verification@7 (2026-11-27)
+
+- Source: Saltbo, session of 2026-11-27, reviewing the zpan schema
+- Saw: The leader was told to check each new table against design, which has no rule about tables, so zpan's tables were accepted with three time units, path references, no foreign keys, and per-feature config tables.
+- Expect: The leader checks each new table against database.
+- Outcome: pending
+
+## database@1 (2026-11-27)
+
+- Source: Saltbo, session of 2026-11-27, reviewing the zpan schema
+- Saw: No handbook said how a table is designed, so each zpan table followed the habit of the moment: seconds and milliseconds mixed in one table, folders referenced by path, foreign keys only on new tables, five ways to mark a delete, tenant ids copied into child tables, one config table per feature, and indexes nobody's query needed.
+- Expect: A new table is named for its entity in the one word the code and API use, with no vendor or protocol in the name, and has UUIDv7 ids, UTC millisecond times, created_at, updated_at, and deleted_at with soft delete, foreign keys to ids, a tenant id only on top-level resources, one source per fact, reused shared structures, and an index only for a named query.
+- Outcome: pending

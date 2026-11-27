@@ -1,6 +1,6 @@
 ---
 id: verification
-version: 6
+version: 7
 audience: leader, worker
 applies: all
 ---
@@ -32,7 +32,7 @@ How a change is verified on its way from "built" to "merged", without the two si
 - **The leader writes the bar and the worker writes the tests.** The worker does not change a scenario's text or weaken an existing test. If one is wrong, it says so in its report and the leader decides. (2026-11-15)
 - **A leader that builds a change itself does the worker's checks.** It proves every criterion locally and on the preview, and that walk stands in for the acceptance sample. A high-risk change it built still gets the second check. (2026-11-15)
 - **The worker is exhaustive.** It proves every criterion locally, opens the PR as a draft, gets CI green, proves every criterion again on the preview, and only then marks the PR ready. Ready means exactly that, so the handoff is one visible event. (2026-11-15)
-- **The leader's acceptance is a sample and a judgment.** It checks four things. The changed files stay inside the brief. Every change in behavior has its scenario, and no test, spec file, or gate setting was weakened without a stated reason. Each new API and new table follows the [openapi](openapi.md) and [design](design.md) handbooks. Every criterion has preview evidence. Then it walks the main path of the feature on the preview once, or for an API sends one or two requests, and merges. (2026-11-15)
+- **The leader's acceptance is a sample and a judgment.** It checks four things. The changed files stay inside the brief. Every change in behavior has its scenario, and no test, spec file, or gate setting was weakened without a stated reason. Each new API and new table follows the [design](design.md) handbook, and the [openapi](openapi.md) or [database](database.md) handbook for its kind. Every criterion has preview evidence. Then it walks the main path of the feature on the preview once, or for an API sends one or two requests, and merges. (2026-11-15)
 - **Code quality is held by the project's gate, not by reading.** A quality rule worth having is written as a check in CI. (2026-08-30, 2026-11-15)
 - **A new API or a new table needs no approval.** It is the one part of the code the leader reads, and the report lists each one. (2026-11-15)
 - **A project that can have a preview environment has one.** A web project can, and a Cloudflare Workers project always can. The project's `Handbook` block says where it is. A missing one is a gap, not an exemption, and for a web project the default is to build it as its own PR first. (2026-11-15)

@@ -33,6 +33,7 @@ Results land under `evals/results/` and `e2e/results/`, which are not committed.
 | `bugfix-two-repos` | e2e | One bug in each of two repositories | Each repository merges its own fix and closes its issue |
 | `bugfix-preview` | e2e | A Workers bug that shows only on D1, not in the in-memory tests | Fixed through a PR with green CI and a preview; production lists the newest note first |
 | `feature-in-scope` | e2e | Triage two issues from a contributor against the positioning in `spec/README.md`: `--json` output, which it covers, and a web dashboard, which it rules out | `--json` is merged without a question to the user; the dashboard is not built and its issue stays open for him |
+| `feature-tags` | e2e | Tag notes in a Workers app in development, under autopilot. The feature needs a new table that references the old `notes` table, which breaks database | A merged PR with green CI, tags live, and every table on `main`, old and new, named for its entity, with text ids, `created_at`, `updated_at`, `deleted_at`, declared foreign keys, and unique indexes that leave tombstones out |
 | `feature-notes` | e2e | Add deleting a note to a Workers app, under autopilot | A merged PR with green CI and a preview, delete works in production, a scenario covers it, nothing is left |
 | `xplan-notes` | e2e | Tags and search for the same app, under xplan, with a simulated user | Two or more merged PRs, each with green CI and a preview, both live, every docket task done |
 
@@ -56,6 +57,7 @@ Claude Code 2.1.326, model `claude-opus-5-5`, 2026-11-17. Evals ran once per arm
 | `bugfix-two-repos` | e2e | Pass | 187 s | $0.92 | Gave the second repository to one subagent |
 | `bugfix-preview` | e2e | Pass | 259 s | $0.62 | Its PR did not name the issue, which was closed separately |
 | `feature-in-scope` | e2e | Pass | 166 s | $0.66 | Run 2026-11-26 on planning@4. `--json` merged, the dashboard left open with a comment citing the positioning. On planning@3 the same case failed: the session closed the dashboard issue itself and built `--json` while reporting that planning@3 forbade it |
+| `feature-tags` | e2e | Pass | 664 s | $3.12 | Run 2026-11-27 on database@1. `note_tags` followed every rule, and `notes` was rebuilt with UUIDv7 ids and the three timestamps, keeping its rows. Before database@1 pointed to build for existing tables, the same case failed: the new table conformed, but the session never read build, left `notes` as it was, and filed an issue as a live project would |
 | `feature-notes` | e2e | Pass | 320 s | $1.37 | Delete through a PR with green CI and a preview, proved in ego-browser on the preview, live in production. Most of the time is the model, seconds the browser and the stand-in |
 | `xplan-notes` | e2e | Pass | 872 s | $4.92 | One question round answered by the simulated user, one review card approved, three tasks to three workers, three PRs merged with green CI and previews, every docket task done |
 
