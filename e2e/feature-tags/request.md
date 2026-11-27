@@ -1,0 +1,1 @@
+People want to tag their notes. Let them give a note one or more tags when they add it, show a note's tags next to it, and filter the list to one tag. Run `skills show autopilot` and carry it through to merged and live.

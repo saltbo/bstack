@@ -7,7 +7,7 @@ applies: projects with a database
 
 # Database design
 
-Saltbo's conventions for a relational schema. They choose between legitimate alternatives, so follow them even where another style would also be sound. They govern the tables a project owns. A library's own tables, such as an auth library's, keep the library's schema, and the project's tables do not copy its style. Migrations and live data are in [operate](operate.md), and repositories in [backend](backend.md).
+Saltbo's conventions for a relational schema. They choose between legitimate alternatives, so follow them even where another style would also be sound. They govern the tables a project owns. A library's own tables, such as an auth library's, keep the library's schema, and the project's tables do not copy its style. An existing table that breaks them is brought into line or kept as it is by the project's stage, as [build](build.md) says. Migrations and live data are in [operate](operate.md), and repositories in [backend](backend.md).
 
 ## Decisions
 
