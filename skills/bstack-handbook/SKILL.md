@@ -32,13 +32,14 @@ A task runs on one version from start to finish. A gap or a wrong entry is repor
 | --- | --- | --- | --- |
 | [project](lifecycle/project.md) | 5 | leader | all |
 | [planning](lifecycle/planning.md) | 4 | leader | all |
-| [design](lifecycle/design.md) | 2 | worker | all |
+| [design](lifecycle/design.md) | 3 | worker | all |
 | [openapi](lifecycle/openapi.md) | 3 | worker | projects with an HTTP API |
-| [backend](lifecycle/backend.md) | 1 | worker | projects with a backend |
+| [database](lifecycle/database.md) | 1 | worker | projects with a database |
+| [backend](lifecycle/backend.md) | 2 | worker | projects with a backend |
 | [frontend](lifecycle/frontend.md) | 2 | worker | projects with a web frontend |
 | [build](lifecycle/build.md) | 4 | worker | all |
 | [testing](lifecycle/testing.md) | 1 | worker | all |
-| [verification](lifecycle/verification.md) | 6 | leader, worker | all |
+| [verification](lifecycle/verification.md) | 7 | leader, worker | all |
 | [versioning](lifecycle/versioning.md) | 1 | leader, worker | all |
 | [deploy](lifecycle/deploy.md) | 2 | leader | services we run |
 | [release](lifecycle/release.md) | 1 | leader | artifacts others install |

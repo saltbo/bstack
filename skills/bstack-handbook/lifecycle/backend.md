@@ -1,6 +1,6 @@
 ---
 id: backend
-version: 1
+version: 2
 audience: worker
 applies: projects with a backend
 ---
@@ -16,7 +16,7 @@ applies: projects with a backend
 - **Database rows, SDK objects, and wire types stay inside their adapter or transport.** (2026-09)
 - **Layer boundaries are enforced by an import lint that fails CI**, not by a directory diagram. (2026-09)
 - **The use case owns the transaction.** No transaction opens in a handler, and no network call happens inside one. Prefer one conditional write or a database constraint over read-then-write. (2026-09)
-- **Repositories are shaped around domain resources, not tables.** Use the ORM's own API, not hand-built SQL. Columns that are filtered or indexed are real columns, and display-only fields share one JSON column. (2025-10-10, 2026-06-06)
+- **Repositories are shaped around domain resources, not tables.** Use the ORM's own API, not hand-built SQL. The schema itself follows [database](database.md). (2025-10-10, 2026-06-06)
 - **A cache keeps the port's behavior unchanged.** It does not serve stale data silently or fail open. Fix the design first, and add a cache only if it is still slow. (2026-07-26, 2026-09)
 - **Config is parsed once at startup, and a bad config stops startup.** (2026-09)
 - **Background work is idempotent**, since delivery is at least once. A message carries its own id, a trace id, and an idempotency key. Long-running work keeps its state in storage, not in memory. (2026-09)
